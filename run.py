@@ -1,7 +1,7 @@
-"""Daily pipeline: PubMed search → Claude picks 1-2 papers → Chinese deep-dive → RSS feed.
+"""Daily pipeline: PubMed search → LLM picks 1-2 papers → Chinese deep-dive → RSS feed.
 
-    python run.py            # full run (needs ANTHROPIC_API_KEY)
-    python run.py --dry-run  # only search PubMed and list candidates, no Claude calls
+    python run.py            # full run (needs DEEPSEEK_API_KEY, see [llm] in config.toml)
+    python run.py --dry-run  # only search PubMed and list candidates, no LLM calls
 """
 
 import argparse
@@ -21,7 +21,7 @@ FEED_PATH = ROOT / "docs" / "feed.xml"
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dry-run", action="store_true", help="只检索并打印候选，不调用 Claude")
+    parser.add_argument("--dry-run", action="store_true", help="只检索并打印候选，不调用大模型")
     args = parser.parse_args()
 
     cfg = tomllib.loads((ROOT / "config.toml").read_text(encoding="utf-8"))
@@ -49,7 +49,7 @@ def main() -> int:
 
     from digest.llm import Curator
 
-    curator = Curator()
+    curator = Curator(cfg["llm"])
     s = cfg["selection"]
     picks = curator.select(papers, s["interests"], s["picks_min"], s["picks_max"])
     new_items = []

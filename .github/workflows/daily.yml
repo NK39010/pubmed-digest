@@ -19,7 +19,7 @@ jobs:
       - run: pip install -r requirements.txt
       - run: python run.py
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
       - name: Commit feed
         run: |

@@ -4,9 +4,9 @@
     <title>顶刊生命科学精选</title>
     <link>https://example.github.io/pubmed-digest/</link>
     <atom:link href="https://example.github.io/pubmed-digest/feed.xml" rel="self" type="application/rss+xml"/>
-    <description>每日从 PubMed 顶刊中由 Claude 挑选 1-2 篇有意思的合成生物学/生信/生命科学论文并深度解读</description>
+    <description>每日从 PubMed 顶刊中由 AI 挑选 1-2 篇有意思的合成生物学/生信/生命科学论文并深度解读</description>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 13 Sep 2026 16:21:01 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 13 Sep 2026 16:36:06 +0000</lastBuildDate>
 
   </channel>
 </rss>

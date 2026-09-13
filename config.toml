@@ -3,7 +3,7 @@
 [search]
 # 回溯天数（按 PubMed 收录日期 EDAT）。每天跑一次时 3 天可以覆盖周末/收录延迟，已推送过的会自动去重
 days = 3
-# 送给 Claude 挑选的候选上限（按收录时间倒序截断）
+# 送给大模型挑选的候选上限（按收录时间倒序截断）
 max_candidates = 120
 
 # 专业期刊：所有文章都进候选池（PubMed 期刊缩写，[ta] 字段）
@@ -24,10 +24,16 @@ topic_terms = [
   "language model", "single-cell", "structural biology", "cryo-EM", "genomics",
 ]
 
+[llm]
+# 任意 OpenAI 兼容接口。换通义千问/Kimi/智谱时改这三项即可
+base_url = "https://api.deepseek.com"
+model = "deepseek-v4-pro"
+api_key_env = "DEEPSEEK_API_KEY"
+
 [selection]
 picks_min = 1
 picks_max = 2
-# 你的兴趣画像，Claude 挑文章时会参考
+# 你的兴趣画像，大模型挑文章时会参考
 interests = """
 我做合成生物学与蛋白质/酶工程（DNA 修复酶改造、分子对接、理性设计）。
 偏好：方法上有巧思、结论出人意料、能启发实验设计的工作；AI+生物的新工具；
@@ -36,7 +42,7 @@ interests = """
 
 [feed]
 title = "顶刊生命科学精选"
-description = "每日从 PubMed 顶刊中由 Claude 挑选 1-2 篇有意思的合成生物学/生信/生命科学论文并深度解读"
+description = "每日从 PubMed 顶刊中由 AI 挑选 1-2 篇有意思的合成生物学/生信/生命科学论文并深度解读"
 # 在 GitHub Actions 里运行时会自动替换为 https://<用户名>.github.io/<仓库名>/，本地运行才用这个值
 site_url = "https://example.github.io/pubmed-digest/"
 max_items = 60

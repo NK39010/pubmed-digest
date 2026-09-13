@@ -32,7 +32,7 @@ def render_item(paper, reason: str, analysis: dict) -> dict:
         parts.extend(f"<p>{escape(p)}</p>" for p in paras)
     source = "PMC 开放获取全文" if paper.full_text else "PubMed 摘要"
     parts.append(
-        f'<hr/><p>解读依据：{source} · 由 Claude 生成，关键结论请以原文为准<br/>'
+        f'<hr/><p>解读依据：{source} · 由 AI 生成，关键结论请以原文为准<br/>'
         f'原文：<a href="{escape(paper.url)}">{escape(paper.url)}</a> · PMID {paper.pmid}</p>'
     )
     return {
