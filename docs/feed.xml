@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>顶刊生命科学精选</title>
+    <link>https://example.github.io/pubmed-digest/</link>
+    <atom:link href="https://example.github.io/pubmed-digest/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>每日从 PubMed 顶刊中由 Claude 挑选 1-2 篇有意思的合成生物学/生信/生命科学论文并深度解读</description>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 13 Sep 2026 16:21:01 +0000</lastBuildDate>
+
+  </channel>
+</rss>

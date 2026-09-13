@@ -1,0 +1,47 @@
+# PubMed 顶刊文献精选 → RSS 配置
+
+[search]
+# 回溯天数（按 PubMed 收录日期 EDAT）。每天跑一次时 3 天可以覆盖周末/收录延迟，已推送过的会自动去重
+days = 3
+# 送给 Claude 挑选的候选上限（按收录时间倒序截断）
+max_candidates = 120
+
+# 专业期刊：所有文章都进候选池（PubMed 期刊缩写，[ta] 字段）
+specialist_journals = [
+  "Nat Biotechnol", "Nat Chem Biol", "Nat Methods", "Nat Genet",
+  "Nat Struct Mol Biol", "Nat Microbiol", "Nat Catal", "Nat Biomed Eng",
+  "Nat Mach Intell", "Nat Cell Biol", "Mol Cell", "Cell Syst", "Cell Res",
+  "Nucleic Acids Res", "Genome Biol", "Genome Res", "Mol Syst Biol",
+]
+
+# 综合期刊：只收命中下方主题词的文章（否则物理、天文等会混进来）
+general_journals = ["Nature", "Science", "Cell", "Nat Commun", "Sci Adv", "Proc Natl Acad Sci U S A"]
+
+topic_terms = [
+  "synthetic biology", "protein design", "protein engineering", "enzyme engineering",
+  "directed evolution", "genome editing", "CRISPR", "gene circuit", "metabolic engineering",
+  "bioinformatics", "computational biology", "machine learning", "deep learning",
+  "language model", "single-cell", "structural biology", "cryo-EM", "genomics",
+]
+
+[selection]
+picks_min = 1
+picks_max = 2
+# 你的兴趣画像，Claude 挑文章时会参考
+interests = """
+我做合成生物学与蛋白质/酶工程（DNA 修复酶改造、分子对接、理性设计）。
+偏好：方法上有巧思、结论出人意料、能启发实验设计的工作；AI+生物的新工具；
+对纯临床试验、流行病学统计、常规综述不感兴趣。
+"""
+
+[feed]
+title = "顶刊生命科学精选"
+description = "每日从 PubMed 顶刊中由 Claude 挑选 1-2 篇有意思的合成生物学/生信/生命科学论文并深度解读"
+# 在 GitHub Actions 里运行时会自动替换为 https://<用户名>.github.io/<仓库名>/，本地运行才用这个值
+site_url = "https://example.github.io/pubmed-digest/"
+max_items = 60
+
+[ncbi]
+# NCBI 要求提供 tool 和 email；API key 通过环境变量 NCBI_API_KEY 提供（可选，提速到 10 req/s）
+tool = "pubmed-digest"
+email = ""
