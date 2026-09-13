@@ -11,6 +11,19 @@ EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
 EXCLUDED_TYPES = ["Editorial", "News", "Comment", "Published Erratum", "Retraction of Publication", "Letter"]
 
 
+XLINK_HREF = "{http://www.w3.org/1999/xlink}href"
+
+
+@dataclass
+class Figure:
+    id: str          # e.g. "F2"
+    label: str       # e.g. "Figure 2."
+    caption: str     # original English legend
+    href: str        # graphic file name in the PMC package, e.g. "gkag877fig2.webp"
+    source_key: str = ""  # object key in the PMC OA S3 bucket
+    image_url: str = ""   # filled after download, absolute URL on our site
+
+
 @dataclass
 class Paper:
     pmid: str
@@ -23,6 +36,9 @@ class Paper:
     pmcid: str = ""
     pub_types: list[str] = field(default_factory=list)
     full_text: str = ""
+    figures: list[Figure] = field(default_factory=list)
+    license: str = ""
+    open_access: bool = False  # present in the PMC Open Access dataset (full text + figures downloadable)
 
     @property
     def url(self) -> str:
@@ -83,23 +99,55 @@ class PubMed:
             papers.extend(_parse_article(a) for a in root.iter("PubmedArticle"))
         return papers
 
-    def fetch_full_text(self, pmcid: str) -> str:
-        """Body text from PMC (open-access articles only); empty string if unavailable."""
+    def link_pmc(self, papers: list[Paper]) -> None:
+        """Fill in missing PMCIDs by DOI. Fresh PubMed records often aren't linked to PMC yet (elink returns nothing)."""
+        by_doi = {p.doi.lower(): p for p in papers if not p.pmcid and p.doi}
+        dois = list(by_doi)
+        for i in range(0, len(dois), 50):
+            batch = dois[i:i + 50]
+            try:
+                term = " OR ".join(f'"{d}"[doi]' for d in batch)
+                ids = self._get("esearch.fcgi", db="pmc", term=term, retmode="json", retmax=len(batch) * 2).json()["esearchresult"]["idlist"]
+                if not ids:
+                    continue
+                result = self._get("esummary.fcgi", db="pmc", id=",".join(ids), retmode="json").json()["result"]
+            except (httpx.HTTPError, KeyError, ValueError):
+                continue
+            for uid in result.get("uids", []):
+                article_ids = {a["idtype"]: a["value"] for a in result[uid].get("articleids", [])}
+                # [doi] is translated to [All Fields] by PMC search, so confirm the DOI really matches
+                if (paper := by_doi.get(article_ids.get("doi", "").lower())) and article_ids.get("pmcid"):
+                    paper.pmcid = article_ids["pmcid"]
+
+    def fetch_pmc(self, paper: Paper) -> None:
+        """Body text and figure legends from PMC (open-access articles only); leaves fields empty if unavailable."""
         try:
-            resp = self._get("efetch.fcgi", db="pmc", id=pmcid.removeprefix("PMC"), retmode="xml")
+            resp = self._get("efetch.fcgi", db="pmc", id=paper.pmcid.removeprefix("PMC"), retmode="xml")
             root = ET.fromstring(resp.content)
         except (httpx.HTTPError, ET.ParseError):
-            return ""
+            return
         body = root.find(".//body")
         if body is None:
-            return ""
+            return
         sections = []
         for sec in body.iter("sec"):
             heading = sec.findtext("title") or ""
             paras = ["".join(p.itertext()).strip() for p in sec.findall("p")]
             if paras:
                 sections.append(f"## {heading}\n" + "\n".join(paras))
-        return "\n\n".join(sections)
+        paper.full_text = "\n\n".join(sections)
+
+        supplementary = {id(f) for sm in root.iter("supplementary-material") for f in sm.iter("fig")}
+        for fig in root.iter("fig"):
+            graphic = fig.find(".//graphic")
+            if id(fig) in supplementary or graphic is None or not fig.get("id"):
+                continue
+            paper.figures.append(Figure(
+                id=fig.get("id"),
+                label=_text(fig.find("label")),
+                caption=" ".join(_text(fig.find("caption")).split()),
+                href=graphic.get(XLINK_HREF, ""),
+            ))
 
 
 def _text(el) -> str:

@@ -12,11 +12,13 @@ import tomllib
 from pathlib import Path
 
 from digest.feed import render_item, write_rss
+from digest.figures import FigureStore
 from digest.pubmed import PubMed
 
 ROOT = Path(__file__).parent
 ITEMS_PATH = ROOT / "data" / "items.json"
 FEED_PATH = ROOT / "docs" / "feed.xml"
+FIGURES_DIR = ROOT / "docs" / "figures"
 
 
 def main() -> int:
@@ -41,32 +43,42 @@ def main() -> int:
             write_rss(items, cfg["feed"], FEED_PATH)
         return 0
     papers = [p for p in pubmed.fetch(pmids) if p.abstract]
+    pubmed.link_pmc(papers)
+    fig_cfg = cfg["figures"]
+    store = FigureStore(FIGURES_DIR, cfg["feed"]["site_url"], fig_cfg["max_width"], fig_cfg["grayscale"])
+    for p in papers:
+        p.open_access = bool(p.pmcid) and store.is_open_access(p.pmcid)
+    print(f"其中开放获取（可取全文和原图）：{sum(p.open_access for p in papers)} 篇")
 
     if args.dry_run:
         for p in papers:
-            print(f"  [{p.pmid}] {p.journal} | {p.title[:100]}")
+            print(f"  [{p.pmid}]{' [OA]' if p.open_access else ''} {p.journal} | {p.title[:100]}")
         return 0
 
     from digest.llm import Curator
 
     curator = Curator(cfg["llm"])
     s = cfg["selection"]
-    picks = curator.select(papers, s["interests"], s["picks_min"], s["picks_max"])
+    picks = curator.select(papers, s["interests"], s["picks_min"], s["picks_max"], fig_cfg["prefer_open_access"])
     new_items = []
     for paper, reason in picks:
         print(f"入选 [{paper.pmid}] {paper.title}\n  理由：{reason}")
-        if paper.pmcid:
-            paper.full_text = pubmed.fetch_full_text(paper.pmcid)
-            print(f"  PMC 全文：{'已获取' if paper.full_text else '不可用，使用摘要'}")
-        analysis = curator.analyze(paper, reason)
+        if paper.open_access:
+            pubmed.fetch_pmc(paper)
+            store.prepare(paper)
+            print(f"  PMC 全文：{'已获取' if paper.full_text else '不可用'}；可用原图 {len(paper.figures)} 张（{paper.license or '无许可证信息'}）")
+        analysis = curator.analyze(paper, reason, fig_cfg["max_figures"])
         if analysis:
-            new_items.append(render_item(paper, reason, analysis))
+            chosen = [e.get("id") for e in analysis.get("figures", []) if isinstance(e, dict)][: fig_cfg["max_figures"]]
+            store.download(paper, chosen)
+            new_items.append(render_item(paper, reason, analysis, fig_cfg["layout"]))
 
     if not new_items:
         print("本次没有生成新条目")
         write_rss(items, cfg["feed"], FEED_PATH)
         return 0
     items = (new_items + items)[: cfg["feed"]["max_items"]]
+    store.prune({it["pmid"] for it in items})
     ITEMS_PATH.parent.mkdir(parents=True, exist_ok=True)
     ITEMS_PATH.write_text(json.dumps(items, ensure_ascii=False, indent=2), encoding="utf-8")
     write_rss(items, cfg["feed"], FEED_PATH)
