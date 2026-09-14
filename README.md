@@ -20,6 +20,15 @@ $env:DEEPSEEK_API_KEY = "sk-..."
 
 期刊、主题词、兴趣画像、每次篇数、模型都在 `config.toml` 里改。换通义千问/Kimi/智谱等 OpenAI 兼容接口，改 `[llm]` 的三项即可。
 
+## 网页端：阅读、排版、导出公众号
+
+- 在线查看：`https://<用户名>.github.io/pubmed-digest/`，可以排版和复制到公众号，改动只存在当前浏览器
+- 本地编辑：`.venv\Scripts\python.exe serve.py`，会多出"保存到仓库"按钮，写回 `data/items.json` 并重新生成 `feed.xml`，之后 `git push` 发布
+
+页面功能：三套模板（简洁/学术/杂志）+ 字号、行距、主色调整；直接在正文上编辑；"公众号效果"按手机宽度预览；"复制到公众号"把全部样式内联后放进剪贴板，到公众号后台编辑器粘贴即可。
+
+公众号限制：外链会被转成纯文本；**插图需要在公众号编辑器里手动上传**（页面底部列出了本篇所有图片链接），因为微信不一定能抓取 github.io 上的图片。
+
 ## 部署（GitHub Actions + Pages）
 
 1. 仓库 Settings → Secrets and variables → Actions，添加 `DEEPSEEK_API_KEY`（可选 `NCBI_API_KEY`）

@@ -51,8 +51,8 @@ prefer_open_access = true  # 挑选时同样有意思的论文优先选能附原
 [feed]
 title = "顶刊生命科学精选"
 description = "每日从 PubMed 顶刊中由 AI 挑选 1-2 篇有意思的合成生物学/生信/生命科学论文并深度解读"
-# 在 GitHub Actions 里运行时会自动替换为 https://<用户名>.github.io/<仓库名>/，本地运行才用这个值
-site_url = "https://example.github.io/pubmed-digest/"
+# 在 GitHub Actions 里运行时会自动替换为 https://<用户名>.github.io/<仓库名>/，本地运行（含 serve.py 保存）用这个值
+site_url = "https://nk39010.github.io/pubmed-digest/"
 max_items = 60
 
 [ncbi]

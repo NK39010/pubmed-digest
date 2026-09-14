@@ -19,6 +19,7 @@ ROOT = Path(__file__).parent
 ITEMS_PATH = ROOT / "data" / "items.json"
 FEED_PATH = ROOT / "docs" / "feed.xml"
 FIGURES_DIR = ROOT / "docs" / "figures"
+WEB_ITEMS_PATH = ROOT / "docs" / "items.json"  # same content as data/items.json, for the web viewer
 
 
 def main() -> int:
@@ -80,7 +81,9 @@ def main() -> int:
     items = (new_items + items)[: cfg["feed"]["max_items"]]
     store.prune({it["pmid"] for it in items})
     ITEMS_PATH.parent.mkdir(parents=True, exist_ok=True)
-    ITEMS_PATH.write_text(json.dumps(items, ensure_ascii=False, indent=2), encoding="utf-8")
+    payload = json.dumps(items, ensure_ascii=False, indent=2)
+    ITEMS_PATH.write_text(payload, encoding="utf-8")
+    WEB_ITEMS_PATH.write_text(payload, encoding="utf-8")
     write_rss(items, cfg["feed"], FEED_PATH)
     print(f"已写入 {len(new_items)} 篇 → {FEED_PATH}")
     return 0

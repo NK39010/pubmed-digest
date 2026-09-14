@@ -1,4 +1,350 @@
 <!doctype html>
+<html lang="zh-CN">
+<head>
 <meta charset="utf-8">
-<title>顶刊生命科学精选</title>
-<p>RSS 订阅地址：<a href="feed.xml">feed.xml</a></p>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>顶刊生命科学精选 · 阅读与排版</title>
+<style>
+  :root{
+    --bg:#f6f6f4; --panel:#fff; --ink:#1c1c1a; --muted:#6b6b66; --line:#e2e2dd;
+    --accent:#2f6f4f; --radius:10px;
+    --art-size:16px; --art-leading:1.8; --art-accent:var(--accent);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font:14px/1.6 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--bg)}
+  header{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 18px;background:var(--panel);border-bottom:1px solid var(--line)}
+  header h1{margin:0;font-size:16px;font-weight:650}
+  header .grow{flex:1}
+  a{color:var(--accent)}
+  .layout{display:flex;align-items:flex-start;gap:18px;padding:18px;max-width:1400px;margin:0 auto}
+  aside{width:260px;flex:none;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;position:sticky;top:18px}
+  aside h2{margin:0;padding:10px 14px;font-size:12px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;border-bottom:1px solid var(--line)}
+  .item{display:block;width:100%;text-align:left;padding:11px 14px;border:0;border-bottom:1px solid var(--line);background:none;cursor:pointer;font:inherit}
+  .item:hover{background:#f0f0ec}
+  .item[aria-current="true"]{background:#eef4f0;box-shadow:inset 3px 0 var(--accent)}
+  .item b{display:block;font-weight:600;margin-bottom:3px}
+  .item span{color:var(--muted);font-size:12px}
+  main{flex:1;min-width:0}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:12px 14px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:14px}
+  .toolbar label{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:13px}
+  select,input[type=number]{font:inherit;padding:4px 6px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink)}
+  input[type=color]{width:30px;height:26px;padding:0;border:1px solid var(--line);border-radius:6px;background:#fff}
+  button{font:inherit;padding:6px 12px;border:1px solid var(--line);border-radius:6px;background:#fff;cursor:pointer}
+  button:hover{border-color:var(--accent);color:var(--accent)}
+  button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  button.primary:hover{opacity:.9;color:#fff}
+  button[aria-pressed="true"]{background:#eef4f0;border-color:var(--accent);color:var(--accent)}
+  .sep{width:1px;height:22px;background:var(--line)}
+  .status{color:var(--muted);font-size:13px;min-height:1em}
+  .paper{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:32px clamp(18px,4vw,56px)}
+  .paper.editing{outline:2px dashed var(--accent);outline-offset:-2px}
+  .article:focus{outline:none}
+  .article{max-width:42em;margin:0 auto;font-size:var(--art-size);line-height:var(--art-leading)}
+  .article h2{font-size:1.5em;line-height:1.4;margin:0 0 1em}
+  .article h3{font-size:1.08em;margin:1.9em 0 .7em;padding-left:.6em;border-left:4px solid var(--art-accent);color:var(--art-accent)}
+  .article h4{font-size:1em;margin:1.5em 0 .5em;color:var(--art-accent)}
+  .article p{margin:0 0 1em}
+  .article img{max-width:100%;height:auto;display:block;margin:0 auto}
+  .article blockquote{margin:1.2em 0;padding:.7em 1em;background:#f7f7f4;border-left:3px solid var(--line);color:var(--muted)}
+  .article hr{border:0;border-top:1px dashed var(--line);margin:2em 0}
+  .article em{color:var(--muted)}
+  .wxframe{padding:20px}
+  .wxframe #wx{width:375px;max-width:100%;margin:0 auto;padding:20px 16px;background:#fff;border:1px solid var(--line);border-radius:4px}
+  .figs{margin-top:14px;padding:12px 14px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);font-size:13px}
+  .figs h3{margin:0 0 8px;font-size:13px;color:var(--muted);font-weight:600}
+  .figs a{display:inline-block;margin:0 12px 6px 0}
+  .empty{padding:60px 20px;text-align:center;color:var(--muted)}
+  @media (max-width:820px){.layout{flex-direction:column}aside{width:100%;position:static}}
+</style>
+</head>
+<body>
+<header>
+  <h1>顶刊生命科学精选</h1>
+  <span class="status" id="count"></span>
+  <span class="grow"></span>
+  <a href="feed.xml">RSS</a>
+</header>
+
+<div class="layout">
+  <aside>
+    <h2>文章列表</h2>
+    <div id="list"></div>
+  </aside>
+
+  <main>
+    <div class="toolbar">
+      <label>模板
+        <select id="tpl">
+          <option value="clean">简洁</option>
+          <option value="academic">学术</option>
+          <option value="magazine">杂志</option>
+        </select>
+      </label>
+      <label>字号 <input type="number" id="size" min="13" max="20" step="1" value="16"></label>
+      <label>行距 <input type="number" id="leading" min="1.4" max="2.2" step="0.05" value="1.8"></label>
+      <label>主色 <input type="color" id="accent" value="#2f6f4f"></label>
+      <span class="sep"></span>
+      <button id="edit" aria-pressed="false">编辑</button>
+      <button id="reset" title="丢弃本地修改，恢复为生成时的内容">还原</button>
+      <button id="save" class="primary" hidden>保存到仓库</button>
+      <span class="sep"></span>
+      <button id="wxview" aria-pressed="false">公众号效果</button>
+      <button id="copy" class="primary">复制到公众号</button>
+      <button id="download">导出 HTML</button>
+      <span class="grow"></span>
+      <span class="status" id="status"></span>
+    </div>
+
+    <div class="paper" id="paper"><div class="article" id="article"><p class="empty">加载中…</p></div></div>
+    <div class="paper wxframe" id="wxpaper" hidden><div id="wx"></div></div>
+    <div class="figs" id="figs" hidden></div>
+  </main>
+</div>
+
+<script>
+const TEMPLATES = {
+  clean:    {accent:"#2f6f4f", size:16, leading:1.8,  quoteBg:"#f7f7f4", rule:"dashed"},
+  academic: {accent:"#1f4e79", size:16, leading:1.75, quoteBg:"#f4f6f9", rule:"solid"},
+  magazine: {accent:"#b23a2f", size:17, leading:1.9,  quoteBg:"#fbf5f3", rule:"solid"},
+};
+const $ = id => document.getElementById(id);
+const state = {items:[], index:0, editable:false, tpl:"clean"};
+const draftKey = pmid => `digest-draft-${pmid}`;
+
+function current(){ return state.items[state.index]; }
+
+function setStatus(msg, ms = 2600){
+  $("status").textContent = msg;
+  if (ms) setTimeout(() => { if ($("status").textContent === msg) $("status").textContent = ""; }, ms);
+}
+
+function loadDraft(item){
+  try { return JSON.parse(localStorage.getItem(draftKey(item.pmid)) || "null"); } catch { return null; }
+}
+
+function renderList(){
+  $("list").innerHTML = "";
+  state.items.forEach((it, i) => {
+    const b = document.createElement("button");
+    b.className = "item";
+    b.setAttribute("aria-current", i === state.index);
+    const edited = loadDraft(it) ? " ✎" : "";
+    b.innerHTML = `<b></b><span></span>`;
+    b.querySelector("b").textContent = it.title + edited;
+    b.querySelector("span").textContent = `${it.journal} · ${new Date(it.published).toLocaleDateString("zh-CN")}`;
+    b.onclick = () => { show(i); };
+    $("list").append(b);
+  });
+  $("count").textContent = `共 ${state.items.length} 篇`;
+}
+
+function show(i){
+  state.index = i;
+  const item = current();
+  const draft = loadDraft(item);
+  $("article").innerHTML = `<h2>${escapeHtml(draft?.title ?? item.title)}</h2>` + (draft?.html ?? item.html);
+  renderList();
+  renderFigures();
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+function renderFigures(){
+  const imgs = [...$("article").querySelectorAll("img")];
+  $("figs").hidden = imgs.length === 0;
+  if (!imgs.length) return;
+  $("figs").innerHTML = "<h3>插图（公众号里需要手动上传这些图片）</h3>" +
+    imgs.map((img, i) => `<a href="${img.src}" target="_blank" rel="noopener">图 ${i + 1}：${img.src.split("/").pop()}</a>`).join("");
+}
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+}
+
+/* ---------- 模板 ---------- */
+function applyTemplate(){
+  const t = TEMPLATES[state.tpl];
+  $("size").value = t.size; $("leading").value = t.leading; $("accent").value = t.accent;
+  applyControls();
+}
+function applyControls(){
+  const r = document.documentElement.style;
+  r.setProperty("--art-size", $("size").value + "px");
+  r.setProperty("--art-leading", $("leading").value);
+  r.setProperty("--art-accent", $("accent").value);
+}
+
+/* ---------- 公众号导出：把样式全部内联 ---------- */
+function wechatHtml(){
+  const t = TEMPLATES[state.tpl];
+  const accent = $("accent").value, size = +$("size").value, leading = +$("leading").value;
+  const src = $("article").cloneNode(true);
+  const out = document.createElement("section");
+  out.setAttribute("style", `font-size:${size}px;line-height:${leading};color:#2b2b2b;letter-spacing:.03em;word-break:break-word`);
+
+  const para = `margin:0 0 1.1em;font-size:${size}px;line-height:${leading};color:#2b2b2b`;
+  const add = (tag, style, html) => {
+    const el = document.createElement(tag);
+    el.setAttribute("style", style);
+    el.innerHTML = html;
+    out.append(el);
+  };
+
+  for (const node of src.children){
+    const html = node.innerHTML;
+    switch (node.tagName){
+      case "H2":
+        add("p", `margin:0 0 1.2em;font-size:${size + 5}px;line-height:1.45;font-weight:700;color:#1a1a1a`, html);
+        break;
+      case "H3":
+        add("p", `margin:2em 0 .8em;padding-left:10px;border-left:4px solid ${accent};font-size:${size + 1}px;font-weight:700;color:${accent}`, html);
+        break;
+      case "H4":
+        add("p", `margin:1.6em 0 .5em;font-size:${size}px;font-weight:700;color:${accent}`, html);
+        break;
+      case "BLOCKQUOTE":
+        add("section", `margin:1.3em 0;padding:12px 14px;background:${t.quoteBg};border-left:3px solid ${accent};font-size:${size - 1}px;line-height:${leading};color:#5a5a5a`, html);
+        break;
+      case "HR":
+        add("section", `margin:2em 0;border-top:1px ${t.rule} #d9d9d9`, "");
+        break;
+      case "P": {
+        const img = node.querySelector("img");
+        if (img){
+          add("p", "margin:1.2em 0;text-align:center", `<img src="${img.src}" style="max-width:100%;height:auto;border-radius:3px" alt="${escapeHtml(img.alt || "")}"/>`);
+        } else {
+          add("p", para, html);
+        }
+        break;
+      }
+      default:
+        add("p", para, html);
+    }
+  }
+  // 公众号不允许外链：链接改成纯文本；嵌套段落去掉默认外边距
+  out.querySelectorAll("a").forEach(a => a.replaceWith(document.createTextNode(a.textContent)));
+  out.querySelectorAll("section > p:not([style])").forEach(p => p.setAttribute("style", "margin:0"));
+  return out.outerHTML;
+}
+
+function toggleWxView(){
+  const on = $("wxpaper").hidden;   // 当前隐藏 → 切换为显示
+  if (on && state.editable) toggleEdit();
+  $("wx").innerHTML = on ? wechatHtml() : "";
+  $("wxpaper").hidden = !on;
+  $("paper").hidden = on;
+  $("wxview").setAttribute("aria-pressed", on);
+  $("edit").disabled = on;
+  if (on) setStatus("这是粘贴到公众号后的大致效果（375px 手机宽度）");
+}
+
+async function copyWechat(){
+  const html = wechatHtml();
+  try {
+    await navigator.clipboard.write([new ClipboardItem({
+      "text/html": new Blob([html], {type:"text/html"}),
+      "text/plain": new Blob([$("article").innerText], {type:"text/plain"}),
+    })]);
+    setStatus("已复制，去公众号编辑器里粘贴（图片需手动上传）", 5000);
+  } catch {
+    const w = window.open("", "_blank");
+    w.document.write(`<title>手动复制</title><p style="font:14px sans-serif">浏览器拒绝了自动复制，请全选下面内容手动复制：</p><hr>${html}`);
+    w.document.close();
+  }
+}
+
+function downloadHtml(){
+  const item = current();
+  const doc = `<!doctype html><meta charset="utf-8"><title>${escapeHtml(item.title)}</title>` +
+    `<body style="margin:0;background:#fff">${wechatHtml()}</body>`;
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([doc], {type:"text/html;charset=utf-8"}));
+  a.download = `${item.pmid}-${item.title.slice(0, 20)}.html`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+/* ---------- 编辑与保存 ---------- */
+function splitArticle(){
+  const clone = $("article").cloneNode(true);
+  const h2 = clone.querySelector("h2");
+  const title = h2 ? h2.textContent.trim() : current().title;
+  if (h2) h2.remove();
+  return {title, html: clone.innerHTML.trim()};
+}
+
+function saveDraft(){
+  const item = current();
+  localStorage.setItem(draftKey(item.pmid), JSON.stringify(splitArticle()));
+}
+
+function toggleEdit(){
+  state.editable = !state.editable;
+  $("article").contentEditable = state.editable;
+  $("article").parentElement.classList.toggle("editing", state.editable);
+  $("edit").setAttribute("aria-pressed", state.editable);
+  $("edit").textContent = state.editable ? "完成编辑" : "编辑";
+  if (state.editable){
+    $("article").focus();
+    setStatus("可以直接改文字、删段落；改动自动存在这台浏览器里");
+  } else {
+    saveDraft();
+    renderList();
+    setStatus("改动已保存到浏览器");
+  }
+}
+
+async function saveToRepo(){
+  const item = current();
+  const body = splitArticle();
+  const resp = await fetch(`/api/items/${item.pmid}`, {
+    method:"PUT", headers:{"Content-Type":"application/json"}, body: JSON.stringify(body),
+  });
+  if (resp.ok){
+    Object.assign(item, body);
+    localStorage.removeItem(draftKey(item.pmid));
+    renderList();
+    setStatus("已写回 data/items.json 并重新生成 feed.xml，记得 git push", 5000);
+  } else {
+    setStatus("保存失败：" + (await resp.text()), 6000);
+  }
+}
+
+/* ---------- 启动 ---------- */
+async function init(){
+  $("tpl").onchange = e => { state.tpl = e.target.value; applyTemplate(); };
+  for (const id of ["size", "leading", "accent"]) $(id).oninput = applyControls;
+  $("edit").onclick = toggleEdit;
+  let draftTimer;
+  $("article").addEventListener("input", () => { clearTimeout(draftTimer); draftTimer = setTimeout(saveDraft, 800); });
+  $("wxview").onclick = toggleWxView;
+  $("copy").onclick = copyWechat;
+  $("download").onclick = downloadHtml;
+  $("save").onclick = saveToRepo;
+  $("reset").onclick = () => {
+    localStorage.removeItem(draftKey(current().pmid));
+    show(state.index);
+    setStatus("已还原为生成时的内容");
+  };
+  document.addEventListener("keydown", e => {
+    if ((e.ctrlKey || e.metaKey) && e.key === "s"){ e.preventDefault(); saveDraft(); setStatus("已存到浏览器"); }
+  });
+
+  applyTemplate();
+  try {
+    const health = await fetch("/api/health").then(r => r.ok ? r.json() : null).catch(() => null);
+    if (health?.editable) $("save").hidden = false;
+    state.items = await fetch("items.json", {cache:"no-store"}).then(r => r.json());
+  } catch {
+    $("article").innerHTML = '<p class="empty">还没有 items.json —— 运行一次 run.py 生成内容后刷新</p>';
+    return;
+  }
+  if (!state.items.length){
+    $("article").innerHTML = '<p class="empty">还没有文章</p>';
+    return;
+  }
+  show(0);
+}
+init();
+</script>
+</body>
+</html>
