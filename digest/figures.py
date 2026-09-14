@@ -7,7 +7,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path, PurePosixPath
 
 import httpx
-from PIL import Image
+from PIL import Image, ImageFilter
 
 S3 = "https://pmc-oa-opendata.s3.amazonaws.com"
 S3_NS = "{http://s3.amazonaws.com/doc/2006-03-01/}"
@@ -18,13 +18,16 @@ KEEPABLE = {".webp", ".jpg", ".jpeg", ".png", ".gif"}  # formats worth serving u
 
 class FigureStore:
     def __init__(self, out_dir: Path, site_url: str, max_width: int, grayscale: bool,
-                 keep_original: bool = True, quality: int = 92):
+                 keep_original: bool = True, quality: int = 92, sharpen: bool = False,
+                 gray_gamma: float = 1.0):
         self.out_dir = out_dir
         self.site_url = site_url.rstrip("/") + "/"
         self.max_width = max_width
         self.grayscale = grayscale
         self.keep_original = keep_original
         self.quality = quality
+        self.sharpen = sharpen
+        self.gray_gamma = gray_gamma
         self.http = httpx.Client(timeout=60, follow_redirects=True)
 
     def _package(self, pmcid: str) -> tuple[str, list[str]] | None:
@@ -135,8 +138,14 @@ class FigureStore:
             background.paste(img, mask=img.getchannel("A"))
             img = background
         img = img.convert("L" if self.grayscale else "RGB")
+        if self.grayscale and self.gray_gamma != 1.0:
+            # 浅色（黄、浅蓝等）转灰度后几乎发白，压暗中间调让这些标注仍可读
+            img = img.point(lambda v: round(255 * (v / 255) ** self.gray_gamma))
         if img.width > self.max_width:
             img = img.resize((self.max_width, round(img.height * self.max_width / img.width)), Image.LANCZOS)
+            # 缩放后细线和小字会发虚；轻度锐化补回来，让阅读器无需再缩放
+            if self.sharpen:
+                img = img.filter(ImageFilter.UnsharpMask(radius=1.2, percent=70, threshold=3))
         img.save(path, "JPEG", quality=self.quality, optimize=True)
 
     def prune(self, keep_pmids: set[str]) -> None:

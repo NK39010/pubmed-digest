@@ -58,7 +58,8 @@ def main() -> int:
     pubmed.link_pmc(papers)
     fig_cfg = cfg["figures"]
     store = FigureStore(FIGURES_DIR, cfg["feed"]["site_url"], fig_cfg["max_width"], fig_cfg["grayscale"],
-                        fig_cfg["keep_original"], fig_cfg["quality"])
+                        fig_cfg["keep_original"], fig_cfg["quality"], fig_cfg["sharpen"],
+                        fig_cfg["gray_gamma"])
     for p in papers:
         p.open_access = bool(p.pmcid) and store.is_open_access(p.pmcid)
     print(f"其中开放获取（可取全文和原图）：{sum(p.open_access for p in papers)} 篇")

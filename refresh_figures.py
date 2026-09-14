@@ -21,7 +21,8 @@ def main() -> int:
     cfg = tomllib.loads((ROOT / "config.toml").read_text(encoding="utf-8"))
     fig_cfg = cfg["figures"]
     store = FigureStore(FIGURES_DIR, cfg["feed"]["site_url"], fig_cfg["max_width"], fig_cfg["grayscale"],
-                        fig_cfg["keep_original"], fig_cfg["quality"])
+                        fig_cfg["keep_original"], fig_cfg["quality"], fig_cfg["sharpen"],
+                        fig_cfg["gray_gamma"])
     pubmed = PubMed(**cfg["ncbi"])
     items = json.loads(ITEMS_PATH.read_text(encoding="utf-8"))
 

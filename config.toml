@@ -45,10 +45,14 @@ interests = """
 max_figures = 4            # 每篇最多插几张关键图（每张附完整图例翻译 + 图解）
 layout = "inline"          # inline：每张图插在它支撑的那一节后面；block：统一放在"核心发现"后的"图文解读"板块
 # 图源优先级：Nature 系期刊用出版商原图（通常 2000px+ PNG）；其余用 PMC 网页版（约 1600px WebP）
-keep_original = false      # WebP 是否原样发布；当前墨水屏阅读器不支持 WebP，所以转成 JPEG。PNG/JPEG 源图总是原样发布
-max_width = 2400           # 仅转码时生效：超过这个宽度才缩放（像素）
-quality = 92               # 仅转码时生效：JPEG 质量
-grayscale = false          # 黑白墨水屏可设为 true：会强制转成灰度 JPEG，体积更小
+# 当前针对 reMarkable 2（1872x1404 灰度屏，经镇纸/KOReader 阅读）调优：
+# 缩放和转灰度都由我们用高质量算法做好，设备端就不用再处理，小字更清楚
+keep_original = false      # true：源图原样发布（不缩放、不转码）；下面几项仅在 false 时生效
+max_width = 1404           # 缩放到屏幕宽度（reMarkable 2 竖屏 1404px；文石 7.8" 用 1404，10.3" 用 1872）
+quality = 92               # JPEG 质量
+grayscale = true           # 灰度屏设为 true：由我们转灰度，避免设备自己做抖动
+sharpen = true             # 缩放后轻度锐化，补回细线和小字的锐度
+gray_gamma = 1.7         # 灰度时压暗中间调（1.0 = 不处理），让原本浅色的标注不至于发白
 prefer_open_access = true  # 挑选时同样有意思的论文优先选能附原图的
 
 [feed]
