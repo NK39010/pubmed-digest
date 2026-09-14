@@ -9,6 +9,8 @@ import json
 import os
 import sys
 import tomllib
+from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 
 from digest.feed import render_item, write_rss
@@ -25,6 +27,7 @@ WEB_ITEMS_PATH = ROOT / "docs" / "items.json"  # same content as data/items.json
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true", help="只检索并打印候选，不调用大模型")
+    parser.add_argument("--once-per-day", action="store_true", help="北京时间今天已经产出过就跳过（定时任务的备用触发用）")
     args = parser.parse_args()
 
     cfg = tomllib.loads((ROOT / "config.toml").read_text(encoding="utf-8"))
@@ -33,6 +36,14 @@ def main() -> int:
         cfg["feed"]["site_url"] = f"https://{owner.lower()}.github.io/{name}/"
     items = json.loads(ITEMS_PATH.read_text(encoding="utf-8")) if ITEMS_PATH.exists() else []
     seen = {it["pmid"] for it in items}
+
+    if args.once_per_day:
+        # 一"期"从北京时间 06:00 算起，凌晨手动跑出来的内容归到前一天
+        digest_day = lambda t: (t.astimezone(timezone(timedelta(hours=8))) - timedelta(hours=6)).date()
+        today = digest_day(datetime.now(timezone.utc))
+        if any(digest_day(parsedate_to_datetime(it["published"])) == today for it in items):
+            print(f"{today} 这一期已经产出过，跳过本次运行")
+            return 0
 
     pubmed = PubMed(**cfg["ncbi"])
     query = PubMed.build_query(cfg["search"])

@@ -2,11 +2,19 @@ name: daily-digest
 
 on:
   schedule:
-    - cron: "30 0 * * *"   # 每天北京时间 08:30
-  workflow_dispatch:        # 允许在 GitHub 网页上手动触发
+    # GitHub 的定时任务可能延迟或被跳过，所以每天排 3 次；北京时间当天产出过之后，后面的触发会自动跳过。
+    # 避开整点/半点这些高峰时刻。
+    - cron: "17 0 * * *"   # 北京时间 08:17
+    - cron: "47 1 * * *"   # 北京时间 09:47
+    - cron: "23 4 * * *"   # 北京时间 12:23
+  workflow_dispatch:        # 允许在 GitHub 网页上手动触发（手动触发不做"今天已产出"检查）
 
 permissions:
   contents: write
+
+concurrency:
+  group: daily-digest
+  cancel-in-progress: false
 
 jobs:
   run:
@@ -17,7 +25,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
-      - run: python run.py
+      - run: python run.py ${{ github.event_name == 'schedule' && '--once-per-day' || '' }}
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
@@ -26,5 +34,7 @@ jobs:
           git config user.name "digest-bot"
           git config user.email "digest-bot@users.noreply.github.com"
           git add data docs
-          git diff --cached --quiet || git commit -m "digest: $(date -u +%F)"
+          git diff --cached --quiet && exit 0
+          git commit -m "digest: $(TZ=Asia/Shanghai date +%F)"
+          git pull --rebase
           git push
