@@ -13,12 +13,18 @@ S3 = "https://pmc-oa-opendata.s3.amazonaws.com"
 S3_NS = "{http://s3.amazonaws.com/doc/2006-03-01/}"
 
 
+KEEPABLE = {".webp", ".jpg", ".jpeg", ".png", ".gif"}  # formats worth serving untouched
+
+
 class FigureStore:
-    def __init__(self, out_dir: Path, site_url: str, max_width: int, grayscale: bool):
+    def __init__(self, out_dir: Path, site_url: str, max_width: int, grayscale: bool,
+                 keep_original: bool = True, quality: int = 92):
         self.out_dir = out_dir
         self.site_url = site_url.rstrip("/") + "/"
         self.max_width = max_width
         self.grayscale = grayscale
+        self.keep_original = keep_original
+        self.quality = quality
         self.http = httpx.Client(timeout=60, follow_redirects=True)
 
     def _package(self, pmcid: str) -> tuple[str, list[str]] | None:
@@ -72,8 +78,15 @@ class FigureStore:
                 resp = self.http.get(f"{S3}/{fig.source_key}")
                 resp.raise_for_status()
                 dest.mkdir(parents=True, exist_ok=True)
-                name = f"{re.sub(r'[^A-Za-z0-9_-]', '_', fig.id)}.jpg"
-                self._convert(resp.content, dest / name)
+                stem = re.sub(r"[^A-Za-z0-9_-]", "_", fig.id)
+                suffix = PurePosixPath(fig.source_key).suffix.lower()
+                # 墨水屏阅读器多数支持 WebP，原图直接发布：不缩放、不二次有损编码
+                if self.keep_original and suffix in KEEPABLE and not self.grayscale:
+                    name = stem + suffix
+                    (dest / name).write_bytes(resp.content)
+                else:
+                    name = stem + ".jpg"
+                    self._convert(resp.content, dest / name)
             except (httpx.HTTPError, OSError) as e:
                 print(f"  ! 图 {fig.id} 下载失败：{e}")
                 continue
@@ -89,7 +102,7 @@ class FigureStore:
         img = img.convert("L" if self.grayscale else "RGB")
         if img.width > self.max_width:
             img = img.resize((self.max_width, round(img.height * self.max_width / img.width)), Image.LANCZOS)
-        img.save(path, "JPEG", quality=88, optimize=True)
+        img.save(path, "JPEG", quality=self.quality, optimize=True)
 
     def prune(self, keep_pmids: set[str]) -> None:
         if not self.out_dir.exists():
