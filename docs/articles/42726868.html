@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QuantaMind 分子动力学力场：实现 DFT 级精度的全反应性生物分子模拟</title>
+<style>
+  body{margin:0;background:#fff;color:#1c1c1a;font:16px/1.8 -apple-system,"Segoe UI","Microsoft YaHei",serif}
+  main{max-width:40em;margin:0 auto;padding:28px 18px 60px}
+  h1{font-size:1.5em;line-height:1.4;margin:0 0 1em}
+  h3{font-size:1.08em;margin:1.9em 0 .7em;padding-left:.6em;border-left:4px solid #2f6f4f;color:#2f6f4f}
+  h4{font-size:1em;margin:1.5em 0 .5em;color:#2f6f4f}
+  p{margin:0 0 1em}
+  img{max-width:100%;height:auto;display:block;margin:0 auto}
+  blockquote{margin:1.2em 0;padding:.7em 1em;background:#f7f7f4;border-left:3px solid #e2e2dd;color:#6b6b66}
+  hr{border:0;border-top:1px dashed #e2e2dd;margin:2em 0}
+  em{color:#6b6b66}
+  a{color:#2f6f4f}
+  @media (prefers-color-scheme:dark){body{background:#16161a;color:#e8e8e4}blockquote{background:#22222a;color:#a8a8a2}}
+</style></head>
+<body><main><h1>QuantaMind 分子动力学力场：实现 DFT 级精度的全反应性生物分子模拟</h1>
+<p><strong>QuantaMind 以 DFT 精度模拟质子传递和 PETase 全催化循环，质子扩散系数逼近实验值。</strong></p>
+<p><em>Bridging the accuracy-speed divide in reactive molecular dynamics with QuantaMind MD.</em><br/>Science advances · 2026 Sep 11<br/>Song Xia, Deqiang Zhang, Xu Shang, Jinbo Xu</p>
+<blockquote><p>入选理由：QuantaMind MLFF实现DFT级精度的反应性分子模拟，能完整重现PETase催化循环，为酶理性设计与催化机制研究提供了强大计算工具，打破了精度与速度的权衡。</p></blockquote>
+<h3>研究背景</h3>
+<p>分子动力学（molecular dynamics, MD）是理解生物大分子结构-功能关系的核心工具，但传统经验力场（classical force fields, FFs）难以描述化学键断裂与形成。量子力学（quantum mechanics, QM）方法精度高但代价巨大，机器学习力场（machine learning force fields, MLFFs）通过监督学习映射几何到能量/力，大幅提速，但多数训练数据来自平衡态构象，对反应性体系外推能力差。</p>
+<p>现有反应性 MLFF 多面向小分子反应，难以扩展到大型生物分子体系；QM/MM 方法虽常用但需要人工划分 QM 区域并受边界伪影限制。因此需要一种能在全原子尺度上以 DFT 级精度进行长时间反应性 MD 的新范式。</p>
+<h3>核心发现</h3>
+<p>QuantaMind 是一种可进行全反应性 MD 的 MLFF 框架。在纯水体系，六种盒子尺寸（649–24,001 原子）的三组 1-ns 轨迹中，观察到超过 10,000 次质子传递事件（见图 2）；通过有限尺寸外推得到质子扩散系数 0.87±0.10 Å²/ps，与实验值 0.96/0.94 Å²/ps 一致，远优于此前 MLFF 的 0.375±0.242 Å²/ps。</p>
+<p>在 373 K 的 3,333 水分子体系中捕获自发自电离（见图 3），3-ns 轨迹估算 pH 为 6.34±0.06，与实验值 6.13±0.03 吻合。酸碱中和 100 条 50-ps 轨迹经生存分析估得速率常数 4.9×10¹¹–7.1×10¹¹ M⁻¹ s⁻¹，与实验 1.4×10¹¹ M⁻¹ s⁻¹ 同数量级且显著高于扩散控制典型速率。</p>
+<p>针对 PETase（IsPETase 同源 LCC 变体，17,792 原子），完整模拟了 MHET 水解生成 TPA 和乙二醇的催化循环（见图 4），包括酰化与去酰化两个阶段、氧阴离子洞稳定和多个质子传递事件；限速步骤为酰化阶段的亲核攻击，自由能垒 14.5±0.1 kcal/mol。</p>
+<p>对 HEWL 在磷酸盐缓冲液（PBS）中 20-ns 模拟，直接观测 His15 质子化态转变（见图 5），估算 pKa≈5.81，与 NMR 实验值 5.5 接近，优于常规恒定 pH MD 的 4.84/5.42 结果。模型在 NVE 下 1-ns 测试中能量漂移约 +6.7–7.4×10⁻⁵ kcal/mol/atom/ps，展示纳秒级数值稳定性。</p>
+<h4>图 2｜质子扩散模拟与有限尺寸外推</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42726868/F2.jpg" alt="图 2" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>使用 QuantaMind 模拟水中质子扩散。(A) 最大水盒子（24,001 个原子）的可视化，水合氢离子以黄色高亮显示。(B) 一个质子跳跃事件示例，显示瞬态形成的 Zundel 离子。(C) 649 原子水盒中 1-ns 模拟的质子轨迹，颜色表示模拟时间。(D) 通过 bootstrapping 估计的质子扩散系数，以小提琴图形式对逆盒子长度 1/L 作图（详见材料与方法）。红色实线表示线性外推至 1/L = 0；红色星号标记无限尺寸扩散系数 D∞。红色虚线表示 95% 预测区间；蓝色虚线表示 95% 置信区间（CI），用于报告最终估算值。</p>
+<p><strong>图解：</strong>图 2 回答 QuantaMind 能否定量重现质子在水中的异常高扩散。A 显示最大模拟盒子，确保有限尺寸效应可外推；B 展示 Zundel 离子瞬态，说明质子跳跃机制；C 显示质子在 1 ns 内的无包裹轨迹；D 将六个盒子尺寸的扩散系数（小提琴图）对 1/L 线性外推，得到无限尺寸 D∞=0.87±0.10 Å²/ps，与实验值一致。这表明模型即使未显式训练水合氢离子，也能捕捉 Grotthuss 质子传递的集体行为，是反应性 MLFF 的关键能力证明。</p>
+<h4>图 3｜水自电离采样与 pH 估计</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42726868/F3.jpg" alt="图 3" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>使用 QuantaMind 在 373 K 下采样水自电离事件。(A) 包含 9999 个原子（3333 个水分子）的模拟盒子。(B) 模拟过程中一次自电离事件的可视化。(C) 3-ns 轨迹中 H3O+ 和 OH− 离子数（蓝色）与计算 pH（黄色）的时间序列。</p>
+<p><strong>图解：</strong>图 3 检验 QuantaMind 能否在 MD 时间尺度内捕捉稀有且基础的水自电离反应。A 和 B 显示体系和自电离事件；C 的蓝色曲线显示离子数在零附近出现若干非零脉冲，对应自发形成水合氢离子/氢氧根；黄色 pH 轨迹由累积离子数推算，3 ns 平均 pH 为 6.34±0.06，与 373 K 实验值 6.13±0.03 相符。这说明 DFT 级 MLFF 产生的反应性 PES 足够真实，无需预先指定反应即可发生自发电离。</p>
+<h4>图 4｜PETase 催化循环全模拟</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42726868/F4.jpg" alt="图 4" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>QuantaMind MD 模拟的 PETase 催化循环概览。(A) 本工作使用的模拟盒子。(B) 总化学反应。分子的三维几何构象取自模拟轨迹。(C) 模拟中的代表性帧，标示关键中间体和产物。AEI 表示酰基酶中间体，TI 表示四面体中间体。(D) 从模拟估算的反应能垒。</p>
+<p><strong>图解：</strong>图 4 是该工作的代表性应用，回答 MLFF 能否完整重现一个多步酶催化循环。A 显示 17,792 原子体系（蛋白+MHET+水），所有原子均由 QuantaMind 显式处理；B 为 MHET 水解生成 TPA 和乙二醇的反应式；C 展示沿轨迹捕获的中间体（如 TI 和 AEI），证实质子传递与成键/断键自然发生；D 汇总各步骤能垒，最高为酰化阶段亲核攻击的 14.5±0.1 kcal/mol，与酶学实验推得能垒范围一致。该图证明 QuantaMind 无需划分 QM/MM 区域即可提供全量子精度的催化机制图景。</p>
+<h4>图 5｜恒 pH 组氨酸滴定模拟</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42726868/F5.jpg" alt="图 5" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>使用 QuantaMind 在恒定 pH 下模拟组氨酸滴定。(A) 加入三个为组氨酸滴定准备的训练数据集（HIS、Na+ 和 PBS）后 QuantaMind 模型的性能。条形图旁的分子结构代表每个数据集的示例片段。(B) HEWL 蛋白处于含 60 个 Na2HPO4 和 6 个 NaH2PO4 分子的溶剂化环境中。重点关注组氨酸-15（His15）。(C) 20-ns 模拟中体系 pH 和 His15 质子化状态的时间序列。蓝色曲线显示通过 Henderson-Hasselbalch（HH）方程估算的体系 pH。插图显示对轨迹进行 bootstrap 重采样得到的 pKa 值小提琴图，展示拟合 pKa 估计的分布。底部的水平条 [“State (His15)”] 是质子化条形码：橙色表示 His15 处于中性互变异构体（HIE 或 HID），绿色表示质子化（HIP）状态。</p>
+<p><strong>图解：</strong>图 5 回答 QuantaMind 能否在无人工质子化态约束下重现可滴定残基的 pH 依赖行为。A 显示补充 HIS、Na+、PBS 数据集后模型性能提升，说明覆盖质子转移和磷酸盐平衡的训练对滴定模拟必要。B 为 HEWL/PBS 体系。C 显示 HH 方程估算 pH 随时间变化和 His15 质子化态条形码；由质子化/去质子化比例拟合 pKa≈5.81，与 NMR 实验值 5.5 基本一致。这证明 MLFF 可直接模拟质子化平衡，为恒定 pH MD 提供第一性原理替代方案。</p>
+<h3>方法亮点</h3>
+<p>模型架构基于 SpookyNet，引入 DFT 方法分类嵌入，可混合使用不同泛函/基组数据；总能量包括核排斥、长程静电和 D4 色散经验项。训练数据混合 GEMS/Crambin 蛋白片段与三个过渡态（transition state, TS）数据集（TS1/TS2/TS3，B3LYP/def2-SVP），并采用过采样策略平衡不同数据集；支持迭代主动学习，从 MD 轨迹中切取片段做 PBE0/def2-TZVPP+MBD 单点计算补充训练。</p>
+<p>MD 在 SchNetPack/PyTorch GPU 实现，时间步 0.5 fs；PETase 反应路径用伞形采样（umbrella sampling）沿选定距离坐标驱动，WHAM 重建 PMF；扩散系数用 bootstrapping 窗口和有限尺寸外推；酸碱中和速率用生存分析处理右删失数据。系统准备（如 PETase 结构取自 PDB 7W44 与 7VVE，AmberTools 加氢溶剂化）也值得注意。</p>
+<h3>为什么值得读</h3>
+<p>QuantaMind 证明 MLFF 可以不依赖 QM/MM 分区、也不需人工指定反应坐标即可在大型生物体系中自发反应，这为酶理性设计、反应路径探索和 pH 依赖行为建模提供了统一平台。</p>
+<p>其一，DFT 级精度与经典 MD 成本结合，使全酶催化循环的长时间模拟成为可能；其二，方法嵌入与迭代训练让模型能吸收不同级别理论和新增化学空间；其三，在质子扩散、水自电离、缓冲平衡等基础化学现象上取得定量一致，说明其不仅适用于特定酶，也具有通用性。</p>
+<p>对合成生物学/蛋白工程研究者，这意味着未来可以在计算上快速筛选突变体对催化构象和能垒的影响，或设计新活性位点，而不必预先划分 QM 区域。</p>
+<h3>局限与疑问</h3>
+<p>训练域较窄，主要基于蛋白相关数据，对新型化学体系可能外推不足，需要迭代更新；TS 数据集采用 B3LYP/def2-SVP，低于主训练级别 PBE0/def2-TZVPP+MBD，虽方法嵌入补偿，但全面重算仍缺失。</p>
+<p>统计误差可能被低估：质子扩散每个盒子只有一个过量质子，自电离事件稀少导致 pH 估计精度有限；酸碱中和 100 条轨迹共享同一初始构型，速率常数可能高估一个数量级；PETase 使用 MHET 而非实验常用的 BHET/pNP 底物，且某些步骤可能协同而非分步，单一反应坐标的 PMF 未必是完整最小能量路径。</p>
+<p>组织酸滴定中质子化态转换集中在 5–10 ns，采样不均，pKa 估计需要更长模拟或增强采样。总体而言，该框架的泛化性和统计收敛性仍有待更多基准和独立验证。</p>
+<hr/><p>解读依据：PMC 开放获取全文 · 由 AI 生成，关键结论请以原文为准<br/>插图来自原文，许可证 CC BY，版权归原作者<br/>原文：<a href="https://doi.org/10.1126/sciadv.aeg3595">https://doi.org/10.1126/sciadv.aeg3595</a> · PMID 42726868</p>
+<p><a href="../index.html">← 全部解读</a></p>
+</main></body></html>

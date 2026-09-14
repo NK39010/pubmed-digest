@@ -6,10 +6,10 @@
     <atom:link href="https://nk39010.github.io/pubmed-digest/feed.xml" rel="self" type="application/rss+xml"/>
     <description>每日从 PubMed 顶刊中由 AI 挑选 1-2 篇有意思的合成生物学/生信/生命科学论文并深度解读</description>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 13 Sep 2026 17:11:27 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 Sep 2026 02:53:06 +0000</lastBuildDate>
     <item>
       <title>QuantaMind 分子动力学力场：实现 DFT 级精度的全反应性生物分子模拟</title>
-      <link>https://doi.org/10.1126/sciadv.aeg3595</link>
+      <link>https://nk39010.github.io/pubmed-digest/articles/42726868.html</link>
       <guid isPermaLink="false">pubmed-42726868</guid>
       <category>Science advances</category>
       <pubDate>Sun, 13 Sep 2026 17:09:34 +0000</pubDate>
@@ -94,7 +94,7 @@
     </item>
     <item>
       <title>基于组合文库的宿主感知型内源基因表达部件参数鉴定</title>
-      <link>https://doi.org/10.1038/s41467-026-76332-7</link>
+      <link>https://nk39010.github.io/pubmed-digest/articles/42717201.html</link>
       <guid isPermaLink="false">pubmed-42717201</guid>
       <category>Nature communications</category>
       <pubDate>Sun, 13 Sep 2026 17:11:27 +0000</pubDate>
@@ -173,7 +173,7 @@
     </item>
     <item>
       <title>天然醛脱氢酶中保守 RH/QxxR 基序支持广泛利用非经典氧化还原辅因子</title>
-      <link>https://doi.org/10.1038/s41589-026-02315-w</link>
+      <link>https://nk39010.github.io/pubmed-digest/articles/42717052.html</link>
       <guid isPermaLink="false">pubmed-42717052</guid>
       <category>Nature chemical biology</category>
       <pubDate>Sun, 13 Sep 2026 16:47:07 +0000</pubDate>
@@ -218,7 +218,7 @@
     </item>
     <item>
       <title>CRESEnT：可编程体内mRNA环化增强细菌基因表达</title>
-      <link>https://doi.org/10.1093/nar/gkag854</link>
+      <link>https://nk39010.github.io/pubmed-digest/articles/42725429.html</link>
       <guid isPermaLink="false">pubmed-42725429</guid>
       <category>Nucleic acids research</category>
       <pubDate>Sun, 13 Sep 2026 16:47:34 +0000</pubDate>

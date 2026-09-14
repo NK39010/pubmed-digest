@@ -83,6 +83,51 @@ def render_item(paper, reason: str, analysis: dict, figure_layout: str = "inline
     }
 
 
+PAGE_CSS = """
+  body{margin:0;background:#fff;color:#1c1c1a;font:16px/1.8 -apple-system,"Segoe UI","Microsoft YaHei",serif}
+  main{max-width:40em;margin:0 auto;padding:28px 18px 60px}
+  h1{font-size:1.5em;line-height:1.4;margin:0 0 1em}
+  h3{font-size:1.08em;margin:1.9em 0 .7em;padding-left:.6em;border-left:4px solid #2f6f4f;color:#2f6f4f}
+  h4{font-size:1em;margin:1.5em 0 .5em;color:#2f6f4f}
+  p{margin:0 0 1em}
+  img{max-width:100%;height:auto;display:block;margin:0 auto}
+  blockquote{margin:1.2em 0;padding:.7em 1em;background:#f7f7f4;border-left:3px solid #e2e2dd;color:#6b6b66}
+  hr{border:0;border-top:1px dashed #e2e2dd;margin:2em 0}
+  em{color:#6b6b66}
+  a{color:#2f6f4f}
+  @media (prefers-color-scheme:dark){body{background:#16161a;color:#e8e8e4}blockquote{background:#22222a;color:#a8a8a2}}
+"""
+
+
+def page_path(pmid: str) -> str:
+    return f"articles/{pmid}.html"
+
+
+def write_pages(items: list[dict], cfg: dict, docs_dir: Path) -> None:
+    """One standalone page per item, so RSS readers that follow the link (or fetch full text) get the digest."""
+    out = docs_dir / "articles"
+    out.mkdir(parents=True, exist_ok=True)
+    keep = set()
+    for it in items:
+        keep.add(f"{it['pmid']}.html")
+        (out / f"{it['pmid']}.html").write_text(
+            f"""<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{xml_escape(it['title'])}</title>
+<style>{PAGE_CSS}</style></head>
+<body><main><h1>{xml_escape(it['title'])}</h1>
+{it['html']}
+<p><a href="../index.html">← 全部解读</a></p>
+</main></body></html>
+""",
+            encoding="utf-8",
+        )
+    for stale in out.glob("*.html"):
+        if stale.name not in keep:
+            stale.unlink()
+
+
 def write_rss(items: list[dict], cfg: dict, path: Path) -> None:
     site = cfg["site_url"].rstrip("/") + "/"
     entries = []
@@ -90,7 +135,7 @@ def write_rss(items: list[dict], cfg: dict, path: Path) -> None:
         html = it["html"].replace("]]>", "]]]]><![CDATA[>")
         entries.append(f"""    <item>
       <title>{xml_escape(it['title'])}</title>
-      <link>{xml_escape(it['link'])}</link>
+      <link>{xml_escape(site + page_path(it['pmid']))}</link>
       <guid isPermaLink="false">pubmed-{it['pmid']}</guid>
       <category>{xml_escape(it['journal'])}</category>
       <pubDate>{it['published']}</pubDate>
@@ -112,3 +157,4 @@ def write_rss(items: list[dict], cfg: dict, path: Path) -> None:
 """
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(xml, encoding="utf-8")
+    write_pages(items, cfg, path.parent)
