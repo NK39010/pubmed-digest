@@ -29,19 +29,19 @@
 <p>针对 PETase（IsPETase 同源 LCC 变体，17,792 原子），完整模拟了 MHET 水解生成 TPA 和乙二醇的催化循环（见图 4），包括酰化与去酰化两个阶段、氧阴离子洞稳定和多个质子传递事件；限速步骤为酰化阶段的亲核攻击，自由能垒 14.5±0.1 kcal/mol。</p>
 <p>对 HEWL 在磷酸盐缓冲液（PBS）中 20-ns 模拟，直接观测 His15 质子化态转变（见图 5），估算 pKa≈5.81，与 NMR 实验值 5.5 接近，优于常规恒定 pH MD 的 4.84/5.42 结果。模型在 NVE 下 1-ns 测试中能量漂移约 +6.7–7.4×10⁻⁵ kcal/mol/atom/ps，展示纳秒级数值稳定性。</p>
 <h4>图 2｜质子扩散模拟与有限尺寸外推</h4>
-<p><img src="https://nk39010.github.io/pubmed-digest/figures/42726868/F2.webp" alt="图 2" style="max-width:100%;height:auto"/></p>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42726868/F2.jpg" alt="图 2" style="max-width:100%;height:auto"/></p>
 <p><strong>图例：</strong>使用 QuantaMind 模拟水中质子扩散。(A) 最大水盒子（24,001 个原子）的可视化，水合氢离子以黄色高亮显示。(B) 一个质子跳跃事件示例，显示瞬态形成的 Zundel 离子。(C) 649 原子水盒中 1-ns 模拟的质子轨迹，颜色表示模拟时间。(D) 通过 bootstrapping 估计的质子扩散系数，以小提琴图形式对逆盒子长度 1/L 作图（详见材料与方法）。红色实线表示线性外推至 1/L = 0；红色星号标记无限尺寸扩散系数 D∞。红色虚线表示 95% 预测区间；蓝色虚线表示 95% 置信区间（CI），用于报告最终估算值。</p>
 <p><strong>图解：</strong>图 2 回答 QuantaMind 能否定量重现质子在水中的异常高扩散。A 显示最大模拟盒子，确保有限尺寸效应可外推；B 展示 Zundel 离子瞬态，说明质子跳跃机制；C 显示质子在 1 ns 内的无包裹轨迹；D 将六个盒子尺寸的扩散系数（小提琴图）对 1/L 线性外推，得到无限尺寸 D∞=0.87±0.10 Å²/ps，与实验值一致。这表明模型即使未显式训练水合氢离子，也能捕捉 Grotthuss 质子传递的集体行为，是反应性 MLFF 的关键能力证明。</p>
 <h4>图 3｜水自电离采样与 pH 估计</h4>
-<p><img src="https://nk39010.github.io/pubmed-digest/figures/42726868/F3.webp" alt="图 3" style="max-width:100%;height:auto"/></p>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42726868/F3.jpg" alt="图 3" style="max-width:100%;height:auto"/></p>
 <p><strong>图例：</strong>使用 QuantaMind 在 373 K 下采样水自电离事件。(A) 包含 9999 个原子（3333 个水分子）的模拟盒子。(B) 模拟过程中一次自电离事件的可视化。(C) 3-ns 轨迹中 H3O+ 和 OH− 离子数（蓝色）与计算 pH（黄色）的时间序列。</p>
 <p><strong>图解：</strong>图 3 检验 QuantaMind 能否在 MD 时间尺度内捕捉稀有且基础的水自电离反应。A 和 B 显示体系和自电离事件；C 的蓝色曲线显示离子数在零附近出现若干非零脉冲，对应自发形成水合氢离子/氢氧根；黄色 pH 轨迹由累积离子数推算，3 ns 平均 pH 为 6.34±0.06，与 373 K 实验值 6.13±0.03 相符。这说明 DFT 级 MLFF 产生的反应性 PES 足够真实，无需预先指定反应即可发生自发电离。</p>
 <h4>图 4｜PETase 催化循环全模拟</h4>
-<p><img src="https://nk39010.github.io/pubmed-digest/figures/42726868/F4.webp" alt="图 4" style="max-width:100%;height:auto"/></p>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42726868/F4.jpg" alt="图 4" style="max-width:100%;height:auto"/></p>
 <p><strong>图例：</strong>QuantaMind MD 模拟的 PETase 催化循环概览。(A) 本工作使用的模拟盒子。(B) 总化学反应。分子的三维几何构象取自模拟轨迹。(C) 模拟中的代表性帧，标示关键中间体和产物。AEI 表示酰基酶中间体，TI 表示四面体中间体。(D) 从模拟估算的反应能垒。</p>
 <p><strong>图解：</strong>图 4 是该工作的代表性应用，回答 MLFF 能否完整重现一个多步酶催化循环。A 显示 17,792 原子体系（蛋白+MHET+水），所有原子均由 QuantaMind 显式处理；B 为 MHET 水解生成 TPA 和乙二醇的反应式；C 展示沿轨迹捕获的中间体（如 TI 和 AEI），证实质子传递与成键/断键自然发生；D 汇总各步骤能垒，最高为酰化阶段亲核攻击的 14.5±0.1 kcal/mol，与酶学实验推得能垒范围一致。该图证明 QuantaMind 无需划分 QM/MM 区域即可提供全量子精度的催化机制图景。</p>
 <h4>图 5｜恒 pH 组氨酸滴定模拟</h4>
-<p><img src="https://nk39010.github.io/pubmed-digest/figures/42726868/F5.webp" alt="图 5" style="max-width:100%;height:auto"/></p>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42726868/F5.jpg" alt="图 5" style="max-width:100%;height:auto"/></p>
 <p><strong>图例：</strong>使用 QuantaMind 在恒定 pH 下模拟组氨酸滴定。(A) 加入三个为组氨酸滴定准备的训练数据集（HIS、Na+ 和 PBS）后 QuantaMind 模型的性能。条形图旁的分子结构代表每个数据集的示例片段。(B) HEWL 蛋白处于含 60 个 Na2HPO4 和 6 个 NaH2PO4 分子的溶剂化环境中。重点关注组氨酸-15（His15）。(C) 20-ns 模拟中体系 pH 和 His15 质子化状态的时间序列。蓝色曲线显示通过 Henderson-Hasselbalch（HH）方程估算的体系 pH。插图显示对轨迹进行 bootstrap 重采样得到的 pKa 值小提琴图，展示拟合 pKa 估计的分布。底部的水平条 [“State (His15)”] 是质子化条形码：橙色表示 His15 处于中性互变异构体（HIE 或 HID），绿色表示质子化（HIP）状态。</p>
 <p><strong>图解：</strong>图 5 回答 QuantaMind 能否在无人工质子化态约束下重现可滴定残基的 pH 依赖行为。A 显示补充 HIS、Na+、PBS 数据集后模型性能提升，说明覆盖质子转移和磷酸盐平衡的训练对滴定模拟必要。B 为 HEWL/PBS 体系。C 显示 HH 方程估算 pH 随时间变化和 His15 质子化态条形码；由质子化/去质子化比例拟合 pKa≈5.81，与 NMR 实验值 5.5 基本一致。这证明 MLFF 可直接模拟质子化平衡，为恒定 pH MD 提供第一性原理替代方案。</p>
 <h3>方法亮点</h3>
