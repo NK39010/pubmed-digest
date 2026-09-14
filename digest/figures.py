@@ -68,6 +68,32 @@ class FigureStore:
             fig.source_key = by_stem.get(PurePosixPath(fig.href).stem, "")
         paper.figures = [f for f in paper.figures if f.source_key]
 
+    def _springer_original(self, paper, fig) -> bytes | None:
+        """PMC only stores a downscaled web copy (~1600px). Springer-hosted journals (Nature family) also serve
+        the figure as uploaded under /full/ — often wider, but not for every figure, so the caller compares sizes.
+        A missing file answers 200 with an HTML page, hence the content-type check."""
+        name = PurePosixPath(fig.href).stem
+        if not paper.doi.startswith("10.1038/") or not re.match(r"\d+_\d+_\d+_Fig\d+_HTML$", name):
+            return None
+        doi = paper.doi.replace("/", "%2F")
+        for ext in ("png", "jpg"):
+            try:
+                resp = self.http.get(
+                    f"https://media.springernature.com/full/springer-static/image/art%3A{doi}/MediaObjects/{name}.{ext}"
+                )
+            except httpx.HTTPError:
+                continue
+            if resp.status_code == 200 and resp.headers.get("content-type", "").startswith("image"):
+                return resp.content
+        return None
+
+    @staticmethod
+    def _width(data: bytes) -> int:
+        try:
+            return Image.open(io.BytesIO(data)).width
+        except OSError:
+            return 0
+
     def download(self, paper, figure_ids: list[str]) -> None:
         """Download and convert the chosen figures; sets image_url on each one that succeeds."""
         dest = self.out_dir / paper.pmid
@@ -77,16 +103,25 @@ class FigureStore:
             try:
                 resp = self.http.get(f"{S3}/{fig.source_key}")
                 resp.raise_for_status()
+                data, suffix = resp.content, PurePosixPath(fig.source_key).suffix.lower()
+                hires = self._springer_original(paper, fig)
+                if hires and self._width(hires) > self._width(data):
+                    data = hires
+                    suffix = ".png" if data[:4] == b"\x89PNG" else ".jpg"
+                else:
+                    hires = None
                 dest.mkdir(parents=True, exist_ok=True)
                 stem = re.sub(r"[^A-Za-z0-9_-]", "_", fig.id)
-                suffix = PurePosixPath(fig.source_key).suffix.lower()
-                # 墨水屏阅读器多数支持 WebP，原图直接发布：不缩放、不二次有损编码
-                if self.keep_original and suffix in KEEPABLE and not self.grayscale:
+                # PNG/JPEG 原样发布；WebP 只有 keep_original 时才原样发布（部分墨水屏阅读器不支持），否则转 JPEG
+                passthrough = suffix in KEEPABLE and (suffix != ".webp" or self.keep_original)
+                if passthrough and not self.grayscale:
                     name = stem + suffix
-                    (dest / name).write_bytes(resp.content)
+                    (dest / name).write_bytes(data)
                 else:
                     name = stem + ".jpg"
-                    self._convert(resp.content, dest / name)
+                    self._convert(data, dest / name)
+                if hires is not None:
+                    print(f"  图 {fig.id}：用出版商原图（{len(data) // 1024}KB）")
             except (httpx.HTTPError, OSError) as e:
                 print(f"  ! 图 {fig.id} 下载失败：{e}")
                 continue

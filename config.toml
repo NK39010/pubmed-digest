@@ -44,8 +44,9 @@ interests = """
 # 原图只对 PMC 开放获取（CC 许可证）的论文可用；Nature/Cell 等非 OA 论文只有文字解读
 max_figures = 4            # 每篇最多插几张关键图（每张附完整图例翻译 + 图解）
 layout = "inline"          # inline：每张图插在它支撑的那一节后面；block：统一放在"核心发现"后的"图文解读"板块
-keep_original = false      # true：原图（PMC 一般是 1600px WebP）直接发布；false：转成 JPEG（当前墨水屏阅读器不支持 WebP）
-max_width = 1600           # 仅在 keep_original = false 或需要转码时生效：缩放宽度（像素）
+# 图源优先级：Nature 系期刊用出版商原图（通常 2000px+ PNG）；其余用 PMC 网页版（约 1600px WebP）
+keep_original = false      # WebP 是否原样发布；当前墨水屏阅读器不支持 WebP，所以转成 JPEG。PNG/JPEG 源图总是原样发布
+max_width = 2400           # 仅转码时生效：超过这个宽度才缩放（像素）
 quality = 92               # 仅转码时生效：JPEG 质量
 grayscale = false          # 黑白墨水屏可设为 true：会强制转成灰度 JPEG，体积更小
 prefer_open_access = true  # 挑选时同样有意思的论文优先选能附原图的
