@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>混合正/负反馈回路驱动多样化的单细胞基因表达动态</title>
+<style>
+  body{margin:0;background:#fff;color:#1c1c1a;font:16px/1.8 -apple-system,"Segoe UI","Microsoft YaHei",serif}
+  main{max-width:40em;margin:0 auto;padding:28px 18px 60px}
+  h1{font-size:1.5em;line-height:1.4;margin:0 0 1em}
+  h3{font-size:1.08em;margin:1.9em 0 .7em;padding-left:.6em;border-left:4px solid #2f6f4f;color:#2f6f4f}
+  h4{font-size:1em;margin:1.5em 0 .5em;color:#2f6f4f}
+  p{margin:0 0 1em}
+  img{max-width:100%;height:auto;display:block;margin:0 auto}
+  blockquote{margin:1.2em 0;padding:.7em 1em;background:#f7f7f4;border-left:3px solid #e2e2dd;color:#6b6b66}
+  hr{border:0;border-top:1px dashed #e2e2dd;margin:2em 0}
+  em{color:#6b6b66}
+  a{color:#2f6f4f}
+  @media (prefers-color-scheme:dark){body{background:#16161a;color:#e8e8e4}blockquote{background:#22222a;color:#a8a8a2}}
+</style></head>
+<body><main><h1>混合正/负反馈回路驱动多样化的单细胞基因表达动态</h1>
+<p><strong>仅靠混合正/负反馈这一个简单模体，就能产生十种动态行为，包括随机脉冲、振荡和双稳态。</strong></p>
+<p><em>Mixed positive and negative feedback loops drive diverse single-cell gene expression dynamics.</em><br/>Nature communications · 2026 Aug 17<br/>Torkel E Loman, Christian P Schwall, Teresa Saez, Yujia Liu, James C W Locke</p>
+<blockquote><p>入选理由：系统解析混合正/负反馈回路的参数空间，揭示其可产生十种不同动态行为，并在枯草芽孢杆菌中实验验证，为合成生物学基因回路设计提供了可操作的定量框架和调节策略。</p></blockquote>
+<h3>研究背景</h3>
+<p>基因调控回路（genetic circuit）只需少数几个元件就能产生复杂的动态，但常见模体（motif）混合正/负反馈回路（mixed positive/negative feedback loop）如何系统性地映射到单细胞行为，仍缺乏定量理解。正反馈通常与双稳态和记忆有关，负反馈与振荡和脉冲有关，两者耦合时参数空间高度复杂，以往研究多局限于个别行为或特定系统，缺乏统一的分类和可调性图谱。</p>
+<p>在单细胞水平，基因表达的随机性（stochasticity）使得同一基因型细胞可能呈现不同动态，这对细胞命运决定、胁迫响应和微生物生存策略十分重要。因此，系统解析这一常见模体的参数空间并加以实验验证，是合成生物学理性设计基因回路的关键一步。</p>
+<h3>核心发现</h3>
+<p>作者结合随机建模（stochastic modelling）与单细胞时间延迟显微镜（single-cell time-lapse microscopy），构建了混合正/负反馈回路的最小随机模型，系统扫描其核心参数空间，揭示该模体可产生十种不同的动态输出类别，包括随机脉冲（stochastic pulsing）、振荡（oscillations）和双稳态（bistability）。模型进一步给出了调节哪些核心参数可以从一种行为切换到另一种。</p>
+<p>实验上，作者在枯草芽孢杆菌（Bacillus subtilis）的两个天然混合反馈回路——σB 和 σV——中对模型预测进行了验证，证实了模型的预测能力。基于模拟指导，作者通过调节体内参数成功实现了选定的动态行为之间的转变。这些结果建立了一个定量框架，说明混合反馈回路如何产生多样的单细胞动态，既加深了对这一常见生物网络模体的理解，也为合成生物学应用中的回路工程提供了指导。</p>
+<h3>方法亮点</h3>
+<p>方法上的亮点在于“最小随机模型 + 系统参数扫描 + 两个天然回路交叉验证”的组合。最小模型抓住了混合正/负反馈的核心动力学，避免了过度参数化，使得全局参数空间映射成为可能；系统扫描将连续参数空间划分为十类可区分的动态行为，提供了完整的相图（phase diagram）。</p>
+<p>实验设计选用枯草芽孢杆菌的 σB 和 σV 两个不同混合反馈回路进行验证，而非人工构建的单一回路，增强了结论的普遍性。单细胞时间延迟显微镜能够捕获活细胞中随时间的动态变化，使模型预测的动态类别得以在体内直接观察和比较。最后，利用模型反向指导体内参数调节，实现了行为之间的切换，体现了从模拟到实验的闭环。</p>
+<h3>为什么值得读</h3>
+<p>对合成生物学研究者而言，这项工作提供了一个可操作的定量框架：在构建或改造基因回路时，可以根据所需动态行为（如脉冲、振荡、双稳态）定位到混合反馈回路的相应参数区域，并知道调节哪些参数可以实现行为切换，减少盲目试错。</p>
+<p>对生物信息学和系统生物学研究者，该工作展示了如何将常见模体的参数空间与单细胞表型系统性关联，并为其他模体研究提供了方法范式。两个天然回路的实验验证说明模型捕捉了生物系统的核心逻辑，而非仅适用于人工系统，这增加了将该框架推广到其他细菌或真核系统的信心。</p>
+<h3>局限与疑问</h3>
+<p>本解读仅基于论文摘要，未获取开放获取全文，因此无法评估模型的具体假设、参数估计方法、十种动态类别的分类标准、实验调节参数的具体细节以及数据统计方法。全文中的数据质量和鲁棒性有待核实。</p>
+<p>十种动态行为可能依赖于最小模型对特定噪声和时延的简化，实际生物系统中可能存在未建模的调控层次或细胞间变异性，可能需要更精细的分类或合并。实验验证仅限于枯草芽孢杆菌的两个 σ 因子相关回路，是否适用于其他混合反馈回路或不同物种，仍需进一步检验。此外，体内参数调节可能会影响其他细胞过程，观察到的行为转变是否完全归因于目标回路参数变化，需要对照实验支持。</p>
+<hr/><p>解读依据：PubMed 摘要 · 由 AI 生成，关键结论请以原文为准<br/>原文：<a href="https://doi.org/10.1038/s41467-026-75107-4">https://doi.org/10.1038/s41467-026-75107-4</a> · PMID 42744773</p>
+<p><a href="../index.html">← 全部解读</a></p>
+</main></body></html>
