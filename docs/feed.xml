@@ -6,7 +6,105 @@
     <atom:link href="https://nk39010.github.io/pubmed-digest/feed.xml" rel="self" type="application/rss+xml"/>
     <description>每日从 PubMed 顶刊中由 AI 挑选 1-2 篇有意思的合成生物学/生信/生命科学论文并深度解读</description>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 17 Sep 2026 05:00:50 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2026 04:53:46 +0000</lastBuildDate>
+    <item>
+      <title>ORCHID组合深度突变扫描揭示PIN1 WW超级结合肽与上位性分子决定因素</title>
+      <link>https://nk39010.github.io/pubmed-digest/articles/42753705.html</link>
+      <guid isPermaLink="false">pubmed-42753705</guid>
+      <category>Molecular cell</category>
+      <pubDate>Fri, 18 Sep 2026 04:53:11 +0000</pubDate>
+      <description><![CDATA[<p><strong>天然PIN1仅用两个残基内置非线性结合，组合DMS据此找到强3–5倍超级结合肽</strong></p>
+<p><em>Combinatorial deep mutational scanning uncovers protein superbinders and molecular determinants of epistasis.</em><br/>Molecular cell · 2026 Sep 17<br/>Mingxuan Jiang, Mohan Sun, Nuo Cheng, Mihkel Örd, Teresa L Augustin, Allyson Li et al.</p>
+<blockquote><p>入选理由：提出ORCHID组合深度突变扫描框架，系统捕捉非加性上位效应，发现结合力提高3-5倍的超级结合肽并揭示决定非线性的关键位点，为酶/蛋白理性设计提供新策略。</p></blockquote>
+<h3>研究背景</h3>
+<p>传统深度突变扫描（deep mutational scanning, DMS）通过逐一引入单个氨基酸替换来构建序列-功能图谱，但它只描述野生型背景下的局部效应，无法系统刻画多个突变之间的非加性上位效应（epistasis）。蛋白-肽识别中的亲和力提升往往需要多个位点协同变化，单点扫描会漏掉大量在组合背景下才出现的强结合序列。</p>
+<p>这一局限在高亲和力结合肽（superbinder）设计中尤为突出：加性模型预测的组合可能并不能代表真实上位效应，而真正能增强结合的协同突变往往难以被单点 DMS 发现。因此，如何在实验上构建并高通量读取全组合突变库，同时建立能够学习非加性相互作用的计算框架，是蛋白工程和合成生物学的一个关键瓶颈。</p>
+<h3>核心发现</h3>
+<p>作者提出 ORCHID（origin-independent and context-exhaustive high-throughput integration of combinatorial DMS libraries），即在组合深度突变扫描（combinatorial DMS, CDMS）中系统整合所有突变及其组合，绘制不依赖野生型起点的上位性图谱。以 PIN1 WW 结构域与含磷酸丝氨酸（phosphoserine）肽库的结合为基准，ORCHID 比非上位模型将预测准确率提高 45%。</p>
+<p>在功能层，ORCHID 鉴定出两个上位型超级结合肽 SPY-tide 和 LYR-tide，它们对 PIN1 WW 结构域的亲和力比当前最优结合肽高 3–5 倍。结构表征显示，二者分别通过“折叠-转角”（fold-and-turn）和注册位移（register-shifted）构象变化实现增强结合，说明亲和力提升来自非局部的肽构象重排。</p>
+<p>作者还定位了两个上位性分子决定因素：PIN1 的 F25 和 R14 残基（PIN1F25、PIN1R14）。这些残基本身就编码了非线性结合行为，突变后会消除上位效应。这提示天然蛋白识别肽并非简单加性，而是内建了非线性的决定位点，可为改进结合肽设计提供直接靶点。</p>
+<h3>方法亮点</h3>
+<p>ORCHID 的关键设计是“origin-independent”与“context-exhaustive”：起始序列不局限于野生型，而是构建覆盖所有突变组合的库，并在所有可能的突变背景和演化轨迹上考察上位区域。相比传统 DMS 只做单点替换，CDMS 能直接提供组合空间中非加性效应的实验数据。</p>
+<p>实验端采用高通量肽展示系统，通过琥珀密码子抑制（amber codon suppression）在 CDMS 肽库中定点引入磷酸丝氨酸，测定 PIN1 WW 结构域对不同肽变体的亲和力。计算端则用这些全组合亲和力数据训练模型，使 ORCHID 能够显式学习非加性项，从而在预测准确率上超过非上位模型。</p>
+<h3>为什么值得读</h3>
+<p>对蛋白工程师而言，该研究提醒单点 DMS 的加性假设可能系统性低估组合突变的潜力；要获得超强结合肽，需要实验和计算都切换到组合视角。ORCHID 提供了一个可扩展的框架，将全组合突变库、高通量互作定量与上位性建模结合起来。</p>
+<p>更值得注意的是，天然 PIN1 的 F25 与 R14 残基本身就是非线性结合的“分子开关”，说明自然界已经在使用上位性来调谐识别。这为理性设计提供新策略：与其盲目叠加有利单点突变，不如先定位并改造这些上位性决定位点，可能更高效地获得超级结合蛋白。</p>
+<h3>局限与疑问</h3>
+<p>本文解读仅基于论文摘要，未获取全文，因此数字和机制描述的细节仍有待完整论文核实。例如，45% 的预测准确率提升是在何种测试集和指标下得到、SPY-tide 和 LYR-tide 的亲和力测定误差、结构表征分辨率与构象证据强度，摘要均未提供。</p>
+<p>此外，研究以 PIN1 WW 结构域和含磷酸丝氨酸的肽库为唯一基准系统，其结论能否推广到其他蛋白结构域、非磷酸化肽或更长的结合界面尚不清楚。全组合 CDMS 库的规模会随肽长度和可变位点数量指数增长，实际建库和测序中可能存在未在摘要中披露的截断或抽样策略，这些会影响“context-exhaustive”声明的严格性。</p>
+<p>最后，超级结合肽的“fold-and-turn”和“register-shifted”构象变化是否真正由上位效应驱动，还是可能包含晶体堆积或测定偏见，需要查看全文中的结构数据和突变验证；F25/R14 突变消除上位效应的因果关系也需要更多背景实验佐证。</p>
+<hr/><p>解读依据：PubMed 摘要 · 由 AI 生成，关键结论请以原文为准<br/>原文：<a href="https://doi.org/10.1016/j.molcel.2026.08.017">https://doi.org/10.1016/j.molcel.2026.08.017</a> · PMID 42753705</p>]]></description>
+      <content:encoded><![CDATA[<p><strong>天然PIN1仅用两个残基内置非线性结合，组合DMS据此找到强3–5倍超级结合肽</strong></p>
+<p><em>Combinatorial deep mutational scanning uncovers protein superbinders and molecular determinants of epistasis.</em><br/>Molecular cell · 2026 Sep 17<br/>Mingxuan Jiang, Mohan Sun, Nuo Cheng, Mihkel Örd, Teresa L Augustin, Allyson Li et al.</p>
+<blockquote><p>入选理由：提出ORCHID组合深度突变扫描框架，系统捕捉非加性上位效应，发现结合力提高3-5倍的超级结合肽并揭示决定非线性的关键位点，为酶/蛋白理性设计提供新策略。</p></blockquote>
+<h3>研究背景</h3>
+<p>传统深度突变扫描（deep mutational scanning, DMS）通过逐一引入单个氨基酸替换来构建序列-功能图谱，但它只描述野生型背景下的局部效应，无法系统刻画多个突变之间的非加性上位效应（epistasis）。蛋白-肽识别中的亲和力提升往往需要多个位点协同变化，单点扫描会漏掉大量在组合背景下才出现的强结合序列。</p>
+<p>这一局限在高亲和力结合肽（superbinder）设计中尤为突出：加性模型预测的组合可能并不能代表真实上位效应，而真正能增强结合的协同突变往往难以被单点 DMS 发现。因此，如何在实验上构建并高通量读取全组合突变库，同时建立能够学习非加性相互作用的计算框架，是蛋白工程和合成生物学的一个关键瓶颈。</p>
+<h3>核心发现</h3>
+<p>作者提出 ORCHID（origin-independent and context-exhaustive high-throughput integration of combinatorial DMS libraries），即在组合深度突变扫描（combinatorial DMS, CDMS）中系统整合所有突变及其组合，绘制不依赖野生型起点的上位性图谱。以 PIN1 WW 结构域与含磷酸丝氨酸（phosphoserine）肽库的结合为基准，ORCHID 比非上位模型将预测准确率提高 45%。</p>
+<p>在功能层，ORCHID 鉴定出两个上位型超级结合肽 SPY-tide 和 LYR-tide，它们对 PIN1 WW 结构域的亲和力比当前最优结合肽高 3–5 倍。结构表征显示，二者分别通过“折叠-转角”（fold-and-turn）和注册位移（register-shifted）构象变化实现增强结合，说明亲和力提升来自非局部的肽构象重排。</p>
+<p>作者还定位了两个上位性分子决定因素：PIN1 的 F25 和 R14 残基（PIN1F25、PIN1R14）。这些残基本身就编码了非线性结合行为，突变后会消除上位效应。这提示天然蛋白识别肽并非简单加性，而是内建了非线性的决定位点，可为改进结合肽设计提供直接靶点。</p>
+<h3>方法亮点</h3>
+<p>ORCHID 的关键设计是“origin-independent”与“context-exhaustive”：起始序列不局限于野生型，而是构建覆盖所有突变组合的库，并在所有可能的突变背景和演化轨迹上考察上位区域。相比传统 DMS 只做单点替换，CDMS 能直接提供组合空间中非加性效应的实验数据。</p>
+<p>实验端采用高通量肽展示系统，通过琥珀密码子抑制（amber codon suppression）在 CDMS 肽库中定点引入磷酸丝氨酸，测定 PIN1 WW 结构域对不同肽变体的亲和力。计算端则用这些全组合亲和力数据训练模型，使 ORCHID 能够显式学习非加性项，从而在预测准确率上超过非上位模型。</p>
+<h3>为什么值得读</h3>
+<p>对蛋白工程师而言，该研究提醒单点 DMS 的加性假设可能系统性低估组合突变的潜力；要获得超强结合肽，需要实验和计算都切换到组合视角。ORCHID 提供了一个可扩展的框架，将全组合突变库、高通量互作定量与上位性建模结合起来。</p>
+<p>更值得注意的是，天然 PIN1 的 F25 与 R14 残基本身就是非线性结合的“分子开关”，说明自然界已经在使用上位性来调谐识别。这为理性设计提供新策略：与其盲目叠加有利单点突变，不如先定位并改造这些上位性决定位点，可能更高效地获得超级结合蛋白。</p>
+<h3>局限与疑问</h3>
+<p>本文解读仅基于论文摘要，未获取全文，因此数字和机制描述的细节仍有待完整论文核实。例如，45% 的预测准确率提升是在何种测试集和指标下得到、SPY-tide 和 LYR-tide 的亲和力测定误差、结构表征分辨率与构象证据强度，摘要均未提供。</p>
+<p>此外，研究以 PIN1 WW 结构域和含磷酸丝氨酸的肽库为唯一基准系统，其结论能否推广到其他蛋白结构域、非磷酸化肽或更长的结合界面尚不清楚。全组合 CDMS 库的规模会随肽长度和可变位点数量指数增长，实际建库和测序中可能存在未在摘要中披露的截断或抽样策略，这些会影响“context-exhaustive”声明的严格性。</p>
+<p>最后，超级结合肽的“fold-and-turn”和“register-shifted”构象变化是否真正由上位效应驱动，还是可能包含晶体堆积或测定偏见，需要查看全文中的结构数据和突变验证；F25/R14 突变消除上位效应的因果关系也需要更多背景实验佐证。</p>
+<hr/><p>解读依据：PubMed 摘要 · 由 AI 生成，关键结论请以原文为准<br/>原文：<a href="https://doi.org/10.1016/j.molcel.2026.08.017">https://doi.org/10.1016/j.molcel.2026.08.017</a> · PMID 42753705</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>结构引导发现与工程化微型CRISPR-Cas12m用于表观基因组编辑</title>
+      <link>https://nk39010.github.io/pubmed-digest/articles/42749924.html</link>
+      <guid isPermaLink="false">pubmed-42749924</guid>
+      <category>Nature structural &amp; molecular biology</category>
+      <pubDate>Fri, 18 Sep 2026 04:53:46 +0000</pubDate>
+      <description><![CDATA[<p><strong>天然无切割迷你Cas12m经改造后，单AAV实现体内持久基因沉默</strong></p>
+<p><em>Structure-guided discovery and engineering of miniature CRISPR-Cas12m for epigenome editing.</em><br/>Nature structural &amp; molecular biology · 2026 Sep 16<br/>Tao Yu, Meng Ji, Donglin Yu, Zhao Guan, Rongyi Zhu, Yunpeng Jiang et al.</p>
+<blockquote><p>入选理由：结合结构预测、冷冻电镜和深度突变扫描，从自然界发现并工程化迷你型CRISPR-Cas12m，实现单AAV递送的表观基因组编辑和体内持久沉默，是合成生物学与蛋白工程融合的范例。</p></blockquote>
+<h3>研究背景</h3>
+<p>基于CRISPR的表观基因组编辑（epigenome editing）能够在不改变DNA序列的情况下精准调控基因表达，是治疗性应用的重要方向。然而，现有系统通常需要将无催化活性的dCas蛋白与表观遗传效应结构域融合，dCas蛋白体积较大，严重限制了通过腺相关病毒（AAV）载体进行体内递送。AAV是基因治疗中常用的递送工具，但其包装容量有限，因此开发更小且保持高效的表观基因组编辑蛋白成为关键瓶颈。</p>
+<p>自然界中某些V-M亚型CRISPR-Cas12系统可能天然缺乏DNA切割活性，适合直接作为DNA结合平台。但如何系统发现这类微型效应蛋白，并在人体细胞中验证和优化其表观编辑能力，仍缺少完整路径。</p>
+<h3>核心发现</h3>
+<p>作者通过迭代生物信息学分析、结构引导预测和功能筛选，鉴定出一个来自Pelomicrobium methylotrophicum的微型V-M亚型CRISPR-Cas12m，命名为PmCas12m。PmCas12m能够以灵活的5&#x27;-YTN-3&#x27; PAM识别靶标，具有较强的双链DNA（dsDNA）结合能力，但不具备DNA切割活性，因而适合作为表观基因组编辑的DNA定位模块。</p>
+<p>利用冷冻电镜（cryo-EM）解析了PmCas12m与靶DNA的复合物结构，阐明其DNA结合机制。在此基础上，作者结合深度突变扫描（deep mutational scanning）和蛋白工程，开发出高紧凑型变体xCas12m，在人类细胞中表现出强效且特异的表观基因组编辑能力。</p>
+<p>进一步将xCas12m与CRISPRoff系统整合，构建了单AAV载体递送的xCas12m-CRISPRoff平台；在小鼠模型中，该平台实现了持久表观遗传沉默，并有效抑制了乙型肝炎病毒（HBV）感染。</p>
+<h3>方法亮点</h3>
+<p>研究将干湿实验闭环：先做大规模序列挖掘与结构预测，再通过功能实验验证候选PmCas12m的PAM偏好、DNA结合和切割特性。随后利用cryo-EM解析其与靶DNA结合的高分辨率结构，定位关键相互作用界面。</p>
+<p>结构信息指导深度突变扫描，系统评估突变对活性与特异性的影响，进而进行蛋白工程改造，获得xCas12m。最后将工程化变体装入单个AAV载体，构建CRISPRoff表观沉默系统，并在HBV小鼠模型中进行体内验证。</p>
+<h3>为什么值得读</h3>
+<p>这项工作展示了从自然序列挖掘到结构解析、再到定向进化的完整链条，是合成生物学与蛋白工程融合的范例。对研究者而言，它提示自然界中存在大量尚未开发的天然无切割CRISPR系统，可以通过结构预测快速锁定候选，再用深度突变扫描突破活性瓶颈。</p>
+<p>单AAV递送的表观基因组编辑平台解决了体内应用中的关键递送瓶颈，为HBV等慢性感染或需要长期基因沉默的疾病提供了新的治疗策略。对合成生物学领域，它提供了一个可编程、可遗传的表观沉默模块，未来或可与其他基因线路结合。</p>
+<h3>局限与疑问</h3>
+<p>由于仅基于摘要解读，缺少全文数据，无法判断xCas12m的精确分子量、与常用dCas9/dCas12a的尺寸对比、编辑窗口、脱靶率、沉默持续时间以及小鼠模型中的具体疗效指标。</p>
+<p>摘要提到PmCas12m lacking DNA cleavage activity，但未说明该无切割特性是天然存在的还是由关键活性位点突变导致；也未提供深度突变扫描的文库设计和筛选压力。</p>
+<p>另外，单AAV体内实验只报道了HBV感染抑制，尚未涉及长期安全性、免疫原性、递送组织特异性或反复给药等问题，这些都需要全文或后续研究验证。</p>
+<hr/><p>解读依据：PubMed 摘要 · 由 AI 生成，关键结论请以原文为准<br/>原文：<a href="https://doi.org/10.1038/s41594-026-01890-9">https://doi.org/10.1038/s41594-026-01890-9</a> · PMID 42749924</p>]]></description>
+      <content:encoded><![CDATA[<p><strong>天然无切割迷你Cas12m经改造后，单AAV实现体内持久基因沉默</strong></p>
+<p><em>Structure-guided discovery and engineering of miniature CRISPR-Cas12m for epigenome editing.</em><br/>Nature structural &amp; molecular biology · 2026 Sep 16<br/>Tao Yu, Meng Ji, Donglin Yu, Zhao Guan, Rongyi Zhu, Yunpeng Jiang et al.</p>
+<blockquote><p>入选理由：结合结构预测、冷冻电镜和深度突变扫描，从自然界发现并工程化迷你型CRISPR-Cas12m，实现单AAV递送的表观基因组编辑和体内持久沉默，是合成生物学与蛋白工程融合的范例。</p></blockquote>
+<h3>研究背景</h3>
+<p>基于CRISPR的表观基因组编辑（epigenome editing）能够在不改变DNA序列的情况下精准调控基因表达，是治疗性应用的重要方向。然而，现有系统通常需要将无催化活性的dCas蛋白与表观遗传效应结构域融合，dCas蛋白体积较大，严重限制了通过腺相关病毒（AAV）载体进行体内递送。AAV是基因治疗中常用的递送工具，但其包装容量有限，因此开发更小且保持高效的表观基因组编辑蛋白成为关键瓶颈。</p>
+<p>自然界中某些V-M亚型CRISPR-Cas12系统可能天然缺乏DNA切割活性，适合直接作为DNA结合平台。但如何系统发现这类微型效应蛋白，并在人体细胞中验证和优化其表观编辑能力，仍缺少完整路径。</p>
+<h3>核心发现</h3>
+<p>作者通过迭代生物信息学分析、结构引导预测和功能筛选，鉴定出一个来自Pelomicrobium methylotrophicum的微型V-M亚型CRISPR-Cas12m，命名为PmCas12m。PmCas12m能够以灵活的5&#x27;-YTN-3&#x27; PAM识别靶标，具有较强的双链DNA（dsDNA）结合能力，但不具备DNA切割活性，因而适合作为表观基因组编辑的DNA定位模块。</p>
+<p>利用冷冻电镜（cryo-EM）解析了PmCas12m与靶DNA的复合物结构，阐明其DNA结合机制。在此基础上，作者结合深度突变扫描（deep mutational scanning）和蛋白工程，开发出高紧凑型变体xCas12m，在人类细胞中表现出强效且特异的表观基因组编辑能力。</p>
+<p>进一步将xCas12m与CRISPRoff系统整合，构建了单AAV载体递送的xCas12m-CRISPRoff平台；在小鼠模型中，该平台实现了持久表观遗传沉默，并有效抑制了乙型肝炎病毒（HBV）感染。</p>
+<h3>方法亮点</h3>
+<p>研究将干湿实验闭环：先做大规模序列挖掘与结构预测，再通过功能实验验证候选PmCas12m的PAM偏好、DNA结合和切割特性。随后利用cryo-EM解析其与靶DNA结合的高分辨率结构，定位关键相互作用界面。</p>
+<p>结构信息指导深度突变扫描，系统评估突变对活性与特异性的影响，进而进行蛋白工程改造，获得xCas12m。最后将工程化变体装入单个AAV载体，构建CRISPRoff表观沉默系统，并在HBV小鼠模型中进行体内验证。</p>
+<h3>为什么值得读</h3>
+<p>这项工作展示了从自然序列挖掘到结构解析、再到定向进化的完整链条，是合成生物学与蛋白工程融合的范例。对研究者而言，它提示自然界中存在大量尚未开发的天然无切割CRISPR系统，可以通过结构预测快速锁定候选，再用深度突变扫描突破活性瓶颈。</p>
+<p>单AAV递送的表观基因组编辑平台解决了体内应用中的关键递送瓶颈，为HBV等慢性感染或需要长期基因沉默的疾病提供了新的治疗策略。对合成生物学领域，它提供了一个可编程、可遗传的表观沉默模块，未来或可与其他基因线路结合。</p>
+<h3>局限与疑问</h3>
+<p>由于仅基于摘要解读，缺少全文数据，无法判断xCas12m的精确分子量、与常用dCas9/dCas12a的尺寸对比、编辑窗口、脱靶率、沉默持续时间以及小鼠模型中的具体疗效指标。</p>
+<p>摘要提到PmCas12m lacking DNA cleavage activity，但未说明该无切割特性是天然存在的还是由关键活性位点突变导致；也未提供深度突变扫描的文库设计和筛选压力。</p>
+<p>另外，单AAV体内实验只报道了HBV感染抑制，尚未涉及长期安全性、免疫原性、递送组织特异性或反复给药等问题，这些都需要全文或后续研究验证。</p>
+<hr/><p>解读依据：PubMed 摘要 · 由 AI 生成，关键结论请以原文为准<br/>原文：<a href="https://doi.org/10.1038/s41594-026-01890-9">https://doi.org/10.1038/s41594-026-01890-9</a> · PMID 42749924</p>]]></content:encoded>
+    </item>
     <item>
       <title>P450酶通过氧化去甲基化安装联烯与炔烃</title>
       <link>https://nk39010.github.io/pubmed-digest/articles/42744886.html</link>
