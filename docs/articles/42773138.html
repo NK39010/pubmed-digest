@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>生成式AI设计功能性硫醇化结构域实现非核糖体肽合成酶重编程</title>
+<style>
+  body{margin:0;background:#fff;color:#1c1c1a;font:16px/1.8 -apple-system,"Segoe UI","Microsoft YaHei",serif}
+  main{max-width:40em;margin:0 auto;padding:28px 18px 60px}
+  h1{font-size:1.5em;line-height:1.4;margin:0 0 1em}
+  h3{font-size:1.08em;margin:1.9em 0 .7em;padding-left:.6em;border-left:4px solid #2f6f4f;color:#2f6f4f}
+  h4{font-size:1em;margin:1.5em 0 .5em;color:#2f6f4f}
+  p{margin:0 0 1em}
+  img{max-width:100%;height:auto;display:block;margin:0 auto}
+  blockquote{margin:1.2em 0;padding:.7em 1em;background:#f7f7f4;border-left:3px solid #e2e2dd;color:#6b6b66}
+  hr{border:0;border-top:1px dashed #e2e2dd;margin:2em 0}
+  em{color:#6b6b66}
+  a{color:#2f6f4f}
+  @media (prefers-color-scheme:dark){body{background:#16161a;color:#e8e8e4}blockquote{background:#22222a;color:#a8a8a2}}
+</style></head>
+<body><main><h1>生成式AI设计功能性硫醇化结构域实现非核糖体肽合成酶重编程</h1>
+<p><strong>AI生成的T结构域在578个变体中替代天然结构域，产量最高提升约3倍。</strong></p>
+<p><em>Generative AI designs functional thiolation domains for reprogramming non-ribosomal peptide synthetases.</em><br/>Nature communications · 2026 Sep 22<br/>Emre F Bülbül, Seounggun Bang, Kevin George, Gabriele Bianchi, Prateek Raj, Seonyong Chung et al.</p>
+<blockquote><p>入选理由：用生成式AI从头设计非核糖体肽合成酶（NRPS）的硫醇化结构域，并在体内578个重组变体中证明可替代天然结构域且提高产量，为动态多结构域酶的程序化改造提供了全新思路。</p></blockquote>
+<h3>研究背景</h3>
+<p>非核糖体肽合成酶（non-ribosomal peptide synthetases, NRPSs）是一类大型多结构域酶，负责合成许多临床重要的天然产物，如抗生素和免疫抑制剂。与核糖体合成不同，NRPS通过模块化装配线依次缩合氨基酸等底物，其中硫醇化（thiolation, T）结构域负责共价携带底物和中间体，是催化循环中的关键枢纽。然而，对NRPS进行工程化改造以生产新型肽类化合物一直困难重重，因为T结构域与相邻结构域（如腺苷化A结构域、缩合C结构域）之间的相互作用是瞬时的、依赖于构象状态和具体序列上下文。传统的理性设计或定向进化难以有效处理这种动态界面。</p>
+<p>近年生成式蛋白质设计取得显著进展，大语言模型和扩散模型已被用于设计抗体、酶等功能蛋白。但对于NRPS这类多结构域、构象动态变化、活性依赖瞬时结构域界面的巨型合成酶，生成式方法是否能产生可以在体内正常工作的组件仍属未知。该工作正是针对这一关键空白，将三种预训练生成模型应用于从头设计NRPS的T结构域，并系统地检验其在体内外的功能。</p>
+<h3>核心发现</h3>
+<p>作者整合了ESM3、ProteinMPNN和EvoDiff三种预训练生成模型，结合设计-构建-测试-学习（design-build-test-learn）循环和数据引导的优先排序策略，从头生成了76个硫醇化（T）结构域。随后构建并测试了578个重组NRPS变体，覆盖最小装配线、全长装配线以及杂合装配线等多种架构，在体内条件下评估产物形成能力。</p>
+<p>结果显示，AI设计的T结构域能够在不同架构的NRPS中支持产物形成，包括在重组连接处产生具有催化活性的杂合装配线。尤为突出的是，携带AI设计T结构域的NRPS产量相比携带天然T结构域的对照最高提升约3倍，表明从头设计不仅实现了功能替换，还可能超越天然序列的性能。</p>
+<p>对一个代表性设计的进一步表征发现，其可溶性表达和重折叠能力均优于天然对应物，且熔解温度（melting temperature, Tm）提高了12 °C。分子动力学模拟显示，该设计保持了全局结构稳定性，但重塑了依赖构象状态的域间接触网络，这可能是其功能改善的分子基础。</p>
+<h3>方法亮点</h3>
+<p>方法上的亮点首先在于模型组合策略：使用ESM3（大规模蛋白质语言模型）、ProteinMPNN（基于图网络的序列设计模型）和EvoDiff（扩散模型）三种互补的生成工具，分别从序列空间探索、结构约束和进化信息等角度提出候选T结构域序列。这种多模型集成可能覆盖更广泛的序列多样性，避免单一模型的偏差。</p>
+<p>其次，研究采用了‘设计-构建-测试-学习’的闭环：先根据模型输出和先验数据设定优先排序规则，选择76个候选设计进行合成，然后在体内高通量构建578个NRPS变体进行功能筛选，再将结果反馈用于下一轮设计的改进。这种数据驱动迭代方式有效降低了探索空间过大带来的筛选成本。另外，使用体内体系而非体外单结构域测试，能够直接考察设计域在完整多结构域酶动态环境中的兼容性，更接近真实工程需求。</p>
+<h3>为什么值得读</h3>
+<p>这项工作证明生成式AI不仅能够在静态、单结构域蛋白上取得设计成功，而且可以应对NRPS这类动态多结构域酶的上下文依赖性问题。T结构域虽然相对保守，但其功能必须嵌入到与A、C、硫酯酶（TE）等结构域的瞬时界面中，能设计出在体内被接受的序列，意味着生成模型捕获了结构域间协同所需的隐式约束。这对于理解多结构域酶的设计规则具有基础意义。</p>
+<p>从应用角度看，NRPS是天然产物药物的重要来源，重编程其装配线以生产非天然肽是合成生物学的长期目标。以往依赖天然结构域互换或定点突变的策略受限于序列兼容性；而本研究展示的从头结构域设计不仅能替代，还能改善产量和稳定性，为模块化重新组合NRPS提供了一条全新路径。此外，发现的12 °C热稳定性提升和表达增强提示生成式设计可能同时优化了多个特性，这对酶的工业应用也很有吸引力。</p>
+<h3>局限与疑问</h3>
+<p>需要强调，本解读仅基于论文摘要，未能获取开放获取全文，因此以下所有信息均来自摘要，细节有待全文核实。摘要未报告76个设计中有多少个实际表现出功能，也未说明578个变体中成功的比例、具体的产物种类、检测方法或对照设置，因此无法判断设计的总体成功率和适用范围。</p>
+<p>产量提升最高约3倍的结果可能由多种因素导致，例如AI设计域改善了蛋白表达、折叠或溶解度，而非直接提高催化效率；代表性设计显示的表达和稳定性改善支持这种可能，但摘要未明确区分这些贡献。此外，代表性设计是事后挑选的，可能存在选择偏差，不能代表全部设计的平均水平。分子动力学模拟揭示的接触网络重塑只是计算推断，缺乏实验结构或突变验证的直接证据。</p>
+<p>最后，体内实验虽然更接近真实环境，但NRPS在宿主细胞中可能受到底物供应、翻译后修饰和代谢负担等影响，这些因素与设计本身的关系尚不清楚。未来需要更多生化实验和结构数据来确定从头设计域在分子层面的作用机制。</p>
+<hr/><p>解读依据：PubMed 摘要 · 由 AI 生成，关键结论请以原文为准<br/>原文：<a href="https://doi.org/10.1038/s41467-026-77963-6">https://doi.org/10.1038/s41467-026-77963-6</a> · PMID 42773138</p>
+<p><a href="../index.html">← 全部解读</a></p>
+</main></body></html>
