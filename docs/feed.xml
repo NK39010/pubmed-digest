@@ -6,7 +6,97 @@
     <atom:link href="https://nk39010.github.io/pubmed-digest/feed.xml" rel="self" type="application/rss+xml"/>
     <description>每日从 PubMed 顶刊中由 AI 挑选 1-2 篇有意思的合成生物学/生信/生命科学论文并深度解读</description>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 24 Sep 2026 05:05:07 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 25 Sep 2026 05:07:14 +0000</lastBuildDate>
+    <item>
+      <title>unZipro：以最小筛选实现零样本、可扩展的蛋白进化</title>
+      <link>https://nk39010.github.io/pubmed-digest/articles/42785296.html</link>
+      <guid isPermaLink="false">pubmed-42785296</guid>
+      <category>Molecular cell</category>
+      <pubDate>Fri, 25 Sep 2026 05:06:27 +0000</pubDate>
+      <description><![CDATA[<p><strong>仅约10个候选，零样本平均成功率61%，基因编辑活性最高提升28倍。</strong></p>
+<p><em>Simplifying in silico protein evolution with minimal screening by unZipro.</em><br/>Molecular cell · 2026 Sep 24<br/>Zhaohui Qin, Sanzeng Zhao, Zhaolong Deng, Xiaomin Si, Cheng Xing, Zhenfei Zhang et al.</p>
+<blockquote><p>入选理由：unZipro将逆折叠模型与元学习结合，实现零样本、极小候选库的蛋白进化，在多种蛋白上成功率高，对AI驱动的酶工程和理性设计很有启发。</p></blockquote>
+<h3>研究背景</h3>
+<p>尽管近年来AI驱动的蛋白工程取得显著进展，现有方法通常依赖迭代实验验证（iterative experimental validation），面临成功率有限、改进幅度不大或计算成本高等问题；植物蛋白的进化应用尤其未被探索。</p>
+<p>这限制了理性设计在酶工程、合成生物学及农业生物技术中的推广，亟需一种高效、可扩展且通用的蛋白进化框架，以降低实验筛选负担并提高设计成功率。</p>
+<h3>核心发现</h3>
+<p>作者报告了unZipro框架，能够直接从极小候选库（约10个候选）中识别高活性变体，在9个不同蛋白上平均成功率为61%。</p>
+<p>其中T5E-CasΦ2融合变体的基因编辑活性最大提升达28倍。利用unZipro，研究团队进一步开发了当时最先进的植物基因编辑核酸酶、性能更优的萤火虫荧光素酶（firefly luciferase）变体、增强的水稻转录因子以及效力提升的大麦来源抗病毒蛋白。</p>
+<h3>方法亮点</h3>
+<p>unZipro的核心是将紧凑的预训练逆折叠模型（inverse folding model）与元学习（meta-learning）相结合。逆折叠模型由结构反推序列，天然适合进行零样本序列设计；元学习则帮助模型基于少量家族信息快速推导出家族特异性的适应度景观（fitness landscape）。</p>
+<p>这一组合避免了传统定向进化或机器学习辅助进化中反复实验验证的步骤，直接为给定蛋白质家族生成少数高潜力候选，将筛选负担压缩到约10个克隆量级。方法巧思在于利用结构先验和元学习近似家族适应性分布，而非依赖大规模实验数据拟合。</p>
+<h3>为什么值得读</h3>
+<p>这项工作的启发在于，它展示了一种将结构信息（逆折叠）与少样本学习（元学习）结合的新范式，可能把蛋白质理性设计从“需要大量标记数据”推向“零样本或少样本”。</p>
+<p>对合成生物学和蛋白工程研究者来说，约10个候选的极小库意味着湿实验成本大幅降低，尤其适合难以高通量筛选的植物系统或农业相关蛋白。平均61%的成功率也说明该方法并非随机碰运气，为AI驱动的酶工程和农业生物技术提供了可操作、可复制的思路。</p>
+<h3>局限与疑问</h3>
+<p>需要明确：本次解读仅基于论文摘要，未能获取开放获取全文，因此无法核对实验细节、成功率定义、活性检测阈值、模型训练集及基准比较等关键信息。</p>
+<p>摘要中的“平均成功率61%”可能依赖于特定蛋白和活性提升标准，未必在所有家族中都一致；“28倍提升”是T5E-CasΦ2融合变体的个例，不一定代表整体分布。严格意义上的“zero-shot”能力也值得追问：预训练逆折叠模型可能已经见过结构相似或序列同源的蛋白，跨家族泛化能力需要更多测试。此外，元学习推导家族特异性适应度景观的具体实现、计算成本是否显著低于现有方法、以及植物蛋白实验是否经过体内验证，都有待全文核实。</p>
+<hr/><p>解读依据：PubMed 摘要 · 由 AI 生成，关键结论请以原文为准<br/>原文：<a href="https://doi.org/10.1016/j.molcel.2026.08.028">https://doi.org/10.1016/j.molcel.2026.08.028</a> · PMID 42785296</p>]]></description>
+      <content:encoded><![CDATA[<p><strong>仅约10个候选，零样本平均成功率61%，基因编辑活性最高提升28倍。</strong></p>
+<p><em>Simplifying in silico protein evolution with minimal screening by unZipro.</em><br/>Molecular cell · 2026 Sep 24<br/>Zhaohui Qin, Sanzeng Zhao, Zhaolong Deng, Xiaomin Si, Cheng Xing, Zhenfei Zhang et al.</p>
+<blockquote><p>入选理由：unZipro将逆折叠模型与元学习结合，实现零样本、极小候选库的蛋白进化，在多种蛋白上成功率高，对AI驱动的酶工程和理性设计很有启发。</p></blockquote>
+<h3>研究背景</h3>
+<p>尽管近年来AI驱动的蛋白工程取得显著进展，现有方法通常依赖迭代实验验证（iterative experimental validation），面临成功率有限、改进幅度不大或计算成本高等问题；植物蛋白的进化应用尤其未被探索。</p>
+<p>这限制了理性设计在酶工程、合成生物学及农业生物技术中的推广，亟需一种高效、可扩展且通用的蛋白进化框架，以降低实验筛选负担并提高设计成功率。</p>
+<h3>核心发现</h3>
+<p>作者报告了unZipro框架，能够直接从极小候选库（约10个候选）中识别高活性变体，在9个不同蛋白上平均成功率为61%。</p>
+<p>其中T5E-CasΦ2融合变体的基因编辑活性最大提升达28倍。利用unZipro，研究团队进一步开发了当时最先进的植物基因编辑核酸酶、性能更优的萤火虫荧光素酶（firefly luciferase）变体、增强的水稻转录因子以及效力提升的大麦来源抗病毒蛋白。</p>
+<h3>方法亮点</h3>
+<p>unZipro的核心是将紧凑的预训练逆折叠模型（inverse folding model）与元学习（meta-learning）相结合。逆折叠模型由结构反推序列，天然适合进行零样本序列设计；元学习则帮助模型基于少量家族信息快速推导出家族特异性的适应度景观（fitness landscape）。</p>
+<p>这一组合避免了传统定向进化或机器学习辅助进化中反复实验验证的步骤，直接为给定蛋白质家族生成少数高潜力候选，将筛选负担压缩到约10个克隆量级。方法巧思在于利用结构先验和元学习近似家族适应性分布，而非依赖大规模实验数据拟合。</p>
+<h3>为什么值得读</h3>
+<p>这项工作的启发在于，它展示了一种将结构信息（逆折叠）与少样本学习（元学习）结合的新范式，可能把蛋白质理性设计从“需要大量标记数据”推向“零样本或少样本”。</p>
+<p>对合成生物学和蛋白工程研究者来说，约10个候选的极小库意味着湿实验成本大幅降低，尤其适合难以高通量筛选的植物系统或农业相关蛋白。平均61%的成功率也说明该方法并非随机碰运气，为AI驱动的酶工程和农业生物技术提供了可操作、可复制的思路。</p>
+<h3>局限与疑问</h3>
+<p>需要明确：本次解读仅基于论文摘要，未能获取开放获取全文，因此无法核对实验细节、成功率定义、活性检测阈值、模型训练集及基准比较等关键信息。</p>
+<p>摘要中的“平均成功率61%”可能依赖于特定蛋白和活性提升标准，未必在所有家族中都一致；“28倍提升”是T5E-CasΦ2融合变体的个例，不一定代表整体分布。严格意义上的“zero-shot”能力也值得追问：预训练逆折叠模型可能已经见过结构相似或序列同源的蛋白，跨家族泛化能力需要更多测试。此外，元学习推导家族特异性适应度景观的具体实现、计算成本是否显著低于现有方法、以及植物蛋白实验是否经过体内验证，都有待全文核实。</p>
+<hr/><p>解读依据：PubMed 摘要 · 由 AI 生成，关键结论请以原文为准<br/>原文：<a href="https://doi.org/10.1016/j.molcel.2026.08.028">https://doi.org/10.1016/j.molcel.2026.08.028</a> · PMID 42785296</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>MMEJ修复TA重复位点断裂维持ecDNA与癌细胞适应性</title>
+      <link>https://nk39010.github.io/pubmed-digest/articles/42778593.html</link>
+      <guid isPermaLink="false">pubmed-42778593</guid>
+      <category>Nature</category>
+      <pubDate>Fri, 25 Sep 2026 05:07:14 +0000</pubDate>
+      <description><![CDATA[<p><strong>ecDNA维持依赖易错MMEJ而非NHEJ/HR，TA重复是其脆弱热点，抑制Polθ可去稳定ecDNA。</strong></p>
+<p><em>MMEJ repair of breaks at TA repeats maintains ecDNA and cancer fitness.</em><br/>Nature · 2026 Sep 23<br/>David Billing, Monica Selvaraj, Megan E Kelley, Gabriel Matos-Rodrigues, Benton Bailey, Finnja Becker et al.</p>
+<blockquote><p>入选理由：发现MMEJ修复而非NHEJ/HR选择性维持ecDNA，TA重复位点是ecDNA脆弱热点，Polθ抑制可去稳定ecDNA，为DNA修复酶靶向和癌症治疗提供出人意料的新思路。</p></blockquote>
+<h3>研究背景</h3>
+<p>染色体外环状DNA（extrachromosomal DNA, ecDNA）是肿瘤中常见的兆碱基级环状元件，常携带癌基因扩增，与侵袭性表型、治疗抵抗和不良预后密切相关。尽管已有研究认为ecDNA起源于经典的双链断裂修复（double-strand break repair），但哪些通路在后续选择性维持ecDNA、避免其丢失或降解，此前并不清楚。这一机制空白使得针对ecDNA的治疗策略难以设计——如果能找到ecDNA特有的维持依赖，就有望在不影响正常染色体的前提下选择性破坏肿瘤中的环状癌基因。因此，鉴定ecDNA的维持通路既是基础科学问题，也具有迫切的转化价值。</p>
+<h3>核心发现</h3>
+<p>研究团队通过分别抑制非同源末端连接（non-homologous end joining, NHEJ）、同源重组（homologous recombination, HR）和微同源介导的末端连接（microhomology-mediated end joining, MMEJ），发现只有MMEJ抑制能选择性消耗ecDNA，诱导ecDNA特异性DNA损伤，并促使ecDNA隔离到微核（micronuclei）中，从而损害依赖ecDNA驱动癌基因扩增的癌细胞适应性。</p>
+<p>机制上，ecDNA上富含TA的位点是DNA损伤和断裂的热点。DNA转位酶FANCM（Fanconi anemia complementation group M）抑制这些位点的断裂形成；而逃脱FANCM监视的断裂会被ERCC1-ERCC4核酸酶切割，并随后导入MMEJ进行修复。也就是说，MMEJ在TA重复处反复修复断裂，维持ecDNA的环状结构和拷贝数。</p>
+<p>在COLO320DM细胞中，单细胞全基因组测序显示，破坏FANCM或聚合酶θ（Polθ，MMEJ的关键酶）会导致ecDNA结构不稳定，表现为缺失和小重复，断裂点显著富集于富含TA的区域。这一现象在人类肿瘤样本中得到重现：ecDNA重排同样富集于TA重复。综上，TA重复脆弱性是环状DNA的内在脆弱性，Polθ抑制有望成为去稳定ecDNA、增敏ecDNA驱动肿瘤的治疗策略。</p>
+<h3>方法亮点</h3>
+<p>该研究的方法设计具有对比性和闭环性。首先，通过特异性抑制三种主要双链断裂修复通路（NHEJ、HR、MMEJ）并检测ecDNA丰度、损伤标志和微核形成，清晰锁定了MMEJ是ecDNA维持所必需的通路，排除了其他经典通路的必要作用。</p>
+<p>其次，结合遗传扰动（破坏FANCM、ERCC1-ERCC4和Polθ）与单细胞全基因组测序，解析ecDNA结构变异的全貌，并通过断裂点富集分析识别出TA重复这一序列特征。最后，利用人类肿瘤数据验证了TA重复脆弱性在临床样本中的普遍性，形成了从机制解析到临床相关性的完整证据链。</p>
+<h3>为什么值得读</h3>
+<p>这项工作最令人意外之处在于，维持ecDNA的竟是通常被认为易错且仅作为备用通路的MMEJ，而不是更精确的NHEJ或HR。这提示ecDNA可能通过主动选择一种快速但不完美的修复方式，来维持其高拷贝和动态重排，从而驱动肿瘤进化。对癌症研究者而言，Polθ抑制剂已在开发中，本发现为将其用于选择性靶向ecDNA提供了具体机制依据和生物标志物（TA重复富集）。</p>
+<p>对合成生物学和蛋白工程研究者，TA重复作为环状DNA的固有脆弱点，提示在设计人工环状载体、基因回路或合成染色体时，需要考虑重复序列可能引发的MMEJ依赖的不稳定性。反过来，也可以利用这一特性设计可由Polθ抑制剂或FANCM扰动控制的可降解环状DNA器件。此外，单细胞全基因组测序结合断裂点富集分析，为研究其他非染色体DNA元件的结构动态提供了可借鉴的方法框架。</p>
+<h3>局限与疑问</h3>
+<p>需要说明的是，本解读仅基于论文摘要，未获取开放获取全文，因此定量数据（如MMEJ抑制的效应大小、TA重复的富集程度、细胞系和肿瘤样本数量等）以及实验细节（如抑制剂浓度、时间点、统计方法）均未在摘要中披露，有待全文核实。</p>
+<p>此外，摘要未说明MMEJ抑制是否会影响正常细胞中的其他环状DNA（如线粒体DNA）或染色体上的TA重复区域，其治疗窗口和潜在毒性尚不清楚。FANCM、ERCC1-ERCC4与MMEJ之间的分子次序是否在所有ecDNA类型和肿瘤背景中保守，仍需更多模型验证。Polθ抑制作为治疗策略的有效性也需在体内肿瘤模型和临床前研究中进一步检验。最后，TA重复脆弱性究竟是序列本身的内在属性，还是受到染色质状态、复制压力或转录偶联等因素的调节，也有待全文和后续研究澄清。</p>
+<hr/><p>解读依据：PubMed 摘要 · 由 AI 生成，关键结论请以原文为准<br/>原文：<a href="https://doi.org/10.1038/s41586-026-11048-8">https://doi.org/10.1038/s41586-026-11048-8</a> · PMID 42778593</p>]]></description>
+      <content:encoded><![CDATA[<p><strong>ecDNA维持依赖易错MMEJ而非NHEJ/HR，TA重复是其脆弱热点，抑制Polθ可去稳定ecDNA。</strong></p>
+<p><em>MMEJ repair of breaks at TA repeats maintains ecDNA and cancer fitness.</em><br/>Nature · 2026 Sep 23<br/>David Billing, Monica Selvaraj, Megan E Kelley, Gabriel Matos-Rodrigues, Benton Bailey, Finnja Becker et al.</p>
+<blockquote><p>入选理由：发现MMEJ修复而非NHEJ/HR选择性维持ecDNA，TA重复位点是ecDNA脆弱热点，Polθ抑制可去稳定ecDNA，为DNA修复酶靶向和癌症治疗提供出人意料的新思路。</p></blockquote>
+<h3>研究背景</h3>
+<p>染色体外环状DNA（extrachromosomal DNA, ecDNA）是肿瘤中常见的兆碱基级环状元件，常携带癌基因扩增，与侵袭性表型、治疗抵抗和不良预后密切相关。尽管已有研究认为ecDNA起源于经典的双链断裂修复（double-strand break repair），但哪些通路在后续选择性维持ecDNA、避免其丢失或降解，此前并不清楚。这一机制空白使得针对ecDNA的治疗策略难以设计——如果能找到ecDNA特有的维持依赖，就有望在不影响正常染色体的前提下选择性破坏肿瘤中的环状癌基因。因此，鉴定ecDNA的维持通路既是基础科学问题，也具有迫切的转化价值。</p>
+<h3>核心发现</h3>
+<p>研究团队通过分别抑制非同源末端连接（non-homologous end joining, NHEJ）、同源重组（homologous recombination, HR）和微同源介导的末端连接（microhomology-mediated end joining, MMEJ），发现只有MMEJ抑制能选择性消耗ecDNA，诱导ecDNA特异性DNA损伤，并促使ecDNA隔离到微核（micronuclei）中，从而损害依赖ecDNA驱动癌基因扩增的癌细胞适应性。</p>
+<p>机制上，ecDNA上富含TA的位点是DNA损伤和断裂的热点。DNA转位酶FANCM（Fanconi anemia complementation group M）抑制这些位点的断裂形成；而逃脱FANCM监视的断裂会被ERCC1-ERCC4核酸酶切割，并随后导入MMEJ进行修复。也就是说，MMEJ在TA重复处反复修复断裂，维持ecDNA的环状结构和拷贝数。</p>
+<p>在COLO320DM细胞中，单细胞全基因组测序显示，破坏FANCM或聚合酶θ（Polθ，MMEJ的关键酶）会导致ecDNA结构不稳定，表现为缺失和小重复，断裂点显著富集于富含TA的区域。这一现象在人类肿瘤样本中得到重现：ecDNA重排同样富集于TA重复。综上，TA重复脆弱性是环状DNA的内在脆弱性，Polθ抑制有望成为去稳定ecDNA、增敏ecDNA驱动肿瘤的治疗策略。</p>
+<h3>方法亮点</h3>
+<p>该研究的方法设计具有对比性和闭环性。首先，通过特异性抑制三种主要双链断裂修复通路（NHEJ、HR、MMEJ）并检测ecDNA丰度、损伤标志和微核形成，清晰锁定了MMEJ是ecDNA维持所必需的通路，排除了其他经典通路的必要作用。</p>
+<p>其次，结合遗传扰动（破坏FANCM、ERCC1-ERCC4和Polθ）与单细胞全基因组测序，解析ecDNA结构变异的全貌，并通过断裂点富集分析识别出TA重复这一序列特征。最后，利用人类肿瘤数据验证了TA重复脆弱性在临床样本中的普遍性，形成了从机制解析到临床相关性的完整证据链。</p>
+<h3>为什么值得读</h3>
+<p>这项工作最令人意外之处在于，维持ecDNA的竟是通常被认为易错且仅作为备用通路的MMEJ，而不是更精确的NHEJ或HR。这提示ecDNA可能通过主动选择一种快速但不完美的修复方式，来维持其高拷贝和动态重排，从而驱动肿瘤进化。对癌症研究者而言，Polθ抑制剂已在开发中，本发现为将其用于选择性靶向ecDNA提供了具体机制依据和生物标志物（TA重复富集）。</p>
+<p>对合成生物学和蛋白工程研究者，TA重复作为环状DNA的固有脆弱点，提示在设计人工环状载体、基因回路或合成染色体时，需要考虑重复序列可能引发的MMEJ依赖的不稳定性。反过来，也可以利用这一特性设计可由Polθ抑制剂或FANCM扰动控制的可降解环状DNA器件。此外，单细胞全基因组测序结合断裂点富集分析，为研究其他非染色体DNA元件的结构动态提供了可借鉴的方法框架。</p>
+<h3>局限与疑问</h3>
+<p>需要说明的是，本解读仅基于论文摘要，未获取开放获取全文，因此定量数据（如MMEJ抑制的效应大小、TA重复的富集程度、细胞系和肿瘤样本数量等）以及实验细节（如抑制剂浓度、时间点、统计方法）均未在摘要中披露，有待全文核实。</p>
+<p>此外，摘要未说明MMEJ抑制是否会影响正常细胞中的其他环状DNA（如线粒体DNA）或染色体上的TA重复区域，其治疗窗口和潜在毒性尚不清楚。FANCM、ERCC1-ERCC4与MMEJ之间的分子次序是否在所有ecDNA类型和肿瘤背景中保守，仍需更多模型验证。Polθ抑制作为治疗策略的有效性也需在体内肿瘤模型和临床前研究中进一步检验。最后，TA重复脆弱性究竟是序列本身的内在属性，还是受到染色质状态、复制压力或转录偶联等因素的调节，也有待全文和后续研究澄清。</p>
+<hr/><p>解读依据：PubMed 摘要 · 由 AI 生成，关键结论请以原文为准<br/>原文：<a href="https://doi.org/10.1038/s41586-026-11048-8">https://doi.org/10.1038/s41586-026-11048-8</a> · PMID 42778593</p>]]></content:encoded>
+    </item>
     <item>
       <title>生成式AI设计功能性硫醇化结构域实现非核糖体肽合成酶重编程</title>
       <link>https://nk39010.github.io/pubmed-digest/articles/42773138.html</link>
