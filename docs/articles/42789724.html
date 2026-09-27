@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>计算设计并进化的游离泛素结合蛋白 UBiP10 实现特异性富集与可视化</title>
+<style>
+  body{margin:0;background:#fff;color:#1c1c1a;font:16px/1.8 -apple-system,"Segoe UI","Microsoft YaHei",serif}
+  main{max-width:40em;margin:0 auto;padding:28px 18px 60px}
+  h1{font-size:1.5em;line-height:1.4;margin:0 0 1em}
+  h3{font-size:1.08em;margin:1.9em 0 .7em;padding-left:.6em;border-left:4px solid #2f6f4f;color:#2f6f4f}
+  h4{font-size:1em;margin:1.5em 0 .5em;color:#2f6f4f}
+  p{margin:0 0 1em}
+  img{max-width:100%;height:auto;display:block;margin:0 auto}
+  blockquote{margin:1.2em 0;padding:.7em 1em;background:#f7f7f4;border-left:3px solid #e2e2dd;color:#6b6b66}
+  hr{border:0;border-top:1px dashed #e2e2dd;margin:2em 0}
+  em{color:#6b6b66}
+  a{color:#2f6f4f}
+  @media (prefers-color-scheme:dark){body{background:#16161a;color:#e8e8e4}blockquote{background:#22222a;color:#a8a8a2}}
+</style></head>
+<body><main><h1>计算设计并进化的游离泛素结合蛋白 UBiP10 实现特异性富集与可视化</h1>
+<p><strong>AI 设计的新蛋白只认“散装”泛素，不碰挂在蛋白上的泛素，还首次看清聚集体外有泛素外壳。</strong></p>
+<p><em>A designed ubiquitin-binding protein selectively enriches and visualizes unanchored ubiquitin.</em><br/>Science advances · 2026 Sep 25<br/>Shihua Shi, Alexandra Bendel, Georg Kempf, Jacint Sanchez, Sohei Majima, Vytautas Iesmantavicius et al.</p>
+<blockquote><p>入选理由：用 RFdiffusion 计算设计并进化出特异性结合游离泛素的新型蛋白，既提供了研究非锚定泛素的工具，也展示了 AI 驱动的理性蛋白设计在开发高亲和力结合物上的可迁移思路。</p></blockquote>
+<h3>研究背景</h3>
+<p>游离泛素（unanchored ubiquitin）在宿主-病原互作、蛋白聚集体生命周期等过程中发挥重要作用，但由于缺乏特异性、高亲和力的工具，其研究远落后于蛋白质泛素化修饰。现有工具主要基于 IsoT 的 BUZ 结构域，亲和力仅 2.8 μM，且 tUI 等探针的特异性未经充分验证，难以高效富集和可视化细胞内的游离泛素。近年来，深度学习方法如 RFdiffusion 为设计新型蛋白结合物提供了可能，但如何将计算设计与实验进化结合，开发出真正具备高选择性的工具仍是一个挑战。</p>
+<h3>核心发现</h3>
+<p>作者首先对 HDAC6 锌指结构域（ZnF）进行亲和力成熟：发现该结构域 N 端约 30 个残基的柔性环对结合至关重要，使亲和力从核心结构域的 5.16 μM 提升到约 70 nM；通过多维突变筛选，发现 V1091L 突变使亲和力进一步提高到 40 nM（见图 1）。随后，以该突变体为模板，利用 RFdiffusion 和 ProteinMPNN 设计并融合了已知的泛素结合结构域，从 10,081 个候选设计中选出 11 个进行表达和验证。其中 UBiP05 对单泛素的亲和力最高，Kd 为 8.55 nM；UBiP10 的 Kd 为 25.6 nM，但表现出对游离泛素的高度选择性（见图 2）。</p>
+<p>通过 Lbpro 消化和质谱分析，UBiP10 只结合游离单泛素，不识别模拟锚定泛素的 3xUb-RARA 蛋白；而 UBiP05 则两者都结合。进一步实验表明，UBiP10 还能结合游离的 K48 和 K63 连接的多聚泛素链，但亲和力略低于单体（K48 链 Kd 89.3 nM，K63 链 Kd 35.3 nM）。在细胞裂解液中，UBiP10 只富集游离单泛素，不结合泛素化蛋白，且富集效率高于天然 ZnF 结构域和此前报道的 tUI 蛋白；UBiP10 也能从流感病毒颗粒中富集游离泛素链，并可在病毒感染或 poly(I:C) 刺激下捕获内源 K63 链（见图 3）。将 UBiP10 用作免疫荧光探针，能可视化多种细胞系中游离泛素的水平：蛋白酶体抑制剂 bortezomib 处理后信号降低，E1 抑制剂 TAK-243 处理后信号升高。最后，利用 UBiP10 发现了聚集体（aggresome）周围存在一个此前未知的游离泛素外壳，该外壳的形成依赖于 myosin 10 而不依赖于 HDAC6（见图 5）。</p>
+<h4>图 3｜UBiP10 选择性富集游离泛素</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42789724/F3.jpg" alt="图 3" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>UBiP10 对游离泛素招募的选择性。(A) 基于 Lbpro 酶的泛素 (锚定和游离) 消化及质谱分析方案 (泛素切割实验) (19)。Lbpro 处理的单泛素和 3xUb-RARA 分别产生 8449.5 Da [Ub(−GG)] 和 8563.5 Da (近端泛素通过 Gly-Gly 连接到 Met1 而保持表观野生型质量) 的峰。(B) 单泛素和 3xUb-RARA 混合物 (输入) 以及 GST-UBiP05 或 GST-UBiP10 捕获蛋白的质谱分析。用 GST-UBiP05 或 GST-UBiP10 饱和的 GST_trap 珠子与单泛素和 3xUb-RARA (各 50 nM) 孵育，随后用 Lbpro 消化并进行质谱分析。输入：50%。(C) GST-UBiP05 或 GST-UBiP10 与 3xUb-RARA 和/或单泛素的 GST 拉下实验。捕获蛋白用免疫印迹 (IB) 可视化。(D) GST-UBiP10 或 GST (阴性对照) 与线性、K48 和 K63 连接的游离二泛素链的 GST 拉下实验。(E) 通过 ITC 测定 UBiP10 与 K48/K63 连接的二泛素链的亲和力。(F) GST-UBiP05 或 GST-UBiP10 与 A549 细胞裂解液 (等量蛋白输入) 的 GST 拉下实验。MG132 处理：5 μM 处理 6 小时。Actin：上样对照。(G) GST、GST-hZnF_(1108–1215) 或 GST-UBiP10 与 A549 裂解液的 GST 拉下实验。(H) 使用纯化的 His 标签蛋白和 Ni–次氮基三乙酸 (NTA) 拉下实验，比较 UBiP10 与 tUI 从未处理的 A549 裂解液中的富集。(I) GST 或 GST-UBiP10 与表达去泛素化酶抗性的二、三或四泛素链 (携带 C 端突变 -LRLRGG- 变为 -LRAAAA-) 的 293T 细胞裂解液的 GST 拉下实验。(J) GST-UBiP10 或 GST 与经放射免疫沉淀分析 (RIPA) 缓冲液和超声破碎的纯化 IAV (X31) 病毒颗粒裂解液的 GST 拉下实验。NP，IAV 核蛋白。(K) GST-UBiP10 或 GST 与 IAV 感染的 A549 细胞 [感染复数 (MOI) = 50，感染 6 小时] 在 50 μM PR-619 存在下的裂解液的 GST 拉下实验。(L) UBiP10 在 A549 裂解液中相互作用蛋白的亲和纯化-质谱 (AP-MS) 分析。GST 作为阴性对照。虚线表示 Log2FC &gt; 2 或 &lt; −2。</p>
+<p><strong>图解：</strong>该图回答的问题是：UBiP10 是否只结合游离泛素而不结合锚定泛素，以及能否从多种生物样品中富集游离泛素。</p>
+<p>(A-B) 用 Lbpro 消化区分游离和锚定泛素：游离泛素被切去 C 端 GG 产生 8449.5 Da 的峰，而锚定泛素（3xUb-RARA）的近端泛素保留 GG 连接产生 8563.5 Da 峰。质谱结果显示，UBiP10 拉下的样品中只有 8449.5 Da 峰，而 UBiP05 两者都有，证明 UBiP10 只结合游离泛素。(C) 免疫印迹进一步确认，UBiP10 不与 3xUb-RARA 结合。(D-E) 显示 UBiP10 也能结合游离的线性、K48 和 K63 二泛素链，亲和力分别为 K48 链 89.3 nM、K63 链 35.3 nM。(F-H) 在细胞裂解液中，UBiP10 只拉下游离单泛素，不与泛素化蛋白质的条带结合，且富集效率高于天然 hZnF 和 tUI。(I) 过表达去泛素化酶抗性的多聚泛素链后，UBiP10 能从细胞裂解液中拉下二聚体至九聚体。(J-K) UBiP10 能从流感病毒颗粒和感染细胞的裂解液中富集游离泛素链（包括内源 K63 链）。(L) AP-MS 显示泛素是 UBiP10 最富集的相互作用蛋白，且没有检测到类泛素蛋白。这些结果共同支持 UBiP10 对游离泛素的高选择性。</p>
+<h4>图 5｜聚集体周围的游离泛素外壳</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42789724/F5.jpg" alt="图 5" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>用 UBiP10 鉴定聚集体周围的游离泛素外壳。(A) 聚集体中游离泛素 (通过 GST-UBiP10 蛋白和 GST 抗体孵育获得) 和泛素 (通过泛素抗体孵育获得) 的免疫荧光显微镜分析。白色箭头指向聚集体位点。白色虚线矩形中的聚集体被选中用于 (B) 中的后续分析。比例尺，20 μm。Bortezomib：2 μM 处理 12 小时。(B) (A) 中两个聚集体的放大视图。沿白色虚线 (从左到右) 的信号强度分布用 ImageJ 绘制。(C) 在 bortezomib (2 μM 处理 12 小时) 处理的 A549 细胞中三个不同位置的游离泛素强度定量。每个条件共定量约 50 个聚集体。一个点代表一个聚集体。统计分析采用单因素方差分析 (one-way ANOVA) 检验；P 值已标明。P &lt; 0.05 视为显著 (n = 3)。(D) A549 细胞中 myosin 10 敲低 (KD) 以及 CRISPR-Cas9 生成的稳定 HDAC6 敲除 (KO) A549 细胞的免疫印迹 (IB)。(E) 来自 (D) 的细胞中泛素 (泛素抗体获得) 和游离泛素 (GST-UBiP10 蛋白和 GST 抗体孵育获得) 的免疫荧光。Bortezomib (2 μM 处理 12 小时) 用于诱导聚集体形成。白色矩形：四个聚集体的放大视图。比例尺，20 μm。(F) 沿白色虚线 [从 (E) 左到右] 的信号强度用 ImageJ 分析。(G) 在 (E) 和图 S6C 中 bortezomib 处理的、转染乱序 RNA (scRNA)、转染 myosin 10 siRNA (siMyo) 和 HDAC6 KO A549 细胞中三个不同位置的游离泛素强度定量。每个条件共定量约 50 个聚集体。统计分析同 (C)。n.s.，不显著。</p>
+<p><strong>图解：</strong>该图回答的问题是：游离泛素在聚集体（aggresome）形成过程中的空间分布如何，以及哪些蛋白介导这种分布。</p>
+<p>(A-B) 免疫荧光显示，在 bortezomib 诱导的聚集体中，总泛素信号集中在聚集体核心，而 UBiP10 标记的游离泛素信号富集在聚集体周围，形成环状结构；信号强度沿线的分布显示游离泛素峰值不与总泛素峰值重叠，而是位于其外围。(C) 定量分析证实，游离泛素在聚集体周围（periaggresome）的强度显著高于聚集体内部和远离聚集体的细胞区域。(D-F) 通过敲低 myosin 10 和敲除 HDAC6，发现敲低 myosin 10 后聚集体周围的游离泛素外壳消失，而 HDAC6 KO 无影响。(G) 定量结果进一步支持 myosin 10 是形成游离泛素外壳所必需的，而 HDAC6 不参与。该图揭示了一个新的生物学现象：聚集体存在一个由 myosin 10 介导的游离泛素外壳。</p>
+<h3>方法亮点</h3>
+<p>计算设计流程清晰：以自然进化的 ZnF 为起点，通过高通量 PCA 筛选进行亲和力成熟，再借助 RFdiffusion 生成融合蛋白骨架、ProteinMPNN 设计序列、AlphaFold2 筛选，将理性设计与深度学习有机结合。实验上，用 Lbpro 消化结合质谱巧妙区分游离与锚定泛素，用纯化的 GST-UBiP10 作为“类抗体”探针进行免疫荧光，实现无抗体依赖的游离泛素检测。此外，通过对 UBiP10 的回复突变（L1091V）和连接子突变（linker mut）验证了突变和计算设计元件对高亲和力的贡献。</p>
+<h4>图 1｜HDAC6 ZnF 亲和力成熟与突变鉴定</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42789724/F1.jpg" alt="图 1" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>HDAC6 ZnF 结构域与单泛素相互作用的亲和力成熟。(A) 泛素 [虚线矩形内白色；蛋白质数据库 (PDB):1UBQ] 与人类 HDAC6 ZnF (1108–1215) (橙色；来自 PDB:3GV4) 对齐并叠加。结构以表面形式显示。绿色区域表示泛素 C 末端 (-LRLRGG)。(B) 人类和小鼠 HDAC6 的结构域构建体。橙色和青色矩形代表核心 ZnF 结构域。(C) 通过等温滴定量热法 (ITC) 测定 mHDAC6_(1007–1149) 与单泛素的亲和力。(D) 不同 HDAC6 构建体对单泛素的亲和力 (Kd) 总结。aa，氨基酸。hHDAC6_(1108–1215) 对单泛素的亲和力在我们之前的研究 (23) 中测定。hHDAC6_(1–1215) 和 hHDAC6_(1073–1215) 的 ITC 曲线显示在图 S1 (B 和 C) 中。(E) AlphaFold2 预测的 mHDAC6_(1007–1149)-泛素复合物结构。白色、青色和红色分别代表泛素、mHDAC6_ZnF_(1007–1149) 和 mHDAC6 ZnF N 端柔性环区域 (1037 至 1044)。(F 和 G) mHDAC6 ZnF_(1007–1149) 中单氨基酸取代的适应性效应热图，来自 BindingPCA (F) 和 AbundancePCA (G)。mHDAC6_ZnF_(1007–1149) 的二级结构显示在 (G) 底部，柔性环区域 (1037 至 1044) 用红色标出。突变 W1116A 在“BindingPCA”热图中用箭头突出显示。(H) 比较单氨基酸取代的丰度 (x 轴值) 和结合适应性 (y 轴值) 的散点图。V1091L 和 S1064H 被圈出作为进一步研究的两个突变。黑色对角线虚线代表 y = x。(I) 通过 ITC 测定 mHDAC6_ZnF_(1007–1149)_V1091L 突变体与单泛素的亲和力。</p>
+<p><strong>图解：</strong>该图回答的核心问题是：如何提高 HDAC6 ZnF 结构域对泛素的亲和力，并找到关键残基。</p>
+<p>(A) 展示了泛素 C 末端（-LRLRGG）与 ZnF 结合的表面，提示该区域是识别热点。(B) 比较了不同长度的 HDAC6 构建体。(C) 和 (D) 表明，包含 N 端约 30 个残基柔性环的 mHDAC6_(1007–1149) 片段亲和力高达约 70 nM，而核心 ZnF 结构域亲和力只有 5.16 μM，相差约 80 倍；全长蛋白亲和力也较低（1.04 μM），说明柔性环对结合至关重要。(E) 用 AlphaFold2 预测结构，显示该柔性环包裹泛素，解释了亲和力提升的原因。(F-G) 的高通量突变热图验证了关键残基的重要性，如 W1116A 突变完全破坏结合。(H) 通过散点图筛选出在丰度降低的情况下仍保持较高结合力的突变，V1091L 和 S1064H 被选中。(I) 验证 V1091L 突变使 Kd 进一步降至 40 nM，相比野生型片段约 70 nM 几乎翻倍。该图支持了后续以该突变体为模板进行计算的合理性。</p>
+<h4>图 2｜RFdiffusion 设计 UBiPs 及亲和力验证</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42789724/F2.jpg" alt="图 2" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>UBiPs 的计算机设计及与单泛素的亲和力测定。(A) 基于 mZnF_V1091L 突变体生成 UBiPs 的工作流程。mZnF_(1007–1149)_V1091L、Radex-5 的 RUZ 结构域以及设计的新结构分别用青色、黄色和蓝色表示。(B) 带有 N 端 (UBiP01) 和 C 端 (UBiP10) 融合泛素结合结构域 (UBA_UQ1 粉色；UIM_RAP80 绿色；设计的新结构蓝色) 的 UBiPs 示例。(C) 通过 ITC 测定 UBiP05 或 UBiP10 与单泛素的亲和力。(D) UBiP05 和 UBiP10 的 AlphaFold2 预测对齐误差 (PAE) 图。PAE 从蓝色到红色增加。aa，氨基酸。(E 和 F) UBiP10 突变体与单泛素的 ITC 亲和力测定。(E) 为 UBiP10_(L1091V)，(F) 为 UBiP10_(linker mut)。Linker：RFdiffusion 生成的从头序列，在 (B) 的 UBiP10 模型中显示为蓝色区域；mut：突变序列 (VTPKTEPMTL 变为 AAAAAAAAAA)。</p>
+<p><strong>图解：</strong>该图回答的问题是：如何通过计算设计在保持选择性的前提下进一步提高亲和力，并验证设计元件的贡献。</p>
+<p>(A) 展示了四步设计流程：将已知泛素结合结构域叠加到 ZnF-泛素复合物上，用 RFdiffusion 生成连接子骨架，用 ProteinMPNN 设计序列，再用 AlphaFold2 评估设计性。(B) 给出了 UBiP01 和 UBiP10 的结构模型，显示不同结构域融合方式。(C) ITC 测定结果表明，UBiP05 亲和力最高（Kd=8.55 nM），UBiP10 为 25.6 nM，相比野生型 ZnF 片段提升约 10 倍。(D) 的 PAE 图显示 UBiP05 和 UBiP10 的预测复合物具有较低的预测误差，支持高亲和力。(E-F) 通过回复突变 L1091V（将 1091 位点变回缬氨酸）和连接子全丙氨酸突变，亲和力分别降至 48.5 nM 和 98 nM，证明 V1091L 突变和计算设计的连接子均对高亲和力有贡献。</p>
+<h3>为什么值得读</h3>
+<p>本研究展示了 AI 驱动的蛋白设计在开发高特异性、高亲和力结合物上的可迁移思路：从天然结构域出发，结合实验进化和计算设计，再通过严格的生化验证确保选择性。UBiP10 作为工具蛋白，突破了游离泛素研究长期缺乏有效试剂的瓶颈，可广泛用于富集、成像和功能研究。同时，发现聚集体周围的游离泛素外壳，为理解蛋白质聚集体的组装和降解提供了新视角，也提示游离泛素可能在细胞内有独立于蛋白质降解的调控功能。</p>
+<h3>局限与疑问</h3>
+<p>UBiP10 对多聚泛素链（尤其是 K48 链）的亲和力低于单体，细胞裂解液中未直接检测到内源游离多聚链，提示内源链的丰度可能较低或需要特定条件（如病毒感染）才能积累；虽然免疫荧光和 ELISA 显示 UBiP10 能区分游离与锚定泛素，但该检测是半定量的，精确量化仍需结合质谱和同位素标记标准品。聚集体周围游离泛素外壳的机制尚不明确：myosin 10 被证实是必需的，但 HDAC6 不参与，其具体运输过程和功能意义有待进一步研究。此外，AlphaFold 预测的复合物结构尚需实验验证，且 UBiP10 是否在所有细胞类型和病理状态下都保持特异性仍需更多测试。</p>
+<hr/><p>解读依据：PMC 开放获取全文 · 由 AI 生成，关键结论请以原文为准<br/>插图来自原文，许可证 CC BY-NC，版权归原作者<br/>原文：<a href="https://doi.org/10.1126/sciadv.aec0818">https://doi.org/10.1126/sciadv.aec0818</a> · PMID 42789724</p>
+<p><a href="../index.html">← 全部解读</a></p>
+</main></body></html>
