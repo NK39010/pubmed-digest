@@ -6,7 +6,169 @@
     <atom:link href="https://nk39010.github.io/pubmed-digest/feed.xml" rel="self" type="application/rss+xml"/>
     <description>每日从 PubMed 顶刊中由 AI 挑选 1-2 篇有意思的合成生物学/生信/生命科学论文并深度解读</description>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 30 Sep 2026 05:43:51 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 Oct 2026 06:08:21 +0000</lastBuildDate>
+    <item>
+      <title>开发可同时编辑A/C/G/T的哺乳动物细胞四碱基突变器QBMM及其双碱基编辑器A&amp;GBE</title>
+      <link>https://nk39010.github.io/pubmed-digest/articles/42806035.html</link>
+      <guid isPermaLink="false">pubmed-42806035</guid>
+      <category>Nature communications</category>
+      <pubDate>Thu, 01 Oct 2026 06:07:18 +0000</pubDate>
+      <description><![CDATA[<p><strong>紧凑双碱基编辑器让A/G同时变嘧啶；四模块组合在靶点100bp内实现A/T/C/G无偏突变。</strong></p>
+<p><em>A dual A-to-Y and G-to-Y base editor and a four-base concurrent hypermutator in mammalian cells.</em><br/>Nature communications · 2026 Aug 27<br/>Na Zhao, Joshua Seun Olajide, Zhihong Guan, Junyun Huang, Xiubin Zou, Feilong Ou et al.</p>
+<blockquote><p>入选理由：该工作开发了可同时编辑A/C的紧凑双碱基编辑器，并进一步构建四碱基同时突变的QBMM，在gRNA靶点附近约100 bp内引入全类型碱基突变，为酶定向进化和功能基因组学提供了高多样性建库工具，思路可直接迁移到蛋白质工程。</p></blockquote>
+<h3>研究背景</h3>
+<p>现有单碱基编辑器如 CBE、ABE、CGBE、AYBE、GYBE 等只能催化特定类型的碱基转换，双碱基编辑器虽然扩展了编辑能力，但仍然局限于两种碱基类型，无法满足多核苷酸变异（MNV）的生成或纠正，也无法实现全面的碱基多样化。</p>
+<p>在哺乳动物细胞的定向进化中，已有的 CRISPR-AID 超突变器具备高突变率，但存在严重的 C/G 偏倚，主要转换胞嘧啶和鸟嘌呤，而腺嘌呤和胸腺嘧啶几乎不被改变。这种偏倚的突变谱限制了文库的多样性和筛选效率。因此，领域急需一种能够同时高突变率且无偏地突变全部四种碱基的单一工具。</p>
+<h3>核心发现</h3>
+<p>首先，作者开发了紧凑型双碱基编辑器 A&amp;GBE，通过将 TadA8e、nCas9 和工程化鸟嘌呤切除蛋白 MPG6.3 融合，利用 MPG6.3 对脱氧肌苷和鸟嘌呤的双底物活性，在 12 个内源位点同时实现了 A-to-Y 和 G-to-Y 编辑，且在某些 motif（如 TAG、TGA、CGA）上编辑效率超过单编辑器，indel 频率略低于 AYBE（见图 1）。</p>
+<p>其次，通过用先前进化的 TadA 变体 E14 替换 TadA8e，获得了 E14-A&amp;GBE，其腺嘌呤编辑窗口显著变窄，并且在 12 个位点中的 8 个位点上鸟嘌呤编辑活性反而提高；同时，dCas9 版本的编辑器（dA&amp;GBE 等）大幅降低了 indel 频率，但编辑效率有所下降。</p>
+<p>进一步，作者将 A&amp;GBE/dA&amp;GBE 与通过 MS2-MCP 系统招募的 AID 组合，在 GFP 报告系统中实现了 A、C、G 三碱基同时突变，并在 PAM 邻侧 40 bp 区域观察到更高的替换频率（见图 4）。在此基础上整合工程化胸腺嘧啶 DNA 糖基化酶 TDG，构建了四碱基突变模块 dTAGBE+AID（即 QBMM），该模块在约 100 bp 的 gRNA 靶点区域实现了 A、T、C、G 四种碱基的均衡突变，且突变谱型无偏（见图 5）。</p>
+<p>最后，作者应用 QBMM 在 A375 黑色素瘤细胞中靶向 MEK1 外显子 2-4 进行饱和突变，通过司美替尼筛选，鉴定出 Q46R、Q56P、K57E 三个耐药突变，其 GI50 分别提高 3.8 倍、40.9 倍和 35.1 倍，而 G75A 为伴随突变；结构分析显示这些耐药突变位于 MEK1 N 端螺旋 A 的自抑制区域（见图 6）。</p>
+<h4>图 1｜双碱基编辑器A&amp;GBE的开发与活性验证</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42806035/Fig1.jpg" alt="图 1" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>图1 可同时编辑腺嘌呤和鸟嘌呤的双碱基编辑器的开发。a AYBE、GYBE 和 A&amp;GBE 的结构示意图。b AYBE、GYBE 和 A&amp;GBE 在 12 个内源基因组位点的编辑活性。c 所有位点的累积插入缺失频率（详细 indel 信息见补充图 4）。数值和误差线表示在分开日期进行的三个生物学重复的平均值和标准差。源数据以 Source Data 文件提供。</p>
+<p><strong>图解：</strong>该图要回答：能否利用单一 MPG 域同时实现 A-to-Y 和 G-to-Y 编辑？a 分图展示构建设计，A&amp;GBE 将 TadA8e、nCas9 和 MPG6.3 融合，而对照 AYBE 和 GYBE 分别使用 MPG3.0 和 MPG6.3。b 分图显示在 12 个内源位点，A&amp;GBE 同时产生 A 和 G 的编辑，而 AYBE 和 GYBE 仅表现单特异性活性；注意在 TAG、TGA、CGA 等 motif 上 A&amp;GBE 的表现优于单编辑器。c 分图显示累积 indel 频率，A&amp;GBE 的 indel 水平与单编辑器相当或略低。这些结果表明 MPG6.3 可同时切除脱氧肌苷和鸟嘌呤，实现紧凑的双碱基编辑。</p>
+<h4>图 4｜三碱基突变模块的开发</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42806035/Fig4.jpg" alt="图 4" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>图4 诱导腺嘌呤、鸟嘌呤和胞嘧啶突变的突变器的开发。a 突变器设计示意图。b 碱基替换频率沿 GFP 序列的分布。每个碱基的频率（freq.）计算为含有替换的 reads 占覆盖该碱基的总 reads 的百分比（%）。每个点代表一个核苷酸。显示的是三个独立生物学重复中的第一次重复数据（所有三次重复见补充图 12）。c 在 protospacer 区域（−20 到 0）和侧翼区域内的总碱基替换频率（每个核苷酸位置经 Mock 减去），以及仅侧翼区域的频率。每个数据点代表五个独立 GFP 靶位点之一来自三个生物学重复之一（n = 15 次独立转染）。水平线表示中位数。源数据以 Source Data 文件提供。</p>
+<p><strong>图解：</strong>该图要回答：组合 A&amp;GBE 与 AID 能否实现 A、C、G 三种碱基的同时突变？a 分图展示设计：AID 通过 MS2-MCP 系统被招募，与 dA&amp;GBE 或 A&amp;GBE 共表达。b 分图显示沿 GFP 序列的碱基替换频率分布，含 AID 的构建在 PAM 邻侧 40 bp 区域表现出更高的替换频率。c 分图量化了 protospacer 和 flanking 区域的总替换频率，显示 dA&amp;GBE+AID 和 A&amp;GBE+AID 均产生 A、C、G 三碱基编辑，且 C/G 替换率高于单独构建。因此，该组合策略成功扩展了编辑碱基类型，并选择 dA&amp;GBE+AID 用于后续开发。</p>
+<h4>图 5｜四碱基突变模块QBMM的开发</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42806035/Fig5.jpg" alt="图 5" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>图5 针对全部四种碱基的突变器的开发。a 突变器设计示意图。b 碱基替换频率沿 GFP 序列的分布。每个位置的频率计算为含有替换的 reads 占覆盖该碱基的所有 reads 的百分比。每个点代表一个核苷酸。显示的是三个独立生物学重复中的第一次重复数据（所有三次重复见补充图 14）。c 针对 protospacer 区域（位置 −20 到 0）加侧翼区域，以及仅侧翼区域计算的总碱基替换频率（每个核苷酸位置经 Mock 减去）。每个数据点代表五个独立 GFP 靶位点之一来自三个生物学重复之一（n = 15 次独立转染）。水平线表示中位数。d dTAGBE+AID 引起的 A、C、G、T 突变为其他碱基的比例（其他突变器见补充图 15）。数据来自三个独立实验。源数据以 Source Data 文件提供。</p>
+<p><strong>图解：</strong>该图要回答：在 dA&amp;GBE+AID 基础上整合 TDG 是否能实现四种碱基的同时突变且谱型均衡？a 分图展示设计：将 TDG 置于 TadA8e 的 N 端或 C 端，形成 dTAGBE+AID 和 dATGBE+AID。b 分图显示 dTAGBE+AID 在靶点区域产生高替换频率。c 分图显示 dTAGBE+AID 在 protospacer+flanking 和仅 flanking 区域均保持高效，并显著引入 T 替换，证明 TDG 功能整合。d 分图展示 dTAGBE+AID 的碱基突变比例，四种碱基均被突变且分布较均衡。结论：dTAGBE+AID 是推荐的四碱基突变器，能在约 100 bp 窗口内实现无偏突变。</p>
+<h4>图 6｜QBMM筛选MEK1耐药突变</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42806035/Fig6.jpg" alt="图 6" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>图6 四碱基突变模块（QBMM）在内源基因组中鉴定 MEK1 抑制剂耐药突变。a QBMM MEK1 抑制剂耐药筛选的工作流程。A375 细胞转染 QBMM 并多样化 3 天。基因组多样化细胞随后用司美替尼筛选 20 天。收获耐药克隆的基因组进行深度测序。b 显示部分 MEK1 外显子 2 上测序 reads 分布的示意图。c 亲本 A375 细胞和表达野生型 MEK1 或所示可能的 MEK1 抑制剂耐药等位基因的 A375 细胞的生长抑制曲线。数据以三个生物学重复的平均值 ± 标准差呈现。d MEK1 与司美替尼复合物的结构（PDB 代码：7JUZ）。MEK1 显示为蓝色，司美替尼显示为橙色。源数据以 Source Data 文件提供。</p>
+<p><strong>图解：</strong>该图要回答：QBMM 能否在内源基因组中产生功能性突变并用于筛选耐药表型？a 分图展示筛选流程：转染 QBMM 进行 3 天多样化，随后用司美替尼筛选 20 天，再对耐药克隆进行深度测序。b 分图显示 MEK1 外显子 2 区域的测序覆盖，证明突变引入成功。c 分图展示生长抑制曲线，验证 Q46R、Q56P、K57E 突变显著提高 GI50（分别 3.8 倍、40.9 倍和 35.1 倍），而 G75A 无耐药效果。d 分图显示这些耐药突变位于 MEK1 N 端螺旋 A 的自抑制区域，从结构上解释了耐药机制。该应用证实 QBMM 可生成无偏突变谱，用于功能获得性筛选。</p>
+<h3>方法亮点</h3>
+<p>方法上的巧思包括：利用 MPG6.3 的双底物识别特性，用单一蛋白域同时切除脱氧肌苷和鸟嘌呤，简化了双碱基编辑器的构建；将先前进化的 TadA 变体（E4/E14/E11）替换 TadA8e 以缩小编辑窗口，并推测这些变体因电荷改变降低了与 MPG 的空间位阻，从而提高了鸟嘌呤编辑活性。</p>
+<p>在三碱基和四碱基模块的设计中，采用 MS2-MCP 系统招募 AID，而非直接融合，增加了模块化灵活性；TDG 的整合位置经过比较（N 端 vs C 端），发现 TDG 位于 TadA8e N 端时（dTAGBE+AID）活性更高，表明融合蛋白结构域的排列顺序显著影响编辑效率。此外，使用 dCas9 代替 nCas9 有效降低了 indel 频率，为后续治疗应用提供了更安全的选项。在耐药筛选中，用 9 条 gRNA 覆盖 MEK1 外显子热点区域，通过深度测序和生长抑制曲线验证了功能突变。</p>
+<h3>为什么值得读</h3>
+<p>该工作首次实现了在哺乳动物细胞内同时高突变率且无偏地突变四种 DNA 碱基，解决了现有超突变器突变谱偏倚的瓶颈，为定向进化提供了理想的建库工具。QBMM 能在内源基因组中产生饱和突变，适用于功能获得性筛选、变异功能注释和疾病建模。</p>
+<p>对合成生物学和蛋白质工程研究者而言，这套系统可直接用于构建高多样性文库，进行蛋白质定向进化、启动子或调控元件优化、耐药机制研究等；其模块化设计（AID、TadA、TDG、MPG）也提供了灵活的改造空间，可根据需要调整各组分或替换为其他效应蛋白。</p>
+<h3>局限与疑问</h3>
+<p>QBMM 的编辑窗口仍局限在 gRNA 靶点周围约 100 bp，对于需要长距离多样化的应用还需结合多重 gRNA 或其他系统；dTAGBE+AID 在所有测试构建中细胞毒性最高，可能限制其在原代细胞或体内的应用；尽管 dCas9 版本降低了 indel，但 QBMM 仍会产生一定水平的插入缺失，可能干扰功能筛选。</p>
+<p>本研究仅在 HEK293T 和 A375 两种细胞系中验证，其他细胞类型或组织中的编辑效率和谱型未知；筛选到的耐药突变中，G75A 为乘客突变，提示 QBMM 的多重突变可能产生连锁变异，需要后续分离验证；此外，脱靶效应和长期基因组稳定性尚未充分评估，这些都需要在未来的应用中仔细考量。</p>
+<hr/><p>解读依据：PMC 开放获取全文 · 由 AI 生成，关键结论请以原文为准<br/>插图来自原文，许可证 CC BY，版权归原作者<br/>原文：<a href="https://doi.org/10.1038/s41467-026-77241-5">https://doi.org/10.1038/s41467-026-77241-5</a> · PMID 42806035</p>]]></description>
+      <content:encoded><![CDATA[<p><strong>紧凑双碱基编辑器让A/G同时变嘧啶；四模块组合在靶点100bp内实现A/T/C/G无偏突变。</strong></p>
+<p><em>A dual A-to-Y and G-to-Y base editor and a four-base concurrent hypermutator in mammalian cells.</em><br/>Nature communications · 2026 Aug 27<br/>Na Zhao, Joshua Seun Olajide, Zhihong Guan, Junyun Huang, Xiubin Zou, Feilong Ou et al.</p>
+<blockquote><p>入选理由：该工作开发了可同时编辑A/C的紧凑双碱基编辑器，并进一步构建四碱基同时突变的QBMM，在gRNA靶点附近约100 bp内引入全类型碱基突变，为酶定向进化和功能基因组学提供了高多样性建库工具，思路可直接迁移到蛋白质工程。</p></blockquote>
+<h3>研究背景</h3>
+<p>现有单碱基编辑器如 CBE、ABE、CGBE、AYBE、GYBE 等只能催化特定类型的碱基转换，双碱基编辑器虽然扩展了编辑能力，但仍然局限于两种碱基类型，无法满足多核苷酸变异（MNV）的生成或纠正，也无法实现全面的碱基多样化。</p>
+<p>在哺乳动物细胞的定向进化中，已有的 CRISPR-AID 超突变器具备高突变率，但存在严重的 C/G 偏倚，主要转换胞嘧啶和鸟嘌呤，而腺嘌呤和胸腺嘧啶几乎不被改变。这种偏倚的突变谱限制了文库的多样性和筛选效率。因此，领域急需一种能够同时高突变率且无偏地突变全部四种碱基的单一工具。</p>
+<h3>核心发现</h3>
+<p>首先，作者开发了紧凑型双碱基编辑器 A&amp;GBE，通过将 TadA8e、nCas9 和工程化鸟嘌呤切除蛋白 MPG6.3 融合，利用 MPG6.3 对脱氧肌苷和鸟嘌呤的双底物活性，在 12 个内源位点同时实现了 A-to-Y 和 G-to-Y 编辑，且在某些 motif（如 TAG、TGA、CGA）上编辑效率超过单编辑器，indel 频率略低于 AYBE（见图 1）。</p>
+<p>其次，通过用先前进化的 TadA 变体 E14 替换 TadA8e，获得了 E14-A&amp;GBE，其腺嘌呤编辑窗口显著变窄，并且在 12 个位点中的 8 个位点上鸟嘌呤编辑活性反而提高；同时，dCas9 版本的编辑器（dA&amp;GBE 等）大幅降低了 indel 频率，但编辑效率有所下降。</p>
+<p>进一步，作者将 A&amp;GBE/dA&amp;GBE 与通过 MS2-MCP 系统招募的 AID 组合，在 GFP 报告系统中实现了 A、C、G 三碱基同时突变，并在 PAM 邻侧 40 bp 区域观察到更高的替换频率（见图 4）。在此基础上整合工程化胸腺嘧啶 DNA 糖基化酶 TDG，构建了四碱基突变模块 dTAGBE+AID（即 QBMM），该模块在约 100 bp 的 gRNA 靶点区域实现了 A、T、C、G 四种碱基的均衡突变，且突变谱型无偏（见图 5）。</p>
+<p>最后，作者应用 QBMM 在 A375 黑色素瘤细胞中靶向 MEK1 外显子 2-4 进行饱和突变，通过司美替尼筛选，鉴定出 Q46R、Q56P、K57E 三个耐药突变，其 GI50 分别提高 3.8 倍、40.9 倍和 35.1 倍，而 G75A 为伴随突变；结构分析显示这些耐药突变位于 MEK1 N 端螺旋 A 的自抑制区域（见图 6）。</p>
+<h4>图 1｜双碱基编辑器A&amp;GBE的开发与活性验证</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42806035/Fig1.jpg" alt="图 1" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>图1 可同时编辑腺嘌呤和鸟嘌呤的双碱基编辑器的开发。a AYBE、GYBE 和 A&amp;GBE 的结构示意图。b AYBE、GYBE 和 A&amp;GBE 在 12 个内源基因组位点的编辑活性。c 所有位点的累积插入缺失频率（详细 indel 信息见补充图 4）。数值和误差线表示在分开日期进行的三个生物学重复的平均值和标准差。源数据以 Source Data 文件提供。</p>
+<p><strong>图解：</strong>该图要回答：能否利用单一 MPG 域同时实现 A-to-Y 和 G-to-Y 编辑？a 分图展示构建设计，A&amp;GBE 将 TadA8e、nCas9 和 MPG6.3 融合，而对照 AYBE 和 GYBE 分别使用 MPG3.0 和 MPG6.3。b 分图显示在 12 个内源位点，A&amp;GBE 同时产生 A 和 G 的编辑，而 AYBE 和 GYBE 仅表现单特异性活性；注意在 TAG、TGA、CGA 等 motif 上 A&amp;GBE 的表现优于单编辑器。c 分图显示累积 indel 频率，A&amp;GBE 的 indel 水平与单编辑器相当或略低。这些结果表明 MPG6.3 可同时切除脱氧肌苷和鸟嘌呤，实现紧凑的双碱基编辑。</p>
+<h4>图 4｜三碱基突变模块的开发</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42806035/Fig4.jpg" alt="图 4" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>图4 诱导腺嘌呤、鸟嘌呤和胞嘧啶突变的突变器的开发。a 突变器设计示意图。b 碱基替换频率沿 GFP 序列的分布。每个碱基的频率（freq.）计算为含有替换的 reads 占覆盖该碱基的总 reads 的百分比（%）。每个点代表一个核苷酸。显示的是三个独立生物学重复中的第一次重复数据（所有三次重复见补充图 12）。c 在 protospacer 区域（−20 到 0）和侧翼区域内的总碱基替换频率（每个核苷酸位置经 Mock 减去），以及仅侧翼区域的频率。每个数据点代表五个独立 GFP 靶位点之一来自三个生物学重复之一（n = 15 次独立转染）。水平线表示中位数。源数据以 Source Data 文件提供。</p>
+<p><strong>图解：</strong>该图要回答：组合 A&amp;GBE 与 AID 能否实现 A、C、G 三种碱基的同时突变？a 分图展示设计：AID 通过 MS2-MCP 系统被招募，与 dA&amp;GBE 或 A&amp;GBE 共表达。b 分图显示沿 GFP 序列的碱基替换频率分布，含 AID 的构建在 PAM 邻侧 40 bp 区域表现出更高的替换频率。c 分图量化了 protospacer 和 flanking 区域的总替换频率，显示 dA&amp;GBE+AID 和 A&amp;GBE+AID 均产生 A、C、G 三碱基编辑，且 C/G 替换率高于单独构建。因此，该组合策略成功扩展了编辑碱基类型，并选择 dA&amp;GBE+AID 用于后续开发。</p>
+<h4>图 5｜四碱基突变模块QBMM的开发</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42806035/Fig5.jpg" alt="图 5" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>图5 针对全部四种碱基的突变器的开发。a 突变器设计示意图。b 碱基替换频率沿 GFP 序列的分布。每个位置的频率计算为含有替换的 reads 占覆盖该碱基的所有 reads 的百分比。每个点代表一个核苷酸。显示的是三个独立生物学重复中的第一次重复数据（所有三次重复见补充图 14）。c 针对 protospacer 区域（位置 −20 到 0）加侧翼区域，以及仅侧翼区域计算的总碱基替换频率（每个核苷酸位置经 Mock 减去）。每个数据点代表五个独立 GFP 靶位点之一来自三个生物学重复之一（n = 15 次独立转染）。水平线表示中位数。d dTAGBE+AID 引起的 A、C、G、T 突变为其他碱基的比例（其他突变器见补充图 15）。数据来自三个独立实验。源数据以 Source Data 文件提供。</p>
+<p><strong>图解：</strong>该图要回答：在 dA&amp;GBE+AID 基础上整合 TDG 是否能实现四种碱基的同时突变且谱型均衡？a 分图展示设计：将 TDG 置于 TadA8e 的 N 端或 C 端，形成 dTAGBE+AID 和 dATGBE+AID。b 分图显示 dTAGBE+AID 在靶点区域产生高替换频率。c 分图显示 dTAGBE+AID 在 protospacer+flanking 和仅 flanking 区域均保持高效，并显著引入 T 替换，证明 TDG 功能整合。d 分图展示 dTAGBE+AID 的碱基突变比例，四种碱基均被突变且分布较均衡。结论：dTAGBE+AID 是推荐的四碱基突变器，能在约 100 bp 窗口内实现无偏突变。</p>
+<h4>图 6｜QBMM筛选MEK1耐药突变</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42806035/Fig6.jpg" alt="图 6" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>图6 四碱基突变模块（QBMM）在内源基因组中鉴定 MEK1 抑制剂耐药突变。a QBMM MEK1 抑制剂耐药筛选的工作流程。A375 细胞转染 QBMM 并多样化 3 天。基因组多样化细胞随后用司美替尼筛选 20 天。收获耐药克隆的基因组进行深度测序。b 显示部分 MEK1 外显子 2 上测序 reads 分布的示意图。c 亲本 A375 细胞和表达野生型 MEK1 或所示可能的 MEK1 抑制剂耐药等位基因的 A375 细胞的生长抑制曲线。数据以三个生物学重复的平均值 ± 标准差呈现。d MEK1 与司美替尼复合物的结构（PDB 代码：7JUZ）。MEK1 显示为蓝色，司美替尼显示为橙色。源数据以 Source Data 文件提供。</p>
+<p><strong>图解：</strong>该图要回答：QBMM 能否在内源基因组中产生功能性突变并用于筛选耐药表型？a 分图展示筛选流程：转染 QBMM 进行 3 天多样化，随后用司美替尼筛选 20 天，再对耐药克隆进行深度测序。b 分图显示 MEK1 外显子 2 区域的测序覆盖，证明突变引入成功。c 分图展示生长抑制曲线，验证 Q46R、Q56P、K57E 突变显著提高 GI50（分别 3.8 倍、40.9 倍和 35.1 倍），而 G75A 无耐药效果。d 分图显示这些耐药突变位于 MEK1 N 端螺旋 A 的自抑制区域，从结构上解释了耐药机制。该应用证实 QBMM 可生成无偏突变谱，用于功能获得性筛选。</p>
+<h3>方法亮点</h3>
+<p>方法上的巧思包括：利用 MPG6.3 的双底物识别特性，用单一蛋白域同时切除脱氧肌苷和鸟嘌呤，简化了双碱基编辑器的构建；将先前进化的 TadA 变体（E4/E14/E11）替换 TadA8e 以缩小编辑窗口，并推测这些变体因电荷改变降低了与 MPG 的空间位阻，从而提高了鸟嘌呤编辑活性。</p>
+<p>在三碱基和四碱基模块的设计中，采用 MS2-MCP 系统招募 AID，而非直接融合，增加了模块化灵活性；TDG 的整合位置经过比较（N 端 vs C 端），发现 TDG 位于 TadA8e N 端时（dTAGBE+AID）活性更高，表明融合蛋白结构域的排列顺序显著影响编辑效率。此外，使用 dCas9 代替 nCas9 有效降低了 indel 频率，为后续治疗应用提供了更安全的选项。在耐药筛选中，用 9 条 gRNA 覆盖 MEK1 外显子热点区域，通过深度测序和生长抑制曲线验证了功能突变。</p>
+<h3>为什么值得读</h3>
+<p>该工作首次实现了在哺乳动物细胞内同时高突变率且无偏地突变四种 DNA 碱基，解决了现有超突变器突变谱偏倚的瓶颈，为定向进化提供了理想的建库工具。QBMM 能在内源基因组中产生饱和突变，适用于功能获得性筛选、变异功能注释和疾病建模。</p>
+<p>对合成生物学和蛋白质工程研究者而言，这套系统可直接用于构建高多样性文库，进行蛋白质定向进化、启动子或调控元件优化、耐药机制研究等；其模块化设计（AID、TadA、TDG、MPG）也提供了灵活的改造空间，可根据需要调整各组分或替换为其他效应蛋白。</p>
+<h3>局限与疑问</h3>
+<p>QBMM 的编辑窗口仍局限在 gRNA 靶点周围约 100 bp，对于需要长距离多样化的应用还需结合多重 gRNA 或其他系统；dTAGBE+AID 在所有测试构建中细胞毒性最高，可能限制其在原代细胞或体内的应用；尽管 dCas9 版本降低了 indel，但 QBMM 仍会产生一定水平的插入缺失，可能干扰功能筛选。</p>
+<p>本研究仅在 HEK293T 和 A375 两种细胞系中验证，其他细胞类型或组织中的编辑效率和谱型未知；筛选到的耐药突变中，G75A 为乘客突变，提示 QBMM 的多重突变可能产生连锁变异，需要后续分离验证；此外，脱靶效应和长期基因组稳定性尚未充分评估，这些都需要在未来的应用中仔细考量。</p>
+<hr/><p>解读依据：PMC 开放获取全文 · 由 AI 生成，关键结论请以原文为准<br/>插图来自原文，许可证 CC BY，版权归原作者<br/>原文：<a href="https://doi.org/10.1038/s41467-026-77241-5">https://doi.org/10.1038/s41467-026-77241-5</a> · PMID 42806035</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>fDA：未注释基因组中结构域感知的靶向直系同源搜索及β-内酰胺基因发现</title>
+      <link>https://nk39010.github.io/pubmed-digest/articles/42803191.html</link>
+      <guid isPermaLink="false">pubmed-42803191</guid>
+      <category>Nucleic acids research</category>
+      <pubDate>Thu, 01 Oct 2026 06:08:21 +0000</pubDate>
+      <description><![CDATA[<p><strong>无需预先注释，直接从未注释基因组中找直系同源物，并发现弹尾虫可能是被忽视的β-内酰胺抗生素生产者。</strong></p>
+<p><em>Targeted ortholog search in unannotated genome assemblies with fDOG-Assembly.</em><br/>Nucleic acids research · 2026 Sep 22<br/>Hannah Muelbaier, Freya Arthen, Vinh Tran, Ina Schaefer, Miklós Bálint, Ingo Ebersberger</p>
+<blockquote><p>入选理由：fDA工具无需预先注释即可在未注释基因组中做结构域感知的直系同源搜索，并意外发现弹尾虫中广泛存在β-内酰胺生物合成基因，提示动物可能是被忽视的抗生素生产者，既实用又有新方向启发。</p></blockquote>
+<h3>研究背景</h3>
+<p>公共数据库中真核基因组组装数量快速增长，但只有约16%的组装带有基因注释；全基因组注释仍是大基因组真核生物的瓶颈，导致大量组装无法用于进化和功能基因组学分析。</p>
+<p>现有的靶向直系同源搜索工具（如 fDOG、KofamKOALA）依赖预先注释的蛋白质组，基因漏注释会在系统发育谱中形成假性丢失信号。少数可在未注释基因组中工作的工具（如 BUSCO、Compleasm）只能处理通用单拷贝基因集，不支持用户自定义基因，且不评估蛋白质特征结构差异。</p>
+<p>因此，需要一种能直接从未注释基因组中搜索任意目标基因直系同源物、同时提供特征结构相似性评估的工具。</p>
+<h3>核心发现</h3>
+<p>fDA 在基准测试场景1中，用954个 metazoa_odb10 单拷贝基因在10个后生动物基因组中搜索，与 BUSCO、Compleasm 的直系同源分配高度一致；约7022个直系同源对被所有8种搜索策略共同识别，另有1170个被至少6种策略识别（见图 3A）。精度与基于蛋白质组的13种工具相当，灵敏度略低。</p>
+<p>在214个“仅在一个物种中缺失”的 BUSCO 基因谱系缺口案例中，基于组装的方法能填充其中超过80个缺口；没有 UniProt ID 对应的新预测直系同源物填充缺口的比例（11.5%–24.75%）高于已有 UniProt ID 的（2.4%–6.7%），说明 fDA 确实能找回注释遗漏的基因，而不是主要产生假阳性。</p>
+<p>在场景2中，用5000个人类蛋白在褐家鼠 (Rattus norvegicus) 和星状海葵 (Nematostella vectensis) 的未注释基因组中搜索，fDA-MP 恢复共识直系同源对的94.6%，fDA-tbME 为90.6%；对1:1直系同源组最高可恢复97%的组，但对 n:n 共直系同源组恢复率明显下降。</p>
+<p>案例研究中，fDA 筛选了176个土壤无脊椎动物基因组中β-内酰胺合成相关基因，发现152个物种至少含有一个相关酶直系同源物。UMAP 聚类显示，聚类4和6主要由弹尾虫组成，部分物种（如聚类6中的 Onychiurinae 成员）拥有除 cmcH 外完整的 Cephamycin C 生物合成基因集（见图 5）。经过 DIAMOND 分类学分配和邻近基因分析，排除了大多数微生物污染可能，表明这些基因确实编码于动物自身基因组。</p>
+<h4>图 3｜基准测试场景1结果</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42803191/F3.jpg" alt="图 3" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>基准测试场景 1 的结果。(A) fDA、BUSCO 和 Compleasm 在 10 个后生动物物种的基因组组装中识别 metazoa_odb10 直系同源物的性能。为比较，给出了基于蛋白质组的直系同源搜索工具的性能指标。EC——直系同源对之间 EC 注释的平均语义相似度（Schlicker 分数）；GO——直系同源对之间 GO 注释的平均语义相似度（Schlicker 分数）；TreeFam——与 TreeFam-A 提供的经过整理的参考基因系统发育的一致性。PPV——阳性预测值；TPR——真阳性率。详见 [43]。(B) 基于组装工具与基于蛋白质组工具的直系同源分配一致性。颜色编码表示相应基于组装工具的每个分配有多少个基于蛋白质组工具支持。柱高表示每个类别中直系同源分配的数量（对数刻度）。使用线性刻度的图见补充图 S11。(C) 使用预注释蛋白质组（Reference）与 fDA 和 Compleasm 的直系同源分配的成对 FAS 分数分布。FAS_F——以种子蛋白为参考的特征结构相似性分数；FAS_B——以直系同源物为参考的 FAS 分数（见 [13]）。tb——tblastn；MP——MiniProt；Aug——Augustus；ME——Metaeuk。</p>
+<p><strong>图解：</strong>这张图回答 fDA 与现有基于组装的直系同源检测工具相比表现如何，以及不同搜索模式在特征结构保真度上的差异。图 A 显示在 10 个后生动物基因组中，fDA、BUSCO 和 Compleasm 识别 954 个 BUSCO 基因的直系同源物，精度与基于蛋白质组的工具相当，但灵敏度略低；不同 fDA 模式间差异不大，BUSCOAug 稍差。图 B 展示各组装工具做出的直系同源分配被多少个蛋白质组工具支持，fDA-MPAug 和 BUSCOAug 产生较多未被蛋白质组工具复现的分配。图 C 比较 FAS 分数分布：fDA 使用 Augustus 预测基因时，FAS_F 分布最接近参考蛋白质组基准，表明基因模型更完整；MiniProt-only 模式（fDA-MP 和 Compleasm）FAS_F 较低，提示基因预测倾向于截短。这支持 fDA 在保持合理灵敏度的同时能提供基因结构质量信息。</p>
+<h4>图 5｜土壤无脊椎动物β-内酰胺基因分布</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42803191/F5.jpg" alt="图 5" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>土壤无脊椎动物基因组组装中 β-内酰胺合成基因直系同源物的丰度。(A) 产生 Cephamycin N（S. clavuligerus；细菌）和 Penicillin G（A. nidulans；真菌）的生物合成途径。(B) UMAP 排序表示每个受调查土壤无脊椎动物对 β-内酰胺合成酶直系同源物的谱系。相应的分类单元-基因矩阵见补充图 S13。点代表物种，点的颜色表示相应的分类纲。聚类分配由人工完成。(C) 热图显示每个聚类中具有所示基因直系同源物的分类单元的相对丰度。(D) 聚类 5（蓝色）和聚类 6（黄色）选定成员的分类单元-基因矩阵。A. nidulans 和 S. clavuligerus 是直系同源搜索中使用的种子分类单元。点表示在无脊椎动物基因组组装中鉴定出对应种子基因的直系同源物。绿色内嵌表示检测到两个或更多共直系同源物，内嵌直径表示共直系同源物数量。点的颜色表示以种子蛋白为参考的种子与直系同源物之间的 FAS 分数。FAS 分数为 1（蓝色）表示两种蛋白共享相同的特征结构，而分数为 0（橙色）表示没有共享特征。单元格颜色表示以直系同源物为参考的 FAS 分数。如果检测到多个直系同源物，选择 FAS 分数最高的一个进行展示；ET，Eutardigrada。(E) β-内酰胺特征在弹尾虫中的系统发育分布。系统发育中的物种根据其聚类分配着色（见 B）。内圈表示相应基因组组装的 N50 大小（千碱基，kb）。N50 超过 40 kb 的组装用 &#x27;*&#x27; 表示。Neelides folsomi——N50: 149 788 bp；Sminthurides aquaticus——N50: 60 729 bp。外圈给出 BUSCO 完整性分数（Busco 集 metazoa_odb10）。&#x27;e&#x27; 和 &#x27;f&#x27; 分别表示存在 cefE 和 cefF 的直系同源物。系统发育树拓扑取自 [12]。蓝色分支：Onychiurinae；绿色分支：Symphypleona。分类单元缩写：O——Onychiurinae；SP——Symphypleona；Sd——Sminthurididae；Di——Dicyrtomidae；Bo——Bourletiellidae；Sm——Sminthuridae。</p>
+<p><strong>图解：</strong>这张图回答 β-内酰胺生物合成基因在土壤无脊椎动物中分布有多广，以及是否可能由微生物污染造成。图 A 给出参考的细菌 Cephamycin C 和真菌 Penicillin G 生物合成途径。图 B 的 UMAP 将 176 个物种按酶谱分成 6 个聚类，其中聚类 3、4、6 含有 pcbAB 和 pcbC（负责 β-内酰胺环合成），聚类 5 有 pcbAB 和 cefD 但缺 pcbC。图 C 的热图展示各聚类中每个基因的出现频率。图 D 显示聚类 5 和 6 的物种-基因矩阵，并使用 FAS 分数评估直系同源物完整性；taxonomic assignment 排除了大部分污染，表明这些基因主要编码于无脊椎动物自身基因组。图 E 将聚类映射到弹尾虫系统发育，显示聚类 4 分布于整个弹尾虫多样性，提示相关基因在弹尾虫祖先中已经存在；聚类 6 的物种趋于集中在 Onychiurinae 分支，其中几个物种具有近乎完整的 Cephamycin C 合成途径（缺 cmcH）。该图支持弹尾虫可能是此前未被充分认识的 β-内酰胺抗生素生产者。</p>
+<h3>方法亮点</h3>
+<p>fDA 的流程包括输入处理、候选区域识别、基因预测和直系同源验证四个步骤（见图 1）。核心直系同源组由 fDOG 预先计算，fDA 训练 pHMM、生成一致序列，若使用 Augustus 则额外构建 block profile。</p>
+<p>候选区域识别提供 tblastn 或 MiniProt 两种策略：tblastn 用一致序列搜索基因组，必要时合并相邻命中；MiniProt 同时用一致序列和核心组所有蛋白搜索，保留最佳比对区域。基因预测可在 Augustus、MetaEuk 或 MiniProt 快速模式间切换，Augustus 可结合 block profile 提升预测质量。</p>
+<p>直系同源验证采用反向 BLASTP 对参考物种蛋白质组搜索，结合最佳命中和 Kimura 距离判据处理候选和共直系同源关系；最后用 FAS 计算预测直系同源物与种子蛋白的特征结构相似性，输出序列、注释、FAS 分数和系统发育谱。基准测试利用 QfO benchmark service 评估 EC/GO 语义相似度和 TreeFam 一致性，并与 BUSCO、Compleasm 及13种蛋白质组工具比较。</p>
+<h4>图 1｜fDA 四步工作流程</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42803191/F1.jpg" alt="图 1" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>fDOG-Assembly 的工作流程。(A) fDA 从一个预先计算的核心直系同源组开始，该组带有相应氨基酸序列的多序列比对（MSA），以及用该 MSA 训练的谱隐马尔可夫模型（pHMM）。从 pHMM 计算一致序列，并用 MSA 生成 block profile。(B) fDA 提供两种互补策略来识别可能含有直系同源物的候选基因组区域。一种策略以一致序列为查询进行 tblastn 搜索。另一种策略使用 MiniProt，以一致序列和核心直系同源组中的所有蛋白质作为查询搜索目标基因组。(C) 来自 (B) 的每个候选区域作为基因预测的输入。fDA 提供三种基因预测选项：Augustus 结合预先计算的 block profile，MetaEuk 结合参考数据库，或在快速模式下使用 MiniProt。(D) 为验证来自 (C) 的直系同源候选基因，将预测基因的氨基酸序列作为查询，对用户指定参考物种的蛋白质组进行反向 BLASTP 搜索。如果保留两个或更多候选直系同源物，则仅当它们彼此之间的成对距离小于各自到参考蛋白的距离时，才将它们接受为共直系同源物。否则，选择与参考蛋白距离较小的候选者。直系同源搜索最后通过评估所鉴定直系同源物与种子基因之间的成对特征结构相似性来完成。</p>
+<p><strong>图解：</strong>这张图回答的是 fDA 如何在不依赖预先注释的情况下，从未注释基因组中完成靶向直系同源搜索。图 A 说明输入处理：用户提供核心直系同源组和 MSA，fDA 训练 pHMM、生成一致序列和 block profile。图 B 展示候选区域识别的两种策略：tblastn 一致序列搜索或 MiniProt 多查询搜索。图 C 展示基因预测的三种选项：Augustus 加 block profile、MetaEuk 加参考数据库或 MiniProt 快速模式。图 D 说明直系同源验证：预测蛋白对参考物种蛋白组做反向 BLASTP，根据最佳命中或 Kimura 距离验证候选者，并处理共直系同源关系；最后用 FAS 比较特征结构。该流程使 fDA 能在目标区域进行局部基因预测，绕过全基因组注释，同时提供基因结构质量评估。</p>
+<h3>为什么值得读</h3>
+<p>对从事比较基因组学或系统发育谱分析的研究者来说，fDA 意味着可以绕过耗时的全基因组注释，直接利用海量未注释组装扩大分类单元采样，同时通过 FAS 分数获得基因结构完整性的质量控制。</p>
+<p>对合成生物学和天然产物挖掘而言，fDA 的案例展示了一种在未注释动物基因组中发现次生代谢基因簇的路径：弹尾虫中近乎完整的 Cephamycin C 途径提示动物可能是未被充分认识的抗生素生产者，为寻找新型抗菌化合物或抗性基因提供了新方向。</p>
+<p>此外，fDA 的模块化设计（多种候选区域识别与基因预测组合）允许用户在速度、灵敏度和基因模型准确度之间权衡，适合不同规模的分析；其输出可直接导入 PhyloProfile 进行交互式探索。</p>
+<h3>局限与疑问</h3>
+<p>本研究基准主要基于后生动物基因组，且核心直系同源组依赖 fDOG 预先计算；参考物种选择会影响搜索灵敏度和特异性，对进化距离极远的类群尚未充分测试。</p>
+<p>fDA 的灵敏度总体略低于基于完整蛋白质组的工具，特别是 n:n 共直系同源组的恢复率显著降低；使用 MiniProt 快速模式时，基因预测倾向于截短，会降低 FAS_F 分数，若下游需要完整基因结构应优先选择 Augustus。</p>
+<p>案例研究中，许多基因组组装高度碎片化（N50 常低于20 kb），BUSCO 完整性也较低，因此无法区分基因缺失与组装缺口；分类学分配对某些基因的起源仍不确定，β-内酰胺合成酶的功能活性和产物结构还需实验验证。此外，fDA 只检测与已知种子基因同源的序列，无法识别全新或高度分化的同源基因。</p>
+<hr/><p>解读依据：PMC 开放获取全文 · 由 AI 生成，关键结论请以原文为准<br/>插图来自原文，许可证 CC BY，版权归原作者<br/>原文：<a href="https://doi.org/10.1093/nar/gkag929">https://doi.org/10.1093/nar/gkag929</a> · PMID 42803191</p>]]></description>
+      <content:encoded><![CDATA[<p><strong>无需预先注释，直接从未注释基因组中找直系同源物，并发现弹尾虫可能是被忽视的β-内酰胺抗生素生产者。</strong></p>
+<p><em>Targeted ortholog search in unannotated genome assemblies with fDOG-Assembly.</em><br/>Nucleic acids research · 2026 Sep 22<br/>Hannah Muelbaier, Freya Arthen, Vinh Tran, Ina Schaefer, Miklós Bálint, Ingo Ebersberger</p>
+<blockquote><p>入选理由：fDA工具无需预先注释即可在未注释基因组中做结构域感知的直系同源搜索，并意外发现弹尾虫中广泛存在β-内酰胺生物合成基因，提示动物可能是被忽视的抗生素生产者，既实用又有新方向启发。</p></blockquote>
+<h3>研究背景</h3>
+<p>公共数据库中真核基因组组装数量快速增长，但只有约16%的组装带有基因注释；全基因组注释仍是大基因组真核生物的瓶颈，导致大量组装无法用于进化和功能基因组学分析。</p>
+<p>现有的靶向直系同源搜索工具（如 fDOG、KofamKOALA）依赖预先注释的蛋白质组，基因漏注释会在系统发育谱中形成假性丢失信号。少数可在未注释基因组中工作的工具（如 BUSCO、Compleasm）只能处理通用单拷贝基因集，不支持用户自定义基因，且不评估蛋白质特征结构差异。</p>
+<p>因此，需要一种能直接从未注释基因组中搜索任意目标基因直系同源物、同时提供特征结构相似性评估的工具。</p>
+<h3>核心发现</h3>
+<p>fDA 在基准测试场景1中，用954个 metazoa_odb10 单拷贝基因在10个后生动物基因组中搜索，与 BUSCO、Compleasm 的直系同源分配高度一致；约7022个直系同源对被所有8种搜索策略共同识别，另有1170个被至少6种策略识别（见图 3A）。精度与基于蛋白质组的13种工具相当，灵敏度略低。</p>
+<p>在214个“仅在一个物种中缺失”的 BUSCO 基因谱系缺口案例中，基于组装的方法能填充其中超过80个缺口；没有 UniProt ID 对应的新预测直系同源物填充缺口的比例（11.5%–24.75%）高于已有 UniProt ID 的（2.4%–6.7%），说明 fDA 确实能找回注释遗漏的基因，而不是主要产生假阳性。</p>
+<p>在场景2中，用5000个人类蛋白在褐家鼠 (Rattus norvegicus) 和星状海葵 (Nematostella vectensis) 的未注释基因组中搜索，fDA-MP 恢复共识直系同源对的94.6%，fDA-tbME 为90.6%；对1:1直系同源组最高可恢复97%的组，但对 n:n 共直系同源组恢复率明显下降。</p>
+<p>案例研究中，fDA 筛选了176个土壤无脊椎动物基因组中β-内酰胺合成相关基因，发现152个物种至少含有一个相关酶直系同源物。UMAP 聚类显示，聚类4和6主要由弹尾虫组成，部分物种（如聚类6中的 Onychiurinae 成员）拥有除 cmcH 外完整的 Cephamycin C 生物合成基因集（见图 5）。经过 DIAMOND 分类学分配和邻近基因分析，排除了大多数微生物污染可能，表明这些基因确实编码于动物自身基因组。</p>
+<h4>图 3｜基准测试场景1结果</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42803191/F3.jpg" alt="图 3" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>基准测试场景 1 的结果。(A) fDA、BUSCO 和 Compleasm 在 10 个后生动物物种的基因组组装中识别 metazoa_odb10 直系同源物的性能。为比较，给出了基于蛋白质组的直系同源搜索工具的性能指标。EC——直系同源对之间 EC 注释的平均语义相似度（Schlicker 分数）；GO——直系同源对之间 GO 注释的平均语义相似度（Schlicker 分数）；TreeFam——与 TreeFam-A 提供的经过整理的参考基因系统发育的一致性。PPV——阳性预测值；TPR——真阳性率。详见 [43]。(B) 基于组装工具与基于蛋白质组工具的直系同源分配一致性。颜色编码表示相应基于组装工具的每个分配有多少个基于蛋白质组工具支持。柱高表示每个类别中直系同源分配的数量（对数刻度）。使用线性刻度的图见补充图 S11。(C) 使用预注释蛋白质组（Reference）与 fDA 和 Compleasm 的直系同源分配的成对 FAS 分数分布。FAS_F——以种子蛋白为参考的特征结构相似性分数；FAS_B——以直系同源物为参考的 FAS 分数（见 [13]）。tb——tblastn；MP——MiniProt；Aug——Augustus；ME——Metaeuk。</p>
+<p><strong>图解：</strong>这张图回答 fDA 与现有基于组装的直系同源检测工具相比表现如何，以及不同搜索模式在特征结构保真度上的差异。图 A 显示在 10 个后生动物基因组中，fDA、BUSCO 和 Compleasm 识别 954 个 BUSCO 基因的直系同源物，精度与基于蛋白质组的工具相当，但灵敏度略低；不同 fDA 模式间差异不大，BUSCOAug 稍差。图 B 展示各组装工具做出的直系同源分配被多少个蛋白质组工具支持，fDA-MPAug 和 BUSCOAug 产生较多未被蛋白质组工具复现的分配。图 C 比较 FAS 分数分布：fDA 使用 Augustus 预测基因时，FAS_F 分布最接近参考蛋白质组基准，表明基因模型更完整；MiniProt-only 模式（fDA-MP 和 Compleasm）FAS_F 较低，提示基因预测倾向于截短。这支持 fDA 在保持合理灵敏度的同时能提供基因结构质量信息。</p>
+<h4>图 5｜土壤无脊椎动物β-内酰胺基因分布</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42803191/F5.jpg" alt="图 5" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>土壤无脊椎动物基因组组装中 β-内酰胺合成基因直系同源物的丰度。(A) 产生 Cephamycin N（S. clavuligerus；细菌）和 Penicillin G（A. nidulans；真菌）的生物合成途径。(B) UMAP 排序表示每个受调查土壤无脊椎动物对 β-内酰胺合成酶直系同源物的谱系。相应的分类单元-基因矩阵见补充图 S13。点代表物种，点的颜色表示相应的分类纲。聚类分配由人工完成。(C) 热图显示每个聚类中具有所示基因直系同源物的分类单元的相对丰度。(D) 聚类 5（蓝色）和聚类 6（黄色）选定成员的分类单元-基因矩阵。A. nidulans 和 S. clavuligerus 是直系同源搜索中使用的种子分类单元。点表示在无脊椎动物基因组组装中鉴定出对应种子基因的直系同源物。绿色内嵌表示检测到两个或更多共直系同源物，内嵌直径表示共直系同源物数量。点的颜色表示以种子蛋白为参考的种子与直系同源物之间的 FAS 分数。FAS 分数为 1（蓝色）表示两种蛋白共享相同的特征结构，而分数为 0（橙色）表示没有共享特征。单元格颜色表示以直系同源物为参考的 FAS 分数。如果检测到多个直系同源物，选择 FAS 分数最高的一个进行展示；ET，Eutardigrada。(E) β-内酰胺特征在弹尾虫中的系统发育分布。系统发育中的物种根据其聚类分配着色（见 B）。内圈表示相应基因组组装的 N50 大小（千碱基，kb）。N50 超过 40 kb 的组装用 &#x27;*&#x27; 表示。Neelides folsomi——N50: 149 788 bp；Sminthurides aquaticus——N50: 60 729 bp。外圈给出 BUSCO 完整性分数（Busco 集 metazoa_odb10）。&#x27;e&#x27; 和 &#x27;f&#x27; 分别表示存在 cefE 和 cefF 的直系同源物。系统发育树拓扑取自 [12]。蓝色分支：Onychiurinae；绿色分支：Symphypleona。分类单元缩写：O——Onychiurinae；SP——Symphypleona；Sd——Sminthurididae；Di——Dicyrtomidae；Bo——Bourletiellidae；Sm——Sminthuridae。</p>
+<p><strong>图解：</strong>这张图回答 β-内酰胺生物合成基因在土壤无脊椎动物中分布有多广，以及是否可能由微生物污染造成。图 A 给出参考的细菌 Cephamycin C 和真菌 Penicillin G 生物合成途径。图 B 的 UMAP 将 176 个物种按酶谱分成 6 个聚类，其中聚类 3、4、6 含有 pcbAB 和 pcbC（负责 β-内酰胺环合成），聚类 5 有 pcbAB 和 cefD 但缺 pcbC。图 C 的热图展示各聚类中每个基因的出现频率。图 D 显示聚类 5 和 6 的物种-基因矩阵，并使用 FAS 分数评估直系同源物完整性；taxonomic assignment 排除了大部分污染，表明这些基因主要编码于无脊椎动物自身基因组。图 E 将聚类映射到弹尾虫系统发育，显示聚类 4 分布于整个弹尾虫多样性，提示相关基因在弹尾虫祖先中已经存在；聚类 6 的物种趋于集中在 Onychiurinae 分支，其中几个物种具有近乎完整的 Cephamycin C 合成途径（缺 cmcH）。该图支持弹尾虫可能是此前未被充分认识的 β-内酰胺抗生素生产者。</p>
+<h3>方法亮点</h3>
+<p>fDA 的流程包括输入处理、候选区域识别、基因预测和直系同源验证四个步骤（见图 1）。核心直系同源组由 fDOG 预先计算，fDA 训练 pHMM、生成一致序列，若使用 Augustus 则额外构建 block profile。</p>
+<p>候选区域识别提供 tblastn 或 MiniProt 两种策略：tblastn 用一致序列搜索基因组，必要时合并相邻命中；MiniProt 同时用一致序列和核心组所有蛋白搜索，保留最佳比对区域。基因预测可在 Augustus、MetaEuk 或 MiniProt 快速模式间切换，Augustus 可结合 block profile 提升预测质量。</p>
+<p>直系同源验证采用反向 BLASTP 对参考物种蛋白质组搜索，结合最佳命中和 Kimura 距离判据处理候选和共直系同源关系；最后用 FAS 计算预测直系同源物与种子蛋白的特征结构相似性，输出序列、注释、FAS 分数和系统发育谱。基准测试利用 QfO benchmark service 评估 EC/GO 语义相似度和 TreeFam 一致性，并与 BUSCO、Compleasm 及13种蛋白质组工具比较。</p>
+<h4>图 1｜fDA 四步工作流程</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42803191/F1.jpg" alt="图 1" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>fDOG-Assembly 的工作流程。(A) fDA 从一个预先计算的核心直系同源组开始，该组带有相应氨基酸序列的多序列比对（MSA），以及用该 MSA 训练的谱隐马尔可夫模型（pHMM）。从 pHMM 计算一致序列，并用 MSA 生成 block profile。(B) fDA 提供两种互补策略来识别可能含有直系同源物的候选基因组区域。一种策略以一致序列为查询进行 tblastn 搜索。另一种策略使用 MiniProt，以一致序列和核心直系同源组中的所有蛋白质作为查询搜索目标基因组。(C) 来自 (B) 的每个候选区域作为基因预测的输入。fDA 提供三种基因预测选项：Augustus 结合预先计算的 block profile，MetaEuk 结合参考数据库，或在快速模式下使用 MiniProt。(D) 为验证来自 (C) 的直系同源候选基因，将预测基因的氨基酸序列作为查询，对用户指定参考物种的蛋白质组进行反向 BLASTP 搜索。如果保留两个或更多候选直系同源物，则仅当它们彼此之间的成对距离小于各自到参考蛋白的距离时，才将它们接受为共直系同源物。否则，选择与参考蛋白距离较小的候选者。直系同源搜索最后通过评估所鉴定直系同源物与种子基因之间的成对特征结构相似性来完成。</p>
+<p><strong>图解：</strong>这张图回答的是 fDA 如何在不依赖预先注释的情况下，从未注释基因组中完成靶向直系同源搜索。图 A 说明输入处理：用户提供核心直系同源组和 MSA，fDA 训练 pHMM、生成一致序列和 block profile。图 B 展示候选区域识别的两种策略：tblastn 一致序列搜索或 MiniProt 多查询搜索。图 C 展示基因预测的三种选项：Augustus 加 block profile、MetaEuk 加参考数据库或 MiniProt 快速模式。图 D 说明直系同源验证：预测蛋白对参考物种蛋白组做反向 BLASTP，根据最佳命中或 Kimura 距离验证候选者，并处理共直系同源关系；最后用 FAS 比较特征结构。该流程使 fDA 能在目标区域进行局部基因预测，绕过全基因组注释，同时提供基因结构质量评估。</p>
+<h3>为什么值得读</h3>
+<p>对从事比较基因组学或系统发育谱分析的研究者来说，fDA 意味着可以绕过耗时的全基因组注释，直接利用海量未注释组装扩大分类单元采样，同时通过 FAS 分数获得基因结构完整性的质量控制。</p>
+<p>对合成生物学和天然产物挖掘而言，fDA 的案例展示了一种在未注释动物基因组中发现次生代谢基因簇的路径：弹尾虫中近乎完整的 Cephamycin C 途径提示动物可能是未被充分认识的抗生素生产者，为寻找新型抗菌化合物或抗性基因提供了新方向。</p>
+<p>此外，fDA 的模块化设计（多种候选区域识别与基因预测组合）允许用户在速度、灵敏度和基因模型准确度之间权衡，适合不同规模的分析；其输出可直接导入 PhyloProfile 进行交互式探索。</p>
+<h3>局限与疑问</h3>
+<p>本研究基准主要基于后生动物基因组，且核心直系同源组依赖 fDOG 预先计算；参考物种选择会影响搜索灵敏度和特异性，对进化距离极远的类群尚未充分测试。</p>
+<p>fDA 的灵敏度总体略低于基于完整蛋白质组的工具，特别是 n:n 共直系同源组的恢复率显著降低；使用 MiniProt 快速模式时，基因预测倾向于截短，会降低 FAS_F 分数，若下游需要完整基因结构应优先选择 Augustus。</p>
+<p>案例研究中，许多基因组组装高度碎片化（N50 常低于20 kb），BUSCO 完整性也较低，因此无法区分基因缺失与组装缺口；分类学分配对某些基因的起源仍不确定，β-内酰胺合成酶的功能活性和产物结构还需实验验证。此外，fDA 只检测与已知种子基因同源的序列，无法识别全新或高度分化的同源基因。</p>
+<hr/><p>解读依据：PMC 开放获取全文 · 由 AI 生成，关键结论请以原文为准<br/>插图来自原文，许可证 CC BY，版权归原作者<br/>原文：<a href="https://doi.org/10.1093/nar/gkag929">https://doi.org/10.1093/nar/gkag929</a> · PMID 42803191</p>]]></content:encoded>
+    </item>
     <item>
       <title>全球宏基因组分析将蛋白质家族空间扩大四倍：60余万个新家族及结构与生态注释</title>
       <link>https://nk39010.github.io/pubmed-digest/articles/42803189.html</link>

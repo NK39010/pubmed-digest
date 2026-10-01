@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>开发可同时编辑A/C/G/T的哺乳动物细胞四碱基突变器QBMM及其双碱基编辑器A&amp;GBE</title>
+<style>
+  body{margin:0;background:#fff;color:#1c1c1a;font:16px/1.8 -apple-system,"Segoe UI","Microsoft YaHei",serif}
+  main{max-width:40em;margin:0 auto;padding:28px 18px 60px}
+  h1{font-size:1.5em;line-height:1.4;margin:0 0 1em}
+  h3{font-size:1.08em;margin:1.9em 0 .7em;padding-left:.6em;border-left:4px solid #2f6f4f;color:#2f6f4f}
+  h4{font-size:1em;margin:1.5em 0 .5em;color:#2f6f4f}
+  p{margin:0 0 1em}
+  img{max-width:100%;height:auto;display:block;margin:0 auto}
+  blockquote{margin:1.2em 0;padding:.7em 1em;background:#f7f7f4;border-left:3px solid #e2e2dd;color:#6b6b66}
+  hr{border:0;border-top:1px dashed #e2e2dd;margin:2em 0}
+  em{color:#6b6b66}
+  a{color:#2f6f4f}
+  @media (prefers-color-scheme:dark){body{background:#16161a;color:#e8e8e4}blockquote{background:#22222a;color:#a8a8a2}}
+</style></head>
+<body><main><h1>开发可同时编辑A/C/G/T的哺乳动物细胞四碱基突变器QBMM及其双碱基编辑器A&amp;GBE</h1>
+<p><strong>紧凑双碱基编辑器让A/G同时变嘧啶；四模块组合在靶点100bp内实现A/T/C/G无偏突变。</strong></p>
+<p><em>A dual A-to-Y and G-to-Y base editor and a four-base concurrent hypermutator in mammalian cells.</em><br/>Nature communications · 2026 Aug 27<br/>Na Zhao, Joshua Seun Olajide, Zhihong Guan, Junyun Huang, Xiubin Zou, Feilong Ou et al.</p>
+<blockquote><p>入选理由：该工作开发了可同时编辑A/C的紧凑双碱基编辑器，并进一步构建四碱基同时突变的QBMM，在gRNA靶点附近约100 bp内引入全类型碱基突变，为酶定向进化和功能基因组学提供了高多样性建库工具，思路可直接迁移到蛋白质工程。</p></blockquote>
+<h3>研究背景</h3>
+<p>现有单碱基编辑器如 CBE、ABE、CGBE、AYBE、GYBE 等只能催化特定类型的碱基转换，双碱基编辑器虽然扩展了编辑能力，但仍然局限于两种碱基类型，无法满足多核苷酸变异（MNV）的生成或纠正，也无法实现全面的碱基多样化。</p>
+<p>在哺乳动物细胞的定向进化中，已有的 CRISPR-AID 超突变器具备高突变率，但存在严重的 C/G 偏倚，主要转换胞嘧啶和鸟嘌呤，而腺嘌呤和胸腺嘧啶几乎不被改变。这种偏倚的突变谱限制了文库的多样性和筛选效率。因此，领域急需一种能够同时高突变率且无偏地突变全部四种碱基的单一工具。</p>
+<h3>核心发现</h3>
+<p>首先，作者开发了紧凑型双碱基编辑器 A&amp;GBE，通过将 TadA8e、nCas9 和工程化鸟嘌呤切除蛋白 MPG6.3 融合，利用 MPG6.3 对脱氧肌苷和鸟嘌呤的双底物活性，在 12 个内源位点同时实现了 A-to-Y 和 G-to-Y 编辑，且在某些 motif（如 TAG、TGA、CGA）上编辑效率超过单编辑器，indel 频率略低于 AYBE（见图 1）。</p>
+<p>其次，通过用先前进化的 TadA 变体 E14 替换 TadA8e，获得了 E14-A&amp;GBE，其腺嘌呤编辑窗口显著变窄，并且在 12 个位点中的 8 个位点上鸟嘌呤编辑活性反而提高；同时，dCas9 版本的编辑器（dA&amp;GBE 等）大幅降低了 indel 频率，但编辑效率有所下降。</p>
+<p>进一步，作者将 A&amp;GBE/dA&amp;GBE 与通过 MS2-MCP 系统招募的 AID 组合，在 GFP 报告系统中实现了 A、C、G 三碱基同时突变，并在 PAM 邻侧 40 bp 区域观察到更高的替换频率（见图 4）。在此基础上整合工程化胸腺嘧啶 DNA 糖基化酶 TDG，构建了四碱基突变模块 dTAGBE+AID（即 QBMM），该模块在约 100 bp 的 gRNA 靶点区域实现了 A、T、C、G 四种碱基的均衡突变，且突变谱型无偏（见图 5）。</p>
+<p>最后，作者应用 QBMM 在 A375 黑色素瘤细胞中靶向 MEK1 外显子 2-4 进行饱和突变，通过司美替尼筛选，鉴定出 Q46R、Q56P、K57E 三个耐药突变，其 GI50 分别提高 3.8 倍、40.9 倍和 35.1 倍，而 G75A 为伴随突变；结构分析显示这些耐药突变位于 MEK1 N 端螺旋 A 的自抑制区域（见图 6）。</p>
+<h4>图 1｜双碱基编辑器A&amp;GBE的开发与活性验证</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42806035/Fig1.jpg" alt="图 1" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>图1 可同时编辑腺嘌呤和鸟嘌呤的双碱基编辑器的开发。a AYBE、GYBE 和 A&amp;GBE 的结构示意图。b AYBE、GYBE 和 A&amp;GBE 在 12 个内源基因组位点的编辑活性。c 所有位点的累积插入缺失频率（详细 indel 信息见补充图 4）。数值和误差线表示在分开日期进行的三个生物学重复的平均值和标准差。源数据以 Source Data 文件提供。</p>
+<p><strong>图解：</strong>该图要回答：能否利用单一 MPG 域同时实现 A-to-Y 和 G-to-Y 编辑？a 分图展示构建设计，A&amp;GBE 将 TadA8e、nCas9 和 MPG6.3 融合，而对照 AYBE 和 GYBE 分别使用 MPG3.0 和 MPG6.3。b 分图显示在 12 个内源位点，A&amp;GBE 同时产生 A 和 G 的编辑，而 AYBE 和 GYBE 仅表现单特异性活性；注意在 TAG、TGA、CGA 等 motif 上 A&amp;GBE 的表现优于单编辑器。c 分图显示累积 indel 频率，A&amp;GBE 的 indel 水平与单编辑器相当或略低。这些结果表明 MPG6.3 可同时切除脱氧肌苷和鸟嘌呤，实现紧凑的双碱基编辑。</p>
+<h4>图 4｜三碱基突变模块的开发</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42806035/Fig4.jpg" alt="图 4" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>图4 诱导腺嘌呤、鸟嘌呤和胞嘧啶突变的突变器的开发。a 突变器设计示意图。b 碱基替换频率沿 GFP 序列的分布。每个碱基的频率（freq.）计算为含有替换的 reads 占覆盖该碱基的总 reads 的百分比（%）。每个点代表一个核苷酸。显示的是三个独立生物学重复中的第一次重复数据（所有三次重复见补充图 12）。c 在 protospacer 区域（−20 到 0）和侧翼区域内的总碱基替换频率（每个核苷酸位置经 Mock 减去），以及仅侧翼区域的频率。每个数据点代表五个独立 GFP 靶位点之一来自三个生物学重复之一（n = 15 次独立转染）。水平线表示中位数。源数据以 Source Data 文件提供。</p>
+<p><strong>图解：</strong>该图要回答：组合 A&amp;GBE 与 AID 能否实现 A、C、G 三种碱基的同时突变？a 分图展示设计：AID 通过 MS2-MCP 系统被招募，与 dA&amp;GBE 或 A&amp;GBE 共表达。b 分图显示沿 GFP 序列的碱基替换频率分布，含 AID 的构建在 PAM 邻侧 40 bp 区域表现出更高的替换频率。c 分图量化了 protospacer 和 flanking 区域的总替换频率，显示 dA&amp;GBE+AID 和 A&amp;GBE+AID 均产生 A、C、G 三碱基编辑，且 C/G 替换率高于单独构建。因此，该组合策略成功扩展了编辑碱基类型，并选择 dA&amp;GBE+AID 用于后续开发。</p>
+<h4>图 5｜四碱基突变模块QBMM的开发</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42806035/Fig5.jpg" alt="图 5" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>图5 针对全部四种碱基的突变器的开发。a 突变器设计示意图。b 碱基替换频率沿 GFP 序列的分布。每个位置的频率计算为含有替换的 reads 占覆盖该碱基的所有 reads 的百分比。每个点代表一个核苷酸。显示的是三个独立生物学重复中的第一次重复数据（所有三次重复见补充图 14）。c 针对 protospacer 区域（位置 −20 到 0）加侧翼区域，以及仅侧翼区域计算的总碱基替换频率（每个核苷酸位置经 Mock 减去）。每个数据点代表五个独立 GFP 靶位点之一来自三个生物学重复之一（n = 15 次独立转染）。水平线表示中位数。d dTAGBE+AID 引起的 A、C、G、T 突变为其他碱基的比例（其他突变器见补充图 15）。数据来自三个独立实验。源数据以 Source Data 文件提供。</p>
+<p><strong>图解：</strong>该图要回答：在 dA&amp;GBE+AID 基础上整合 TDG 是否能实现四种碱基的同时突变且谱型均衡？a 分图展示设计：将 TDG 置于 TadA8e 的 N 端或 C 端，形成 dTAGBE+AID 和 dATGBE+AID。b 分图显示 dTAGBE+AID 在靶点区域产生高替换频率。c 分图显示 dTAGBE+AID 在 protospacer+flanking 和仅 flanking 区域均保持高效，并显著引入 T 替换，证明 TDG 功能整合。d 分图展示 dTAGBE+AID 的碱基突变比例，四种碱基均被突变且分布较均衡。结论：dTAGBE+AID 是推荐的四碱基突变器，能在约 100 bp 窗口内实现无偏突变。</p>
+<h4>图 6｜QBMM筛选MEK1耐药突变</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42806035/Fig6.jpg" alt="图 6" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>图6 四碱基突变模块（QBMM）在内源基因组中鉴定 MEK1 抑制剂耐药突变。a QBMM MEK1 抑制剂耐药筛选的工作流程。A375 细胞转染 QBMM 并多样化 3 天。基因组多样化细胞随后用司美替尼筛选 20 天。收获耐药克隆的基因组进行深度测序。b 显示部分 MEK1 外显子 2 上测序 reads 分布的示意图。c 亲本 A375 细胞和表达野生型 MEK1 或所示可能的 MEK1 抑制剂耐药等位基因的 A375 细胞的生长抑制曲线。数据以三个生物学重复的平均值 ± 标准差呈现。d MEK1 与司美替尼复合物的结构（PDB 代码：7JUZ）。MEK1 显示为蓝色，司美替尼显示为橙色。源数据以 Source Data 文件提供。</p>
+<p><strong>图解：</strong>该图要回答：QBMM 能否在内源基因组中产生功能性突变并用于筛选耐药表型？a 分图展示筛选流程：转染 QBMM 进行 3 天多样化，随后用司美替尼筛选 20 天，再对耐药克隆进行深度测序。b 分图显示 MEK1 外显子 2 区域的测序覆盖，证明突变引入成功。c 分图展示生长抑制曲线，验证 Q46R、Q56P、K57E 突变显著提高 GI50（分别 3.8 倍、40.9 倍和 35.1 倍），而 G75A 无耐药效果。d 分图显示这些耐药突变位于 MEK1 N 端螺旋 A 的自抑制区域，从结构上解释了耐药机制。该应用证实 QBMM 可生成无偏突变谱，用于功能获得性筛选。</p>
+<h3>方法亮点</h3>
+<p>方法上的巧思包括：利用 MPG6.3 的双底物识别特性，用单一蛋白域同时切除脱氧肌苷和鸟嘌呤，简化了双碱基编辑器的构建；将先前进化的 TadA 变体（E4/E14/E11）替换 TadA8e 以缩小编辑窗口，并推测这些变体因电荷改变降低了与 MPG 的空间位阻，从而提高了鸟嘌呤编辑活性。</p>
+<p>在三碱基和四碱基模块的设计中，采用 MS2-MCP 系统招募 AID，而非直接融合，增加了模块化灵活性；TDG 的整合位置经过比较（N 端 vs C 端），发现 TDG 位于 TadA8e N 端时（dTAGBE+AID）活性更高，表明融合蛋白结构域的排列顺序显著影响编辑效率。此外，使用 dCas9 代替 nCas9 有效降低了 indel 频率，为后续治疗应用提供了更安全的选项。在耐药筛选中，用 9 条 gRNA 覆盖 MEK1 外显子热点区域，通过深度测序和生长抑制曲线验证了功能突变。</p>
+<h3>为什么值得读</h3>
+<p>该工作首次实现了在哺乳动物细胞内同时高突变率且无偏地突变四种 DNA 碱基，解决了现有超突变器突变谱偏倚的瓶颈，为定向进化提供了理想的建库工具。QBMM 能在内源基因组中产生饱和突变，适用于功能获得性筛选、变异功能注释和疾病建模。</p>
+<p>对合成生物学和蛋白质工程研究者而言，这套系统可直接用于构建高多样性文库，进行蛋白质定向进化、启动子或调控元件优化、耐药机制研究等；其模块化设计（AID、TadA、TDG、MPG）也提供了灵活的改造空间，可根据需要调整各组分或替换为其他效应蛋白。</p>
+<h3>局限与疑问</h3>
+<p>QBMM 的编辑窗口仍局限在 gRNA 靶点周围约 100 bp，对于需要长距离多样化的应用还需结合多重 gRNA 或其他系统；dTAGBE+AID 在所有测试构建中细胞毒性最高，可能限制其在原代细胞或体内的应用；尽管 dCas9 版本降低了 indel，但 QBMM 仍会产生一定水平的插入缺失，可能干扰功能筛选。</p>
+<p>本研究仅在 HEK293T 和 A375 两种细胞系中验证，其他细胞类型或组织中的编辑效率和谱型未知；筛选到的耐药突变中，G75A 为乘客突变，提示 QBMM 的多重突变可能产生连锁变异，需要后续分离验证；此外，脱靶效应和长期基因组稳定性尚未充分评估，这些都需要在未来的应用中仔细考量。</p>
+<hr/><p>解读依据：PMC 开放获取全文 · 由 AI 生成，关键结论请以原文为准<br/>插图来自原文，许可证 CC BY，版权归原作者<br/>原文：<a href="https://doi.org/10.1038/s41467-026-77241-5">https://doi.org/10.1038/s41467-026-77241-5</a> · PMID 42806035</p>
+<p><a href="../index.html">← 全部解读</a></p>
+</main></body></html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>fDA：未注释基因组中结构域感知的靶向直系同源搜索及β-内酰胺基因发现</title>
+<style>
+  body{margin:0;background:#fff;color:#1c1c1a;font:16px/1.8 -apple-system,"Segoe UI","Microsoft YaHei",serif}
+  main{max-width:40em;margin:0 auto;padding:28px 18px 60px}
+  h1{font-size:1.5em;line-height:1.4;margin:0 0 1em}
+  h3{font-size:1.08em;margin:1.9em 0 .7em;padding-left:.6em;border-left:4px solid #2f6f4f;color:#2f6f4f}
+  h4{font-size:1em;margin:1.5em 0 .5em;color:#2f6f4f}
+  p{margin:0 0 1em}
+  img{max-width:100%;height:auto;display:block;margin:0 auto}
+  blockquote{margin:1.2em 0;padding:.7em 1em;background:#f7f7f4;border-left:3px solid #e2e2dd;color:#6b6b66}
+  hr{border:0;border-top:1px dashed #e2e2dd;margin:2em 0}
+  em{color:#6b6b66}
+  a{color:#2f6f4f}
+  @media (prefers-color-scheme:dark){body{background:#16161a;color:#e8e8e4}blockquote{background:#22222a;color:#a8a8a2}}
+</style></head>
+<body><main><h1>fDA：未注释基因组中结构域感知的靶向直系同源搜索及β-内酰胺基因发现</h1>
+<p><strong>无需预先注释，直接从未注释基因组中找直系同源物，并发现弹尾虫可能是被忽视的β-内酰胺抗生素生产者。</strong></p>
+<p><em>Targeted ortholog search in unannotated genome assemblies with fDOG-Assembly.</em><br/>Nucleic acids research · 2026 Sep 22<br/>Hannah Muelbaier, Freya Arthen, Vinh Tran, Ina Schaefer, Miklós Bálint, Ingo Ebersberger</p>
+<blockquote><p>入选理由：fDA工具无需预先注释即可在未注释基因组中做结构域感知的直系同源搜索，并意外发现弹尾虫中广泛存在β-内酰胺生物合成基因，提示动物可能是被忽视的抗生素生产者，既实用又有新方向启发。</p></blockquote>
+<h3>研究背景</h3>
+<p>公共数据库中真核基因组组装数量快速增长，但只有约16%的组装带有基因注释；全基因组注释仍是大基因组真核生物的瓶颈，导致大量组装无法用于进化和功能基因组学分析。</p>
+<p>现有的靶向直系同源搜索工具（如 fDOG、KofamKOALA）依赖预先注释的蛋白质组，基因漏注释会在系统发育谱中形成假性丢失信号。少数可在未注释基因组中工作的工具（如 BUSCO、Compleasm）只能处理通用单拷贝基因集，不支持用户自定义基因，且不评估蛋白质特征结构差异。</p>
+<p>因此，需要一种能直接从未注释基因组中搜索任意目标基因直系同源物、同时提供特征结构相似性评估的工具。</p>
+<h3>核心发现</h3>
+<p>fDA 在基准测试场景1中，用954个 metazoa_odb10 单拷贝基因在10个后生动物基因组中搜索，与 BUSCO、Compleasm 的直系同源分配高度一致；约7022个直系同源对被所有8种搜索策略共同识别，另有1170个被至少6种策略识别（见图 3A）。精度与基于蛋白质组的13种工具相当，灵敏度略低。</p>
+<p>在214个“仅在一个物种中缺失”的 BUSCO 基因谱系缺口案例中，基于组装的方法能填充其中超过80个缺口；没有 UniProt ID 对应的新预测直系同源物填充缺口的比例（11.5%–24.75%）高于已有 UniProt ID 的（2.4%–6.7%），说明 fDA 确实能找回注释遗漏的基因，而不是主要产生假阳性。</p>
+<p>在场景2中，用5000个人类蛋白在褐家鼠 (Rattus norvegicus) 和星状海葵 (Nematostella vectensis) 的未注释基因组中搜索，fDA-MP 恢复共识直系同源对的94.6%，fDA-tbME 为90.6%；对1:1直系同源组最高可恢复97%的组，但对 n:n 共直系同源组恢复率明显下降。</p>
+<p>案例研究中，fDA 筛选了176个土壤无脊椎动物基因组中β-内酰胺合成相关基因，发现152个物种至少含有一个相关酶直系同源物。UMAP 聚类显示，聚类4和6主要由弹尾虫组成，部分物种（如聚类6中的 Onychiurinae 成员）拥有除 cmcH 外完整的 Cephamycin C 生物合成基因集（见图 5）。经过 DIAMOND 分类学分配和邻近基因分析，排除了大多数微生物污染可能，表明这些基因确实编码于动物自身基因组。</p>
+<h4>图 3｜基准测试场景1结果</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42803191/F3.jpg" alt="图 3" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>基准测试场景 1 的结果。(A) fDA、BUSCO 和 Compleasm 在 10 个后生动物物种的基因组组装中识别 metazoa_odb10 直系同源物的性能。为比较，给出了基于蛋白质组的直系同源搜索工具的性能指标。EC——直系同源对之间 EC 注释的平均语义相似度（Schlicker 分数）；GO——直系同源对之间 GO 注释的平均语义相似度（Schlicker 分数）；TreeFam——与 TreeFam-A 提供的经过整理的参考基因系统发育的一致性。PPV——阳性预测值；TPR——真阳性率。详见 [43]。(B) 基于组装工具与基于蛋白质组工具的直系同源分配一致性。颜色编码表示相应基于组装工具的每个分配有多少个基于蛋白质组工具支持。柱高表示每个类别中直系同源分配的数量（对数刻度）。使用线性刻度的图见补充图 S11。(C) 使用预注释蛋白质组（Reference）与 fDA 和 Compleasm 的直系同源分配的成对 FAS 分数分布。FAS_F——以种子蛋白为参考的特征结构相似性分数；FAS_B——以直系同源物为参考的 FAS 分数（见 [13]）。tb——tblastn；MP——MiniProt；Aug——Augustus；ME——Metaeuk。</p>
+<p><strong>图解：</strong>这张图回答 fDA 与现有基于组装的直系同源检测工具相比表现如何，以及不同搜索模式在特征结构保真度上的差异。图 A 显示在 10 个后生动物基因组中，fDA、BUSCO 和 Compleasm 识别 954 个 BUSCO 基因的直系同源物，精度与基于蛋白质组的工具相当，但灵敏度略低；不同 fDA 模式间差异不大，BUSCOAug 稍差。图 B 展示各组装工具做出的直系同源分配被多少个蛋白质组工具支持，fDA-MPAug 和 BUSCOAug 产生较多未被蛋白质组工具复现的分配。图 C 比较 FAS 分数分布：fDA 使用 Augustus 预测基因时，FAS_F 分布最接近参考蛋白质组基准，表明基因模型更完整；MiniProt-only 模式（fDA-MP 和 Compleasm）FAS_F 较低，提示基因预测倾向于截短。这支持 fDA 在保持合理灵敏度的同时能提供基因结构质量信息。</p>
+<h4>图 5｜土壤无脊椎动物β-内酰胺基因分布</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42803191/F5.jpg" alt="图 5" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>土壤无脊椎动物基因组组装中 β-内酰胺合成基因直系同源物的丰度。(A) 产生 Cephamycin N（S. clavuligerus；细菌）和 Penicillin G（A. nidulans；真菌）的生物合成途径。(B) UMAP 排序表示每个受调查土壤无脊椎动物对 β-内酰胺合成酶直系同源物的谱系。相应的分类单元-基因矩阵见补充图 S13。点代表物种，点的颜色表示相应的分类纲。聚类分配由人工完成。(C) 热图显示每个聚类中具有所示基因直系同源物的分类单元的相对丰度。(D) 聚类 5（蓝色）和聚类 6（黄色）选定成员的分类单元-基因矩阵。A. nidulans 和 S. clavuligerus 是直系同源搜索中使用的种子分类单元。点表示在无脊椎动物基因组组装中鉴定出对应种子基因的直系同源物。绿色内嵌表示检测到两个或更多共直系同源物，内嵌直径表示共直系同源物数量。点的颜色表示以种子蛋白为参考的种子与直系同源物之间的 FAS 分数。FAS 分数为 1（蓝色）表示两种蛋白共享相同的特征结构，而分数为 0（橙色）表示没有共享特征。单元格颜色表示以直系同源物为参考的 FAS 分数。如果检测到多个直系同源物，选择 FAS 分数最高的一个进行展示；ET，Eutardigrada。(E) β-内酰胺特征在弹尾虫中的系统发育分布。系统发育中的物种根据其聚类分配着色（见 B）。内圈表示相应基因组组装的 N50 大小（千碱基，kb）。N50 超过 40 kb 的组装用 &#x27;*&#x27; 表示。Neelides folsomi——N50: 149 788 bp；Sminthurides aquaticus——N50: 60 729 bp。外圈给出 BUSCO 完整性分数（Busco 集 metazoa_odb10）。&#x27;e&#x27; 和 &#x27;f&#x27; 分别表示存在 cefE 和 cefF 的直系同源物。系统发育树拓扑取自 [12]。蓝色分支：Onychiurinae；绿色分支：Symphypleona。分类单元缩写：O——Onychiurinae；SP——Symphypleona；Sd——Sminthurididae；Di——Dicyrtomidae；Bo——Bourletiellidae；Sm——Sminthuridae。</p>
+<p><strong>图解：</strong>这张图回答 β-内酰胺生物合成基因在土壤无脊椎动物中分布有多广，以及是否可能由微生物污染造成。图 A 给出参考的细菌 Cephamycin C 和真菌 Penicillin G 生物合成途径。图 B 的 UMAP 将 176 个物种按酶谱分成 6 个聚类，其中聚类 3、4、6 含有 pcbAB 和 pcbC（负责 β-内酰胺环合成），聚类 5 有 pcbAB 和 cefD 但缺 pcbC。图 C 的热图展示各聚类中每个基因的出现频率。图 D 显示聚类 5 和 6 的物种-基因矩阵，并使用 FAS 分数评估直系同源物完整性；taxonomic assignment 排除了大部分污染，表明这些基因主要编码于无脊椎动物自身基因组。图 E 将聚类映射到弹尾虫系统发育，显示聚类 4 分布于整个弹尾虫多样性，提示相关基因在弹尾虫祖先中已经存在；聚类 6 的物种趋于集中在 Onychiurinae 分支，其中几个物种具有近乎完整的 Cephamycin C 合成途径（缺 cmcH）。该图支持弹尾虫可能是此前未被充分认识的 β-内酰胺抗生素生产者。</p>
+<h3>方法亮点</h3>
+<p>fDA 的流程包括输入处理、候选区域识别、基因预测和直系同源验证四个步骤（见图 1）。核心直系同源组由 fDOG 预先计算，fDA 训练 pHMM、生成一致序列，若使用 Augustus 则额外构建 block profile。</p>
+<p>候选区域识别提供 tblastn 或 MiniProt 两种策略：tblastn 用一致序列搜索基因组，必要时合并相邻命中；MiniProt 同时用一致序列和核心组所有蛋白搜索，保留最佳比对区域。基因预测可在 Augustus、MetaEuk 或 MiniProt 快速模式间切换，Augustus 可结合 block profile 提升预测质量。</p>
+<p>直系同源验证采用反向 BLASTP 对参考物种蛋白质组搜索，结合最佳命中和 Kimura 距离判据处理候选和共直系同源关系；最后用 FAS 计算预测直系同源物与种子蛋白的特征结构相似性，输出序列、注释、FAS 分数和系统发育谱。基准测试利用 QfO benchmark service 评估 EC/GO 语义相似度和 TreeFam 一致性，并与 BUSCO、Compleasm 及13种蛋白质组工具比较。</p>
+<h4>图 1｜fDA 四步工作流程</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42803191/F1.jpg" alt="图 1" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>fDOG-Assembly 的工作流程。(A) fDA 从一个预先计算的核心直系同源组开始，该组带有相应氨基酸序列的多序列比对（MSA），以及用该 MSA 训练的谱隐马尔可夫模型（pHMM）。从 pHMM 计算一致序列，并用 MSA 生成 block profile。(B) fDA 提供两种互补策略来识别可能含有直系同源物的候选基因组区域。一种策略以一致序列为查询进行 tblastn 搜索。另一种策略使用 MiniProt，以一致序列和核心直系同源组中的所有蛋白质作为查询搜索目标基因组。(C) 来自 (B) 的每个候选区域作为基因预测的输入。fDA 提供三种基因预测选项：Augustus 结合预先计算的 block profile，MetaEuk 结合参考数据库，或在快速模式下使用 MiniProt。(D) 为验证来自 (C) 的直系同源候选基因，将预测基因的氨基酸序列作为查询，对用户指定参考物种的蛋白质组进行反向 BLASTP 搜索。如果保留两个或更多候选直系同源物，则仅当它们彼此之间的成对距离小于各自到参考蛋白的距离时，才将它们接受为共直系同源物。否则，选择与参考蛋白距离较小的候选者。直系同源搜索最后通过评估所鉴定直系同源物与种子基因之间的成对特征结构相似性来完成。</p>
+<p><strong>图解：</strong>这张图回答的是 fDA 如何在不依赖预先注释的情况下，从未注释基因组中完成靶向直系同源搜索。图 A 说明输入处理：用户提供核心直系同源组和 MSA，fDA 训练 pHMM、生成一致序列和 block profile。图 B 展示候选区域识别的两种策略：tblastn 一致序列搜索或 MiniProt 多查询搜索。图 C 展示基因预测的三种选项：Augustus 加 block profile、MetaEuk 加参考数据库或 MiniProt 快速模式。图 D 说明直系同源验证：预测蛋白对参考物种蛋白组做反向 BLASTP，根据最佳命中或 Kimura 距离验证候选者，并处理共直系同源关系；最后用 FAS 比较特征结构。该流程使 fDA 能在目标区域进行局部基因预测，绕过全基因组注释，同时提供基因结构质量评估。</p>
+<h3>为什么值得读</h3>
+<p>对从事比较基因组学或系统发育谱分析的研究者来说，fDA 意味着可以绕过耗时的全基因组注释，直接利用海量未注释组装扩大分类单元采样，同时通过 FAS 分数获得基因结构完整性的质量控制。</p>
+<p>对合成生物学和天然产物挖掘而言，fDA 的案例展示了一种在未注释动物基因组中发现次生代谢基因簇的路径：弹尾虫中近乎完整的 Cephamycin C 途径提示动物可能是未被充分认识的抗生素生产者，为寻找新型抗菌化合物或抗性基因提供了新方向。</p>
+<p>此外，fDA 的模块化设计（多种候选区域识别与基因预测组合）允许用户在速度、灵敏度和基因模型准确度之间权衡，适合不同规模的分析；其输出可直接导入 PhyloProfile 进行交互式探索。</p>
+<h3>局限与疑问</h3>
+<p>本研究基准主要基于后生动物基因组，且核心直系同源组依赖 fDOG 预先计算；参考物种选择会影响搜索灵敏度和特异性，对进化距离极远的类群尚未充分测试。</p>
+<p>fDA 的灵敏度总体略低于基于完整蛋白质组的工具，特别是 n:n 共直系同源组的恢复率显著降低；使用 MiniProt 快速模式时，基因预测倾向于截短，会降低 FAS_F 分数，若下游需要完整基因结构应优先选择 Augustus。</p>
+<p>案例研究中，许多基因组组装高度碎片化（N50 常低于20 kb），BUSCO 完整性也较低，因此无法区分基因缺失与组装缺口；分类学分配对某些基因的起源仍不确定，β-内酰胺合成酶的功能活性和产物结构还需实验验证。此外，fDA 只检测与已知种子基因同源的序列，无法识别全新或高度分化的同源基因。</p>
+<hr/><p>解读依据：PMC 开放获取全文 · 由 AI 生成，关键结论请以原文为准<br/>插图来自原文，许可证 CC BY，版权归原作者<br/>原文：<a href="https://doi.org/10.1093/nar/gkag929">https://doi.org/10.1093/nar/gkag929</a> · PMID 42803191</p>
+<p><a href="../index.html">← 全部解读</a></p>
+</main></body></html>
