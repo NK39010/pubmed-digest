@@ -6,7 +6,131 @@
     <atom:link href="https://nk39010.github.io/pubmed-digest/feed.xml" rel="self" type="application/rss+xml"/>
     <description>每日从 PubMed 顶刊中由 AI 挑选 1-2 篇有意思的合成生物学/生信/生命科学论文并深度解读</description>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 01 Oct 2026 06:08:21 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 05:51:13 +0000</lastBuildDate>
+    <item>
+      <title>功能保持的AI生成蛋白质序列与结构水印</title>
+      <link>https://nk39010.github.io/pubmed-digest/articles/42816606.html</link>
+      <guid isPermaLink="false">pubmed-42816606</guid>
+      <category>Nature</category>
+      <pubDate>Fri, 02 Oct 2026 05:49:39 +0000</pubDate>
+      <description><![CDATA[<p><strong>首次证明可在不影响设计蛋白结合力的同时，以近乎完美准确率溯源AI生成的蛋白序列</strong></p>
+<p><em>Function-preserving watermarking of AI-generated proteins.</em><br/>Nature · 2026 Sep 30<br/>David Stutz, Alexander I Cowen-Rivers, Guillermo Ortiz-Jimenez, Jeremy Ratcliff, Vinicius Zambaldi, Lindsay Willmore et al.</p>
+<blockquote><p>入选理由：首次实现功能保持的 AI 生成蛋白质序列与结构水印，可在不影响设计蛋白结合力的同时高准确率溯源，为合成生物学中 AI 设计产物的安全与确权提供了巧妙新思路。</p></blockquote>
+<h3>研究背景</h3>
+<p>生成式人工智能正在重塑生物学，AlphaFold3与蛋白质设计模型加速了结构预测和功能蛋白创造。然而，这些AI生成序列和结构的来源追踪日益重要，因为生物安全和信息真实性等挑战需要可靠的溯源手段。在生物大分子中嵌入水印而不影响功能并非易事，因为蛋白质序列的微小改动可能改变折叠与活性，这构成了本研究的核心难题。</p>
+<h3>核心发现</h3>
+<p>作者引入SynthIDBio方法家族，包括SynthIDBio-sequence和SynthIDBio-structure。SynthIDBio-sequence主动在蛋白质序列中嵌入水印，同时保持功能；作者通过设计带水印的功能性蛋白结合剂（protein binders）证明，其结合亲和力与未加水印的对照相当，水印检测准确率接近完美。SynthIDBio-structure则是一个微调的AlphaFold3模型，可在生物分子结构中嵌入不可察觉的水印。整体证明了功能保持的生物水印是可行的。</p>
+<h3>方法亮点</h3>
+<p>SynthIDBio-sequence采用主动嵌入策略，在序列水平编码水印，但摘要未披露具体编码算法或如何选择可替换位点。SynthIDBio-structure通过微调AlphaFold3模型实现结构水印，使其对人类或常规分析不可察觉，同时保留可检测性。关键巧思在于将水印嵌入与功能保持联合优化，而不是简单事后修改，从而在蛋白质功能约束内编码来源信息。</p>
+<h3>为什么值得读</h3>
+<p>这是首次在蛋白质序列和结构上实现功能保持的水印，且不影响设计蛋白结合力，解决了此前AI生成生物产物难以溯源的痛点。对合成生物学与蛋白工程研究者而言，SynthIDBio提供了一种轻量、可验证的来源标记思路，可用于生物安全审计、知识产权保护、防止AI设计蛋白被滥用或误报。其将水印嵌入与功能优化联合考虑的策略，也可能启发其他生物分子（如核酸、代谢通路）的溯源设计。</p>
+<h3>局限与疑问</h3>
+<p>本研究基于摘要解读，全文细节有待核实。摘要未给出水印检测准确率的具体数字、序列水印对更多蛋白类型、表达水平、稳定性或免疫原性的影响，也未说明结合亲和力比较所用的具体体系与统计检验。水印的稳健性（例如对序列截断、突变、密码子优化、结构扰动）尚不清楚；结构水印是否会影响下游结构解析或分子对接等功能使用也需要进一步评估。此外，在生物安全场景中，水印检测需要标准化和抗规避设计，否则可能被轻易去除或伪造。</p>
+<hr/><p>解读依据：PubMed 摘要 · 由 AI 生成，关键结论请以原文为准<br/>原文：<a href="https://doi.org/10.1038/s41586-026-10965-y">https://doi.org/10.1038/s41586-026-10965-y</a> · PMID 42816606</p>]]></description>
+      <content:encoded><![CDATA[<p><strong>首次证明可在不影响设计蛋白结合力的同时，以近乎完美准确率溯源AI生成的蛋白序列</strong></p>
+<p><em>Function-preserving watermarking of AI-generated proteins.</em><br/>Nature · 2026 Sep 30<br/>David Stutz, Alexander I Cowen-Rivers, Guillermo Ortiz-Jimenez, Jeremy Ratcliff, Vinicius Zambaldi, Lindsay Willmore et al.</p>
+<blockquote><p>入选理由：首次实现功能保持的 AI 生成蛋白质序列与结构水印，可在不影响设计蛋白结合力的同时高准确率溯源，为合成生物学中 AI 设计产物的安全与确权提供了巧妙新思路。</p></blockquote>
+<h3>研究背景</h3>
+<p>生成式人工智能正在重塑生物学，AlphaFold3与蛋白质设计模型加速了结构预测和功能蛋白创造。然而，这些AI生成序列和结构的来源追踪日益重要，因为生物安全和信息真实性等挑战需要可靠的溯源手段。在生物大分子中嵌入水印而不影响功能并非易事，因为蛋白质序列的微小改动可能改变折叠与活性，这构成了本研究的核心难题。</p>
+<h3>核心发现</h3>
+<p>作者引入SynthIDBio方法家族，包括SynthIDBio-sequence和SynthIDBio-structure。SynthIDBio-sequence主动在蛋白质序列中嵌入水印，同时保持功能；作者通过设计带水印的功能性蛋白结合剂（protein binders）证明，其结合亲和力与未加水印的对照相当，水印检测准确率接近完美。SynthIDBio-structure则是一个微调的AlphaFold3模型，可在生物分子结构中嵌入不可察觉的水印。整体证明了功能保持的生物水印是可行的。</p>
+<h3>方法亮点</h3>
+<p>SynthIDBio-sequence采用主动嵌入策略，在序列水平编码水印，但摘要未披露具体编码算法或如何选择可替换位点。SynthIDBio-structure通过微调AlphaFold3模型实现结构水印，使其对人类或常规分析不可察觉，同时保留可检测性。关键巧思在于将水印嵌入与功能保持联合优化，而不是简单事后修改，从而在蛋白质功能约束内编码来源信息。</p>
+<h3>为什么值得读</h3>
+<p>这是首次在蛋白质序列和结构上实现功能保持的水印，且不影响设计蛋白结合力，解决了此前AI生成生物产物难以溯源的痛点。对合成生物学与蛋白工程研究者而言，SynthIDBio提供了一种轻量、可验证的来源标记思路，可用于生物安全审计、知识产权保护、防止AI设计蛋白被滥用或误报。其将水印嵌入与功能优化联合考虑的策略，也可能启发其他生物分子（如核酸、代谢通路）的溯源设计。</p>
+<h3>局限与疑问</h3>
+<p>本研究基于摘要解读，全文细节有待核实。摘要未给出水印检测准确率的具体数字、序列水印对更多蛋白类型、表达水平、稳定性或免疫原性的影响，也未说明结合亲和力比较所用的具体体系与统计检验。水印的稳健性（例如对序列截断、突变、密码子优化、结构扰动）尚不清楚；结构水印是否会影响下游结构解析或分子对接等功能使用也需要进一步评估。此外，在生物安全场景中，水印检测需要标准化和抗规避设计，否则可能被轻易去除或伪造。</p>
+<hr/><p>解读依据：PubMed 摘要 · 由 AI 生成，关键结论请以原文为准<br/>原文：<a href="https://doi.org/10.1038/s41586-026-10965-y">https://doi.org/10.1038/s41586-026-10965-y</a> · PMID 42816606</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>CUT&amp;ID：一种同时解析内源蛋白-DNA与蛋白-蛋白互作的单工作流方法</title>
+      <link>https://nk39010.github.io/pubmed-digest/articles/42813370.html</link>
+      <guid isPermaLink="false">pubmed-42813370</guid>
+      <category>Nucleic acids research</category>
+      <pubDate>Fri, 02 Oct 2026 05:51:13 +0000</pubDate>
+      <description><![CDATA[<p><strong>Lazarus融合酶一次实验同时拿到DNA结合位点和邻近互作蛋白，无需转基因，1百万细胞即可。</strong></p>
+<p><em>CUT&amp;ID for simultaneous profiling of protein-DNA and protein-protein interactions.</em><br/>Nucleic acids research · 2026 Sep 22<br/>Anna Nordin, Claudio Cantù</p>
+<blockquote><p>入选理由：CUT&amp;ID 将 TurboID、protein A/G 和 MNase 融合，单次工作流同时获得内源靶蛋白的 DNA 结合位点和邻近互作蛋白，且无需转基因，对解析 DNA 修复酶等染色质蛋白的功能网络很有启发，并有开放全文与原图。</p></blockquote>
+<h3>研究背景</h3>
+<p>基因表达由转录因子（transcription factors, TFs）与共因子共同驱动，它们既占据基因组调控区，也通过蛋白-蛋白互作激活或抑制转录。要完整理解基因调控，必须同时解析蛋白-DNA与蛋白-蛋白两个维度，但长期以来两类方法彼此分离。</p>
+<p>在基因组层面，ChIP-seq仍是金标准，但依赖甲醛交联、细胞量大且背景高；CUT&amp;RUN和CUT&amp;Tag通过靶向酶切或转座降低背景、减少投入，但CUT&amp;Tag缓冲条件对多数TFs和非DNA结合蛋白不友好，且它们只提供DNA结合信息，不提供互作蛋白。我们此前优化的CUT&amp;RUN LoV-U改善了转录共因子的捕获，但同样无法给出蛋白质互作伙伴。</p>
+<p>在蛋白质组层面，RIME等免疫沉淀结合质谱可鉴定互作蛋白，但需要交联和大量细胞；TurboID等邻近标记可在活细胞内捕获瞬时互作，但通常需要对诱饵蛋白进行遗传标签；ProtA-Turbo虽通过Protein A融合TurboID首次实现内源靶标邻近标记，但仍需大量细胞，且要获得基因组结合信息必须并行ChIP-seq；PLAM-seq虽能同时读出基因组和蛋白质组，但仍需标签和固定。因此，领域需要一个无需转基因、无需交联、低细胞投入且能同时获得蛋白-DNA与蛋白-蛋白互作的方法。</p>
+<h3>核心发现</h3>
+<p>CUT&amp;ID的核心是名为Lazarus的融合蛋白，将TurboID、protein A/G（pAG）与micrococcal nuclease（MNase）串联。它首先通过pAG结合靶蛋白抗体，随后TurboID在活细胞中进行邻近生物素化标记互作蛋白，最后MNase在CaCl2存在下特异性切割靶蛋白结合位点的DNA。对CTCF的基准测试显示，基因组数据具有高信噪比（FrIP 12%和14%，MACS2 q &lt; 0.05下34,941个峰），CTCF基序显著富集，且71%的峰与ENCODE ChIP-seq数据重叠；蛋白质组鉴定出202个富集蛋白（Log2FC &gt; 1, adj. P &lt; .05），包含CTCF本身和cohesin亚基STAG1、SMC1A、SMC3、RAD21等（见图 2A–B）。与PLAM-seq比较，CUT&amp;ID额外发现RNA Pol II、PARP1和DDX5等已知互作蛋白。</p>
+<p>对SMARCA4/BRG1，CUT&amp;ID得到18,948个基因组结合位点，JUN/AP1为最富集基序；蛋白质组富集219个蛋白，包含SMARCA4（Log2FC 5.2）及SWI/SNF成员ARID2、SMARCC2、SMARCE1、DPF2（见图 2C–D）。与ProtA-Turbo相比，两者有8个重叠蛋白，且均捕获到部分SWI/SNF成员。</p>
+<p>直接用Lazarus与pAG-MNase在相同条件下比较，两者获得的峰数、FrIP和平均信号谱几乎不可区分，且Lazarus不受较大融合结构影响（见图 3A–C）。新鲜、冷冻和固定核的测试表明，固定/冷冻信噪比略低，但均恢复&gt;50%的新鲜样本共识峰；蛋白质组层面固定样本富集蛋白更多，但三种条件均显著富集SMARCA4和多种SWI/SNF成员，说明CUT&amp;ID兼容冷冻和固定材料（见图 3D–F）。</p>
+<p>在H3K27ac、TCF7L2、JUN、β-catenin、RAD21和HDAC1六类靶标上，CUT&amp;ID均获得可靠的基因组和蛋白质组数据：H3K27ac有17,445个峰和301个富集蛋白；TCF7L2有24,273个峰和36个互作蛋白，且TCF7L2/JUNB蛋白互作与DNA基序相互印证；β-catenin有6,282个峰，其中95%与TCF7L2峰重叠；JUN有4,239个峰和890个富集蛋白；RAD21有6,133个峰，主要基序为CTCF，并鉴定51个蛋白伙伴；HDAC1有11,466个峰和614个邻近蛋白（见图 4A–F）。八个靶标的峰与蛋白重叠分析显示，仅有Lazarus自身在所有数据集中均富集，说明技术具有良好特异性（见图 4G–H）。</p>
+<h4>图 2｜CTCF和SMARCA4基准测试</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42813370/F2.jpg" alt="图 2" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>图2. 在CTCF和SMARCA4上对CUT&amp;ID进行基准测试。(A) CTCF的基因组基准测试，显示CTCF、IgG的CUT&amp;ID以及ENCODE ChIP-seq峰值的IGV浏览器轨道（顶部）、最富集的HOMER基序为CTCF（底部），以及所有ENCODE ChIP-seq峰值内的高信号（右侧）。(B) CTCF的蛋白质组基准测试，以CTCF/IgG富集的火山图（左）和“教科书式”互作物的回收（cohesin复合物示意图，右上）表示。CTCF与HeLa细胞中PLAM-seq的富集蛋白重叠韦恩图显示在右下。(C) SMARCA4的基因组基准测试，显示基因组浏览器视图（顶部）、最富集基序JUN/AP1（底部），以及所调用峰值内的信号富集（右侧）。(D) SMARCA4的蛋白质组基准测试，显示SMARCA4/IgG富集的火山图（左）和“教科书式”互作物的回收，包括SWI/SNF复合物成员（右上示意图）。SMARCA4与HeLa细胞中ProtA-Turbo的富集蛋白重叠韦恩图显示在右下。峰值在合并重复上使用MACS2 q &lt; 0.05调用。基因组数据集按每基因组覆盖度reads数归一化并按组缩放。蛋白质组显著性使用amica默认设置计算，Log2FC &gt; 1, adj. P &lt; .05。PLAM-seq和ProtA-Turbo的富集蛋白列表下载后使用与CUT&amp;ID相同的显著性阈值进行过滤。</p>
+<p><strong>图解：</strong>该图用于基准测试CUT&amp;ID在两类代表性靶标上的基因组和蛋白质组性能。对CTCF，图A显示CUT&amp;ID信号与ENCODE ChIP-seq高度重叠，CTCF基序为最富集，说明基因组结合位置准确；图B火山图中CTCF自身和cohesin亚基显著富集，且与PLAM-seq比较发现CUT&amp;ID额外捕获RNA Pol II、PARP1等，表明蛋白质组部分同样有效。对SMARCA4，图C显示18,948个峰且JUN/AP1为最富集基序；图D显示SMARCA4自身和SWI/SNF成员富集，与ProtA-Turbo有8个重叠蛋白。这些结果证明CUT&amp;ID在两种靶标上均达到现有单组学方法水平，并能在一次实验中同时获得两种数据。</p>
+<h4>图 3｜CUT&amp;ID与CUT&amp;RUN及样本类型比较</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42813370/F3.jpg" alt="图 3" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>图3. CUT&amp;ID与CUT&amp;RUN的比较。(A) 基因组数据集的PCA图。使用Lazarus和pAG-MNase酶的样品聚集在一起。(B) 使用Lazarus与pAG-MNase的SMARCA4样品的片段长度比较。分布相似。(C) 使用Lazarus与pAG-MNase靶向SMARCA4的两个重复的平均信号谱比较。平均谱显示在共识峰上，共识峰定义为四个数据集中至少三个调用的峰。(D) Lazarus靶向SMARCA4在固定材料（0.1%甲醛10分钟）与冷冻（核沉淀冷冻后解冻用于CUT&amp;ID）中的信号谱。信号谱普遍低于新鲜样品[面板(C)]。(E) 新鲜、固定和冷冻样品的信号热图（左）和IGV浏览器视图（右）。虽然信号较低，但固定和冷冻样品仍显示共识峰内的富集。(F) 顶部：新鲜、固定和冷冻样品之间富集蛋白重叠的韦恩图。所有样品均富集SMARCA4和各种SWI/SNF复合物成员。底部：与IgG相比SMARCA4的插补强度(Log2)。峰值使用MACS2 q &lt; 0.05调用。基因组数据集按每基因组覆盖度reads数归一化并按组缩放。蛋白质组显著性使用amica默认设置计算，Log2FC &gt; 1, adj. P &lt; .05。</p>
+<p><strong>图解：</strong>该图回答两个问题：Lazarus中的TurboID结构域是否会损害MNase的基因组切割性能，以及CUT&amp;ID能否用于冷冻/固定材料。图A的PCA显示Lazarus和pAG-MNase的SMARCA4基因组数据聚集在一起；图B片段长度分布相似；图C平均信号谱在共识峰上不可区分，说明TurboID融合不影响MNase功能。图D–E显示固定和冷冻样本信号低于新鲜样本，但仍保留共识峰富集；图F韦恩图和SMARCA4强度显示三种条件均富集SMARCA4及SWI/SNF成员，其中固定样本富集蛋白数更多。该图证明CUT&amp;ID与CUT&amp;RUN等价，并扩展了样本类型适用性。</p>
+<h4>图 4｜CUT&amp;ID在多种基因调控因子上的应用</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42813370/F4.jpg" alt="图 4" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>图4. 将CUT&amp;ID应用于基因调控因子。使用CUT&amp;ID的IGV浏览器视图（顶部）和蛋白富集火山图（底部）：(A) H3K27ac，(B) TCF7L2，(C) β-catenin，(D) JUN，(E) RAD21，(F) HDAC1。已知互作物示例已标注。(G) 所有八个基因调控因子（包括图2中的CTCF和SMARCA4数据）峰值重叠的UpSet图。(H) 所有八个基因调控因子富集蛋白重叠的UpSet图。峰值在合并重复上使用MACS2 q &lt; 0.05调用。基因组数据集按每基因组覆盖度reads数归一化并按组缩放。蛋白质组显著性使用amica默认设置计算，Log2FC &gt; 1, adj. P &lt; .05。</p>
+<p><strong>图解：</strong>该图验证CUT&amp;ID在多种染色质相关靶标上的普适性，并考察技术特异性。图A–F分别展示H3K27ac、TCF7L2、β-catenin、JUN、RAD21和HDAC1的基因组浏览器视图和蛋白富集火山图，每个靶标均获得明确峰和已知互作蛋白，例如TCF7L2与β-catenin、RAD21与cohesin亚基。图G的UpSet图显示八个靶标的DNA结合峰存在预期重叠，如RAD21与CTCF、TCF7L2与β-catenin；图H显示所有靶标中唯一共同富集的蛋白是Lazarus自身，说明技术背景可控，富集列表具有靶标特异性。这些结果支持CUT&amp;ID广泛适用于组蛋白修饰、TFs和非DNA结合蛋白。</p>
+<h3>方法亮点</h3>
+<p>Lazarus通过AlphaFold对不同拓扑结构进行建模，最终选择N端-TurboID-pAG-MNase-C端排列，并用两个柔性连接肽连接各结构域，以保证各功能域正确折叠和活性（见图 1A）。该蛋白在大肠杆菌中表达，通过Ni-NTA纯化和TEV酶切获得约80 kDa的蛋白；生产过程中内源生物素可使Lazarus自生物素化，但不影响后续使用（见图 1B）。体外实验证实：加入CaCl2后MNase可切割DNA；在CUT&amp;ID流程中Lazarus被靶标抗体保留且能生物素化自身及邻近蛋白（见图 1C）。</p>
+<p>CUT&amp;ID操作流程为：提取细胞核并结合到ConA磁珠，先后孵育靶标抗体（过夜）和Lazarus（1 h），然后在含生物素和ATP的缓冲液中37°C进行30 min邻近标记；洗去游离生物素后，在CaCl2条件下4°C切割30 min；释放的DNA进入上清，生物素化蛋白被链霉亲和素磁珠捕获。DNA部分进行酚氯仿抽提、KAPA建库和Illumina测序；蛋白部分经磁珠酶切和dia-PASEF质谱鉴定。整个流程约3天，每样本1百万细胞，可多通道移液并行处理，并兼容新鲜、冷冻或甲醛固定核。</p>
+<p>基因组数据用bowtie2比对hg38，MACS2以IgG为对照call peak，HOMER进行基序分析；蛋白质组数据用Spectronaut鉴定和定量，amica进行缺失值插补与差异富集分析。关键点是双读出在同一份材料中依次获得，无需拆分样本或平行实验。</p>
+<h4>图 1｜Lazarus活性与CUT&amp;ID工作流程</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42813370/F1.jpg" alt="图 1" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>图1. Lazarus活性与CUT&amp;ID工作流程。(A) AlphaFold预测的N端-TurboID-pAG-MNase-C端重组蛋白（称为Lazarus）结构，从N到C端依次为：TurboID（蓝色）、连接肽（绿色）、protein A/G（紫色）、连接肽（绿色）和MNase（粉色）。(B) Lazarus的纯度通过SDS–PAGE凝胶PageBlue染色显示（左；Lazarus通常在约80 kDa处出现两条相近条带，可能由于不完全变性/还原或翻译后修饰）。Lazarus在蛋白生产过程中会生物素化自身，可通过链霉亲和素-HRP的western blotting检测（右）。(C) 体外酶活实验显示，加入CaCl2后Lazarus切割DNA（左，DNA琼脂糖凝胶）；在CUT&amp;ID工作流程中，它被靶向抗体保留，并在加入生物素和ATP后生物素化自身和其他蛋白（右，链霉亲和素-HRP western blot，比较靶标与IgG对照）。右侧的Ponceau染色膜显示总蛋白。注意输入（核裂解物）不含BSA。(D) CUT&amp;ID工作流程示意图。</p>
+<p><strong>图解：</strong>该图回答Lazarus融合蛋白是否设计合理且具有双重酶活，以及CUT&amp;ID工作流如何串联。图A展示了AlphaFold预测的N端TurboID-pAG-MNase结构，说明两个柔性连接肽分隔三个功能域；图B用SDS-PAGE和链霉亲和素western证明重组蛋白表达纯化成功，且生产过程中发生自生物素化；图C左图显示在加入CaCl2后Lazarus能切割质粒DNA，右图显示在靶标抗体存在下Lazarus被保留并生物素化自身及邻近蛋白，而IgG对照信号很弱；图D给出了完整CUT&amp;ID流程，从抗体结合、生物素标记到DNA切割和分离。这些结果共同支持Lazarus具备预期顺序活性，为后续基因组/蛋白质组双读出奠定基础。</p>
+<h3>为什么值得读</h3>
+<p>对合成生物学和蛋白工程研究者而言，CUT&amp;ID展示了一个高度实用的融合酶设计范例：将两个正交催化结构域（TurboID和MNase）通过连接肽与一个通用抗体结合模块（pAG）融合，既保留各自酶活，又实现顺序反应。这种模块化思路可以启发其他多功能融合蛋白的设计，尤其是需要将定位、标记和切割等功能耦合的场景。</p>
+<p>CUT&amp;ID无需遗传标签或过表达，可直接用于任何内源靶标，且能同时获得DNA结合位点和邻近互作蛋白；这一双重读出本身构成正交验证，例如蛋白质组中发现JUN与TCF7L2互作，与基因组中TCF/LEF和JUNB基序的共富集相互印证，从而支持这些因子真正共结合同一调控元件。此外，它兼容冷冻和固定样本，有望用于患者活检或生物样本库，对临床转化和稀有材料研究具有吸引力。</p>
+<p>该方法的3天可完成、多通道移液与自动化友好设计，以及1百万细胞投入，使其在通量和可重复性上优于许多现有方法，也为未来进一步降低样本量、与其他组学技术整合提供了清晰路线。</p>
+<h3>局限与疑问</h3>
+<p>本文的实验生物学重复数大多为n=2，蛋白质组有技术重复，但仍属较小样本；基因组一致性较好，但蛋白质组存在批次效应，IgG对照中鉴定蛋白数随批次波动，因此差异富集分析依赖对照平行进行，且部分fold change基于插补值计算，可能高估某些互作。</p>
+<p>作者也指出，1百万细胞/样本对稀有细胞类型仍可能过高，需根据抗体亲和力、靶标丰度和动态性进行优化；高丰度靶标（如H3K27ac）会带出更多普通核蛋白，不一定有功能意义；非DNA结合蛋白（HDAC1、RAD21、β-catenin）基因组重复间一致性较低，提示需要更多重复才能捕捉动态结合。</p>
+<p>IgG同型对照本身存在不确定性，最理想的对照是使用敲除细胞；与PLAM-seq和ProtA-Turbo的比较来自不同细胞系和抗体，解读时需谨慎。固定虽可能略微增加蛋白互作回收，但也会增加背景，且作者并未证明固定对稀有/瞬时互作有普遍增益，因此固定优化仍属个案策略。所有CUT&amp;ID结果都需要正交验证和功能实验确认生物学相关性。</p>
+<hr/><p>解读依据：PMC 开放获取全文 · 由 AI 生成，关键结论请以原文为准<br/>插图来自原文，许可证 CC BY，版权归原作者<br/>原文：<a href="https://doi.org/10.1093/nar/gkag943">https://doi.org/10.1093/nar/gkag943</a> · PMID 42813370</p>]]></description>
+      <content:encoded><![CDATA[<p><strong>Lazarus融合酶一次实验同时拿到DNA结合位点和邻近互作蛋白，无需转基因，1百万细胞即可。</strong></p>
+<p><em>CUT&amp;ID for simultaneous profiling of protein-DNA and protein-protein interactions.</em><br/>Nucleic acids research · 2026 Sep 22<br/>Anna Nordin, Claudio Cantù</p>
+<blockquote><p>入选理由：CUT&amp;ID 将 TurboID、protein A/G 和 MNase 融合，单次工作流同时获得内源靶蛋白的 DNA 结合位点和邻近互作蛋白，且无需转基因，对解析 DNA 修复酶等染色质蛋白的功能网络很有启发，并有开放全文与原图。</p></blockquote>
+<h3>研究背景</h3>
+<p>基因表达由转录因子（transcription factors, TFs）与共因子共同驱动，它们既占据基因组调控区，也通过蛋白-蛋白互作激活或抑制转录。要完整理解基因调控，必须同时解析蛋白-DNA与蛋白-蛋白两个维度，但长期以来两类方法彼此分离。</p>
+<p>在基因组层面，ChIP-seq仍是金标准，但依赖甲醛交联、细胞量大且背景高；CUT&amp;RUN和CUT&amp;Tag通过靶向酶切或转座降低背景、减少投入，但CUT&amp;Tag缓冲条件对多数TFs和非DNA结合蛋白不友好，且它们只提供DNA结合信息，不提供互作蛋白。我们此前优化的CUT&amp;RUN LoV-U改善了转录共因子的捕获，但同样无法给出蛋白质互作伙伴。</p>
+<p>在蛋白质组层面，RIME等免疫沉淀结合质谱可鉴定互作蛋白，但需要交联和大量细胞；TurboID等邻近标记可在活细胞内捕获瞬时互作，但通常需要对诱饵蛋白进行遗传标签；ProtA-Turbo虽通过Protein A融合TurboID首次实现内源靶标邻近标记，但仍需大量细胞，且要获得基因组结合信息必须并行ChIP-seq；PLAM-seq虽能同时读出基因组和蛋白质组，但仍需标签和固定。因此，领域需要一个无需转基因、无需交联、低细胞投入且能同时获得蛋白-DNA与蛋白-蛋白互作的方法。</p>
+<h3>核心发现</h3>
+<p>CUT&amp;ID的核心是名为Lazarus的融合蛋白，将TurboID、protein A/G（pAG）与micrococcal nuclease（MNase）串联。它首先通过pAG结合靶蛋白抗体，随后TurboID在活细胞中进行邻近生物素化标记互作蛋白，最后MNase在CaCl2存在下特异性切割靶蛋白结合位点的DNA。对CTCF的基准测试显示，基因组数据具有高信噪比（FrIP 12%和14%，MACS2 q &lt; 0.05下34,941个峰），CTCF基序显著富集，且71%的峰与ENCODE ChIP-seq数据重叠；蛋白质组鉴定出202个富集蛋白（Log2FC &gt; 1, adj. P &lt; .05），包含CTCF本身和cohesin亚基STAG1、SMC1A、SMC3、RAD21等（见图 2A–B）。与PLAM-seq比较，CUT&amp;ID额外发现RNA Pol II、PARP1和DDX5等已知互作蛋白。</p>
+<p>对SMARCA4/BRG1，CUT&amp;ID得到18,948个基因组结合位点，JUN/AP1为最富集基序；蛋白质组富集219个蛋白，包含SMARCA4（Log2FC 5.2）及SWI/SNF成员ARID2、SMARCC2、SMARCE1、DPF2（见图 2C–D）。与ProtA-Turbo相比，两者有8个重叠蛋白，且均捕获到部分SWI/SNF成员。</p>
+<p>直接用Lazarus与pAG-MNase在相同条件下比较，两者获得的峰数、FrIP和平均信号谱几乎不可区分，且Lazarus不受较大融合结构影响（见图 3A–C）。新鲜、冷冻和固定核的测试表明，固定/冷冻信噪比略低，但均恢复&gt;50%的新鲜样本共识峰；蛋白质组层面固定样本富集蛋白更多，但三种条件均显著富集SMARCA4和多种SWI/SNF成员，说明CUT&amp;ID兼容冷冻和固定材料（见图 3D–F）。</p>
+<p>在H3K27ac、TCF7L2、JUN、β-catenin、RAD21和HDAC1六类靶标上，CUT&amp;ID均获得可靠的基因组和蛋白质组数据：H3K27ac有17,445个峰和301个富集蛋白；TCF7L2有24,273个峰和36个互作蛋白，且TCF7L2/JUNB蛋白互作与DNA基序相互印证；β-catenin有6,282个峰，其中95%与TCF7L2峰重叠；JUN有4,239个峰和890个富集蛋白；RAD21有6,133个峰，主要基序为CTCF，并鉴定51个蛋白伙伴；HDAC1有11,466个峰和614个邻近蛋白（见图 4A–F）。八个靶标的峰与蛋白重叠分析显示，仅有Lazarus自身在所有数据集中均富集，说明技术具有良好特异性（见图 4G–H）。</p>
+<h4>图 2｜CTCF和SMARCA4基准测试</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42813370/F2.jpg" alt="图 2" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>图2. 在CTCF和SMARCA4上对CUT&amp;ID进行基准测试。(A) CTCF的基因组基准测试，显示CTCF、IgG的CUT&amp;ID以及ENCODE ChIP-seq峰值的IGV浏览器轨道（顶部）、最富集的HOMER基序为CTCF（底部），以及所有ENCODE ChIP-seq峰值内的高信号（右侧）。(B) CTCF的蛋白质组基准测试，以CTCF/IgG富集的火山图（左）和“教科书式”互作物的回收（cohesin复合物示意图，右上）表示。CTCF与HeLa细胞中PLAM-seq的富集蛋白重叠韦恩图显示在右下。(C) SMARCA4的基因组基准测试，显示基因组浏览器视图（顶部）、最富集基序JUN/AP1（底部），以及所调用峰值内的信号富集（右侧）。(D) SMARCA4的蛋白质组基准测试，显示SMARCA4/IgG富集的火山图（左）和“教科书式”互作物的回收，包括SWI/SNF复合物成员（右上示意图）。SMARCA4与HeLa细胞中ProtA-Turbo的富集蛋白重叠韦恩图显示在右下。峰值在合并重复上使用MACS2 q &lt; 0.05调用。基因组数据集按每基因组覆盖度reads数归一化并按组缩放。蛋白质组显著性使用amica默认设置计算，Log2FC &gt; 1, adj. P &lt; .05。PLAM-seq和ProtA-Turbo的富集蛋白列表下载后使用与CUT&amp;ID相同的显著性阈值进行过滤。</p>
+<p><strong>图解：</strong>该图用于基准测试CUT&amp;ID在两类代表性靶标上的基因组和蛋白质组性能。对CTCF，图A显示CUT&amp;ID信号与ENCODE ChIP-seq高度重叠，CTCF基序为最富集，说明基因组结合位置准确；图B火山图中CTCF自身和cohesin亚基显著富集，且与PLAM-seq比较发现CUT&amp;ID额外捕获RNA Pol II、PARP1等，表明蛋白质组部分同样有效。对SMARCA4，图C显示18,948个峰且JUN/AP1为最富集基序；图D显示SMARCA4自身和SWI/SNF成员富集，与ProtA-Turbo有8个重叠蛋白。这些结果证明CUT&amp;ID在两种靶标上均达到现有单组学方法水平，并能在一次实验中同时获得两种数据。</p>
+<h4>图 3｜CUT&amp;ID与CUT&amp;RUN及样本类型比较</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42813370/F3.jpg" alt="图 3" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>图3. CUT&amp;ID与CUT&amp;RUN的比较。(A) 基因组数据集的PCA图。使用Lazarus和pAG-MNase酶的样品聚集在一起。(B) 使用Lazarus与pAG-MNase的SMARCA4样品的片段长度比较。分布相似。(C) 使用Lazarus与pAG-MNase靶向SMARCA4的两个重复的平均信号谱比较。平均谱显示在共识峰上，共识峰定义为四个数据集中至少三个调用的峰。(D) Lazarus靶向SMARCA4在固定材料（0.1%甲醛10分钟）与冷冻（核沉淀冷冻后解冻用于CUT&amp;ID）中的信号谱。信号谱普遍低于新鲜样品[面板(C)]。(E) 新鲜、固定和冷冻样品的信号热图（左）和IGV浏览器视图（右）。虽然信号较低，但固定和冷冻样品仍显示共识峰内的富集。(F) 顶部：新鲜、固定和冷冻样品之间富集蛋白重叠的韦恩图。所有样品均富集SMARCA4和各种SWI/SNF复合物成员。底部：与IgG相比SMARCA4的插补强度(Log2)。峰值使用MACS2 q &lt; 0.05调用。基因组数据集按每基因组覆盖度reads数归一化并按组缩放。蛋白质组显著性使用amica默认设置计算，Log2FC &gt; 1, adj. P &lt; .05。</p>
+<p><strong>图解：</strong>该图回答两个问题：Lazarus中的TurboID结构域是否会损害MNase的基因组切割性能，以及CUT&amp;ID能否用于冷冻/固定材料。图A的PCA显示Lazarus和pAG-MNase的SMARCA4基因组数据聚集在一起；图B片段长度分布相似；图C平均信号谱在共识峰上不可区分，说明TurboID融合不影响MNase功能。图D–E显示固定和冷冻样本信号低于新鲜样本，但仍保留共识峰富集；图F韦恩图和SMARCA4强度显示三种条件均富集SMARCA4及SWI/SNF成员，其中固定样本富集蛋白数更多。该图证明CUT&amp;ID与CUT&amp;RUN等价，并扩展了样本类型适用性。</p>
+<h4>图 4｜CUT&amp;ID在多种基因调控因子上的应用</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42813370/F4.jpg" alt="图 4" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>图4. 将CUT&amp;ID应用于基因调控因子。使用CUT&amp;ID的IGV浏览器视图（顶部）和蛋白富集火山图（底部）：(A) H3K27ac，(B) TCF7L2，(C) β-catenin，(D) JUN，(E) RAD21，(F) HDAC1。已知互作物示例已标注。(G) 所有八个基因调控因子（包括图2中的CTCF和SMARCA4数据）峰值重叠的UpSet图。(H) 所有八个基因调控因子富集蛋白重叠的UpSet图。峰值在合并重复上使用MACS2 q &lt; 0.05调用。基因组数据集按每基因组覆盖度reads数归一化并按组缩放。蛋白质组显著性使用amica默认设置计算，Log2FC &gt; 1, adj. P &lt; .05。</p>
+<p><strong>图解：</strong>该图验证CUT&amp;ID在多种染色质相关靶标上的普适性，并考察技术特异性。图A–F分别展示H3K27ac、TCF7L2、β-catenin、JUN、RAD21和HDAC1的基因组浏览器视图和蛋白富集火山图，每个靶标均获得明确峰和已知互作蛋白，例如TCF7L2与β-catenin、RAD21与cohesin亚基。图G的UpSet图显示八个靶标的DNA结合峰存在预期重叠，如RAD21与CTCF、TCF7L2与β-catenin；图H显示所有靶标中唯一共同富集的蛋白是Lazarus自身，说明技术背景可控，富集列表具有靶标特异性。这些结果支持CUT&amp;ID广泛适用于组蛋白修饰、TFs和非DNA结合蛋白。</p>
+<h3>方法亮点</h3>
+<p>Lazarus通过AlphaFold对不同拓扑结构进行建模，最终选择N端-TurboID-pAG-MNase-C端排列，并用两个柔性连接肽连接各结构域，以保证各功能域正确折叠和活性（见图 1A）。该蛋白在大肠杆菌中表达，通过Ni-NTA纯化和TEV酶切获得约80 kDa的蛋白；生产过程中内源生物素可使Lazarus自生物素化，但不影响后续使用（见图 1B）。体外实验证实：加入CaCl2后MNase可切割DNA；在CUT&amp;ID流程中Lazarus被靶标抗体保留且能生物素化自身及邻近蛋白（见图 1C）。</p>
+<p>CUT&amp;ID操作流程为：提取细胞核并结合到ConA磁珠，先后孵育靶标抗体（过夜）和Lazarus（1 h），然后在含生物素和ATP的缓冲液中37°C进行30 min邻近标记；洗去游离生物素后，在CaCl2条件下4°C切割30 min；释放的DNA进入上清，生物素化蛋白被链霉亲和素磁珠捕获。DNA部分进行酚氯仿抽提、KAPA建库和Illumina测序；蛋白部分经磁珠酶切和dia-PASEF质谱鉴定。整个流程约3天，每样本1百万细胞，可多通道移液并行处理，并兼容新鲜、冷冻或甲醛固定核。</p>
+<p>基因组数据用bowtie2比对hg38，MACS2以IgG为对照call peak，HOMER进行基序分析；蛋白质组数据用Spectronaut鉴定和定量，amica进行缺失值插补与差异富集分析。关键点是双读出在同一份材料中依次获得，无需拆分样本或平行实验。</p>
+<h4>图 1｜Lazarus活性与CUT&amp;ID工作流程</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42813370/F1.jpg" alt="图 1" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>图1. Lazarus活性与CUT&amp;ID工作流程。(A) AlphaFold预测的N端-TurboID-pAG-MNase-C端重组蛋白（称为Lazarus）结构，从N到C端依次为：TurboID（蓝色）、连接肽（绿色）、protein A/G（紫色）、连接肽（绿色）和MNase（粉色）。(B) Lazarus的纯度通过SDS–PAGE凝胶PageBlue染色显示（左；Lazarus通常在约80 kDa处出现两条相近条带，可能由于不完全变性/还原或翻译后修饰）。Lazarus在蛋白生产过程中会生物素化自身，可通过链霉亲和素-HRP的western blotting检测（右）。(C) 体外酶活实验显示，加入CaCl2后Lazarus切割DNA（左，DNA琼脂糖凝胶）；在CUT&amp;ID工作流程中，它被靶向抗体保留，并在加入生物素和ATP后生物素化自身和其他蛋白（右，链霉亲和素-HRP western blot，比较靶标与IgG对照）。右侧的Ponceau染色膜显示总蛋白。注意输入（核裂解物）不含BSA。(D) CUT&amp;ID工作流程示意图。</p>
+<p><strong>图解：</strong>该图回答Lazarus融合蛋白是否设计合理且具有双重酶活，以及CUT&amp;ID工作流如何串联。图A展示了AlphaFold预测的N端TurboID-pAG-MNase结构，说明两个柔性连接肽分隔三个功能域；图B用SDS-PAGE和链霉亲和素western证明重组蛋白表达纯化成功，且生产过程中发生自生物素化；图C左图显示在加入CaCl2后Lazarus能切割质粒DNA，右图显示在靶标抗体存在下Lazarus被保留并生物素化自身及邻近蛋白，而IgG对照信号很弱；图D给出了完整CUT&amp;ID流程，从抗体结合、生物素标记到DNA切割和分离。这些结果共同支持Lazarus具备预期顺序活性，为后续基因组/蛋白质组双读出奠定基础。</p>
+<h3>为什么值得读</h3>
+<p>对合成生物学和蛋白工程研究者而言，CUT&amp;ID展示了一个高度实用的融合酶设计范例：将两个正交催化结构域（TurboID和MNase）通过连接肽与一个通用抗体结合模块（pAG）融合，既保留各自酶活，又实现顺序反应。这种模块化思路可以启发其他多功能融合蛋白的设计，尤其是需要将定位、标记和切割等功能耦合的场景。</p>
+<p>CUT&amp;ID无需遗传标签或过表达，可直接用于任何内源靶标，且能同时获得DNA结合位点和邻近互作蛋白；这一双重读出本身构成正交验证，例如蛋白质组中发现JUN与TCF7L2互作，与基因组中TCF/LEF和JUNB基序的共富集相互印证，从而支持这些因子真正共结合同一调控元件。此外，它兼容冷冻和固定样本，有望用于患者活检或生物样本库，对临床转化和稀有材料研究具有吸引力。</p>
+<p>该方法的3天可完成、多通道移液与自动化友好设计，以及1百万细胞投入，使其在通量和可重复性上优于许多现有方法，也为未来进一步降低样本量、与其他组学技术整合提供了清晰路线。</p>
+<h3>局限与疑问</h3>
+<p>本文的实验生物学重复数大多为n=2，蛋白质组有技术重复，但仍属较小样本；基因组一致性较好，但蛋白质组存在批次效应，IgG对照中鉴定蛋白数随批次波动，因此差异富集分析依赖对照平行进行，且部分fold change基于插补值计算，可能高估某些互作。</p>
+<p>作者也指出，1百万细胞/样本对稀有细胞类型仍可能过高，需根据抗体亲和力、靶标丰度和动态性进行优化；高丰度靶标（如H3K27ac）会带出更多普通核蛋白，不一定有功能意义；非DNA结合蛋白（HDAC1、RAD21、β-catenin）基因组重复间一致性较低，提示需要更多重复才能捕捉动态结合。</p>
+<p>IgG同型对照本身存在不确定性，最理想的对照是使用敲除细胞；与PLAM-seq和ProtA-Turbo的比较来自不同细胞系和抗体，解读时需谨慎。固定虽可能略微增加蛋白互作回收，但也会增加背景，且作者并未证明固定对稀有/瞬时互作有普遍增益，因此固定优化仍属个案策略。所有CUT&amp;ID结果都需要正交验证和功能实验确认生物学相关性。</p>
+<hr/><p>解读依据：PMC 开放获取全文 · 由 AI 生成，关键结论请以原文为准<br/>插图来自原文，许可证 CC BY，版权归原作者<br/>原文：<a href="https://doi.org/10.1093/nar/gkag943">https://doi.org/10.1093/nar/gkag943</a> · PMID 42813370</p>]]></content:encoded>
+    </item>
     <item>
       <title>开发可同时编辑A/C/G/T的哺乳动物细胞四碱基突变器QBMM及其双碱基编辑器A&amp;GBE</title>
       <link>https://nk39010.github.io/pubmed-digest/articles/42806035.html</link>
