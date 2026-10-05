@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PFNet：从常规HX-MS数据直接计算残基级蛋白质稳定性的机器学习方法</title>
+<style>
+  body{margin:0;background:#fff;color:#1c1c1a;font:16px/1.8 -apple-system,"Segoe UI","Microsoft YaHei",serif}
+  main{max-width:40em;margin:0 auto;padding:28px 18px 60px}
+  h1{font-size:1.5em;line-height:1.4;margin:0 0 1em}
+  h3{font-size:1.08em;margin:1.9em 0 .7em;padding-left:.6em;border-left:4px solid #2f6f4f;color:#2f6f4f}
+  h4{font-size:1em;margin:1.5em 0 .5em;color:#2f6f4f}
+  p{margin:0 0 1em}
+  img{max-width:100%;height:auto;display:block;margin:0 auto}
+  blockquote{margin:1.2em 0;padding:.7em 1em;background:#f7f7f4;border-left:3px solid #e2e2dd;color:#6b6b66}
+  hr{border:0;border-top:1px dashed #e2e2dd;margin:2em 0}
+  em{color:#6b6b66}
+  a{color:#2f6f4f}
+  @media (prefers-color-scheme:dark){body{background:#16161a;color:#e8e8e4}blockquote{background:#22222a;color:#a8a8a2}}
+</style></head>
+<body><main><h1>PFNet：从常规HX-MS数据直接计算残基级蛋白质稳定性的机器学习方法</h1>
+<p><strong>从普通肽级氢氘交换质谱数据秒级得到残基级∆Gop，速度比现有方法快四到五个数量级，精度更高。</strong></p>
+<p><em>A machine learning method for calculating highly localized protein stabilities.</em><br/>Nature communications · 2026 Sep 01<br/>Chenlin Lu, Kyle C Weber, Savannah K McBride, Andrew Reckers, Anum Glasgow</p>
+<blockquote><p>入选理由：PFNet 是一种机器学习方法，能从常规 HX-MS 数据直接计算残基级蛋白质稳定性（∆Gop），为蛋白质/酶工程提供快速、定量的稳定性分析工具，且开放全文，对理性设计很有启发。</p></blockquote>
+<h3>研究背景</h3>
+<p>蛋白质功能取决于构象系综的动态变化，而突变、翻译后修饰和分子相互作用通过重新加权系综来调控功能。然而，缺乏能在高分辨率下定量监测这些能量变化的工具一直是该领域的根本性技术障碍。</p>
+<p>氢氘交换质谱（HX-MS）能测量主链氢同位素交换动力学，报告局部蛋白质稳定性，但传统分析通常只是肽水平摄取差异的定性比较。理论上，HX-MS数据包含推导单个残基氢交换速率（kex）所需信息，进而计算残基级开放自由能（∆Gop），即局部稳定性的热力学描述符。然而，现有方法如贝叶斯方法FEATHER在精度、效率、可扩展性和易用性方面均存在不足，无法将∆Gop转化为可扩展的蛋白质系综分析工具。</p>
+<h3>核心发现</h3>
+<p>PFNet是一个机器学习框架，将残基级∆Gop推断表述为可扩展的逆问题。输入同位素质量包络，经1D卷积神经网络（CNN）编码后与时间编码和肽位置编码结合，输入transformer编码器，解码器输出残基级log10kex和置信度（见图 1a）。训练数据包含超过两百万个合成蛋白（每个蛋白1000–10000个合成HX-MS谱），模拟了噪声、回交换、肽覆盖度等实验变异。</p>
+<p>在合成基准上，PFNet在多种时间窗口、稀疏度和噪声条件下均优于FEATHER，分析时间从数十小时缩短到秒级（见图 1b,c）。PFNet-Centroid变体可利用仅有质心数据的公开数据集，但精度略低；消融CNN显著降低预测精度，证明包络信息和CNN编码至关重要。置信度评分能有效标记可靠预测，过滤后RMSE进一步降低。实验验证中，对两个从头设计小蛋白和T4溶菌酶，PFNet得到的∆Gop与HX-NMR测量高度一致，Pearson R为0.63–0.91，RMSE为2.49–5.53 kJ/mol（见图 1d）。PFNet置信度与预测误差强相关，蒙特卡洛dropout不确定性也与误差一致。估计实验噪声水平为0.03–0.04，与合成基准对应（见图 1e）。与其他方法（HDsite、exPfact、BayesianHDX、FEATHER、HDfleX）比较，PFNet总体表现最优。</p>
+<p>应用方面，对ecDHFR apo/TMP结合状态，PFNet重现了FEATHER结果且拟合误差更低（见图 2a,b）。将PFNet结果与深度突变扫描（DMS）数据关联发现，高∆Gop（最稳定）残基在Lon蛋白酶存在下突变选择系数显著降低（p=0.043和0.044），说明局部稳定性可预测突变耐受性（见图 2d）。对SARS-CoV-2刺突蛋白与ACE2受体相互作用，PFNet在残基水平上精确定位Gln498和Gln493为ACE2识别热力学中心，与结构、突变和分子动力学研究一致；同时揭示了局部环保护与中央β-sheet去稳定化之间的耦合热力学变化，这是传统肽水平分析无法捕捉的（见图 2e,f）。</p>
+<h4>图 1｜PFNet架构与性能基准</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42823401/Fig1.jpg" alt="图 1" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>PFNet架构与基准测试。a PFNet架构与数据流的示意图。b 在具有不同时间窗口、稀疏度和噪声水平的合成数据集上对PFNet、PFNet(–CNN)和PFNet-Centroid进行基准测试（补充表1），并以肽摄取曲线示意图说明。Pearson相关系数（R）和均方根误差（RMSE）分布分别在应用和不应用0.8置信阈值的情况下计算。c 在完美合成数据集上PFNet与FEATHER的运行时间比较（补充表1）。d 在EEHEE_rd4_0871数据集上的实验基准测试。误差带表示PFNet推导值与HX-NMR测量值之间沿对角线的±RMSE。维恩图显示了每种技术解析的单残基位点数量。e PICP分析估计EEHEE_rd4_0871 HX-MS数据集对应于合成基准的等效噪声水平。</p>
+<p><strong>图解：</strong>这张图回答PFNet是否准确、快速且可靠。a 分图给出方法架构：输入同位素包络，经1D CNN编码后与时间编码和肽位置编码结合，输入transformer编码器，解码器输出残基级log10kex和置信度。b 分图在合成基准上比较PFNet及其变体，显示完整PFNet在多种条件下R最高、RMSE最低，且置信度过滤进一步降低RMSE，表明置信度能有效标记高质量预测；消融CNN或改用质心数据（PFNet-Centroid）均降低性能。c 分图展示PFNet比FEATHER快四到五个数量级（从数十小时到秒）。d 分图在实验数据集EEHEE_rd4_0871上验证，PFNet与HX-NMR测量高度一致，维恩图显示PFNet能解析更多单残基位点。e 分图用PICP估计实验噪声水平约为0.03，与合成基准对应。整体支持PFNet在合成和实验数据上均能高精度、快速地提取残基级稳定性信息。</p>
+<h4>图 2｜靶蛋白结合伴侣响应</h4>
+<p><img src="https://nk39010.github.io/pubmed-digest/figures/42823401/Fig2.jpg" alt="图 2" style="max-width:100%;height:auto"/></p>
+<p><strong>图例：</strong>PFNet揭示治疗靶点如何响应结合伴侣。a PFNet推导的∆∆Gop(apo-TMP)值映射到ecDHFR晶体结构上（PDB: 6XG5）。b ecDHFR数据集上PFNet与FEATHER推导结果的拟合误差比较，显示为质谱的绝对误差之和分布和质心的绝对拟合误差分布（补充图13）。c ecDHFR的PFNet推导与PFNet-Centroid预测的∆∆Gop(apo-TMP)值之间的相关性。误差带表示两个模型推导值之间沿对角线的±RMSE。d 在DMS中，有或无Lon蛋白酶时，三个∆Gop(apo)组的选择系数分布，按∆Gop(apo)由第25和75百分位数定义分组：低（&lt;9.5 kJ mol−1）、中（9.5–24.1 kJ mol−1）和高（&gt;24.1 kJ mol−1）。对于箱线图，中心线表示中位数，箱体表示四分位距，须延伸至1.5倍四分位距，黑点代表单个数据点。通过双侧Mann–Whitney U检验（未进行多重比较校正）确定的显著成对差异用“*”表示（p &lt; 0.05）。p值如下：+Lon (L) 对 +Lon (M)，p = 0.043；+Lon (L) 对 +Lon (H)，p = 0.044。∆Gop(apo)值来自合并7次重复的ecDHFR HX-MS数据。e SARS-CoV-2刺突蛋白在apo和ACE2结合状态之间氘吸收差异的肽水平分析。双峰区域以蓝色显示（补充图15）。f PFNet推导的∆∆Gop剖面实现高分辨率且无偏的热力学表位作图。</p>
+<p><strong>图解：</strong>这张图回答PFNet能否为药物靶标-配体相互作用提供超越肽水平分析的定量见解。a 分图将ecDHFR apo与TMP结合态的∆∆Gop映射到结构，显示结合引起的稳定性变化模式。b 分图显示PFNet拟合误差低于FEATHER，表明PFNet推导值更贴合实验质谱。c 分图表明PFNet-Centroid与PFNet在ecDHFR数据集上一致性良好，说明质心数据也能获得可信结果。d 分图利用DMS数据，发现高∆Gop（最稳定）残基在Lon蛋白酶存在时突变选择系数显著下降，提示局部稳定性与突变耐受性关联。e 分图展示spike蛋白肽水平摄取差异，整体保护模式宽泛且弱，无法分辨关键残基。f 分图显示PFNet残基级∆∆Gop精确鉴定Gln498和Gln493为ACE2识别热力学中心，并揭示环区保护与中央β-sheet去稳定化的耦合变化。整体证明PFNet能提供高分辨率、无偏的热力学表位作图，优于传统肽水平分析。</p>
+<h3>方法亮点</h3>
+<p>PFNet采用编码器-解码器transformer架构，输入肽级同位素包络，先用1D CNN提取局部谱特征，再与时间编码和肽位置编码组成时间点token。解码器查询包含残基表示、固有交换速率kch和肽覆盖度分辨率限制，输出残基级log10kex和置信度。模型包含迭代回收机制，利用前一迭代输出和重建误差细化预测。</p>
+<p>损失函数结合多个目标：残基MSE、置信度Smooth L1损失、包络重建损失、质心损失和kch一致性约束。两阶段训练先侧重准确率和物理一致性，后引入置信度校准。回交换建模采用等效回交换时间拟合并考虑序列依赖的残基特异性回交换，优于传统的均匀分配方法。对于超过400残基的蛋白，采用重叠片段策略，已验证可处理达5000残基的合成蛋白。</p>
+<p>PFNet还提供了实验设计指导：三个技术重复、宽时间窗口（秒到24小时以上）、约蛋白质长度的唯一肽覆盖度和平均冗余约10，即可达到预测误差低于5 kJ/mol，数据采集和分析可在1–2天内完成。PFNet和PFNet-Centroid均可本地或云端使用，无需结构或进化信息。</p>
+<h3>为什么值得读</h3>
+<p>对合成生物学和蛋白质工程研究者而言，PFNet提供了一个快速、定量、可扩展的残基级稳定性分析工具，能从常规HX-MS数据中提取最大信息，无需额外结构或进化信息。这有助于理性设计、突变体耐受性预测、变构治疗药物设计，尤其适合酶工程和蛋白质稳定性优化。</p>
+<p>PFNet民主化了HX-MS分析，使非专业实验室也能进行高分辨率∆Gop测定，可应用于大蛋白复合物（如病毒刺突蛋白），并生成大规模定量数据集用于下游机器学习。其速度和易用性使其适合处理数百个蛋白或超大蛋白，为蛋白质系综分析和设计提供高分辨率能量蓝图。</p>
+<h3>局限与疑问</h3>
+<p>合成训练数据不能完全模拟真实HX-MS实验中的多样且系统性噪声，可能影响泛化性能；对重糖基化等特殊蛋白可能需要重新训练。实验验证仅基于三个蛋白，样本量有限；PFNet-Centroid在信息不充分时精度降低。</p>
+<p>置信度过滤会减少残基级覆盖度，但原始肽级数据仍保留。DMS分析中p值未进行多重比较校正，相关结论需谨慎解释。spike数据中双峰区域的处理可能影响部分残基的∆∆Gop估计。长蛋白片段化推理在极少数情况下可能引入边界效应，尽管文中测试到5000残基未观察到显著损失。</p>
+<hr/><p>解读依据：PMC 开放获取全文 · 由 AI 生成，关键结论请以原文为准<br/>插图来自原文，许可证 CC BY，版权归原作者<br/>原文：<a href="https://doi.org/10.1038/s41467-026-75590-9">https://doi.org/10.1038/s41467-026-75590-9</a> · PMID 42823401</p>
+<p><a href="../index.html">← 全部解读</a></p>
+</main></body></html>
