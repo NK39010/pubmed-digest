@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>霰弹枪遗传工程：用大量条形码小构建体实现哺乳动物细胞超高通量代谢通路筛选</title>
+<style>
+  body{margin:0;background:#fff;color:#1c1c1a;font:16px/1.8 -apple-system,"Segoe UI","Microsoft YaHei",serif}
+  main{max-width:40em;margin:0 auto;padding:28px 18px 60px}
+  h1{font-size:1.5em;line-height:1.4;margin:0 0 1em}
+  h3{font-size:1.08em;margin:1.9em 0 .7em;padding-left:.6em;border-left:4px solid #2f6f4f;color:#2f6f4f}
+  h4{font-size:1em;margin:1.5em 0 .5em;color:#2f6f4f}
+  p{margin:0 0 1em}
+  img{max-width:100%;height:auto;display:block;margin:0 auto}
+  blockquote{margin:1.2em 0;padding:.7em 1em;background:#f7f7f4;border-left:3px solid #e2e2dd;color:#6b6b66}
+  hr{border:0;border-top:1px dashed #e2e2dd;margin:2em 0}
+  em{color:#6b6b66}
+  a{color:#2f6f4f}
+  @media (prefers-color-scheme:dark){body{background:#16161a;color:#e8e8e4}blockquote{background:#22222a;color:#a8a8a2}}
+</style></head>
+<body><main><h1>霰弹枪遗传工程：用大量条形码小构建体实现哺乳动物细胞超高通量代谢通路筛选</h1>
+<p><strong>一细胞一实验：大量小构建体代替单个巨型DNA，筛出线粒体定位的氨基酸合成通路</strong></p>
+<p><em>Highly multiplexed mammalian metabolic engineering with a shotgun approach.</em><br/>Nature biotechnology · 2026 Oct 06<br/>Julie Trolle, Sofia Sessa, Aleksandra Wudzinska, Mark Grivainis, Katerina Rincones, Tori Rodrick et al.</p>
+<blockquote><p>入选理由：提出“霰弹枪遗传工程”，通过递送大量带条形码的小构建体而非单个大构建体，在哺乳动物细胞中实现代谢通路的超高通量组合筛选，巧妙绕过大DNA构建瓶颈，并发现线粒体定位偏好，为代谢工程和合成生物学提供了可扩展的新方法。</p></blockquote>
+<h3>研究背景</h3>
+<p>哺乳动物代谢工程在基础生物学、生物制造和细胞治疗中有广泛应用，但通路复杂度增加时，组合设计空间和所需 DNA 构建体尺寸急剧扩大。传统策略通常依赖递送单个大构建体或有限的定向文库，难以覆盖基因内容、化学计量比（stoichiometry）和细胞器定位等多维度组合，导致无偏筛选（unbiased screen）在实验上不可行。</p>
+<p>这个瓶颈的核心矛盾在于：要探索的通路组合数量与构建体长度共同增长，而大 DNA 的合成、递送和稳定整合在哺乳动物细胞中成本高、效率低，容易丢失或重排。因此，领域需要一个能绕过单一大构建体限制、同时保持高多重筛选能力的新方法。</p>
+<h3>核心发现</h3>
+<p>作者开发了霰弹枪遗传工程（shotgun genetic engineering, SGE）。其核心不是把完整通路装进一个大构建体，而是把通路拆成大量带条形码（barcode）的小构建体递送到哺乳动物细胞中；每个细胞成为一个独立实验，携带的合成通路在基因内容、化学计量比和细胞器定位上各不相同。通过筛选具有目标表型的细胞并对其条形码测序，可以识别功能性通路。</p>
+<p>利用 SGE，作者筛选了数百万个通路组合，用于改造必需氨基酸（essential amino acid）生物合成。结果显示，在中国仓鼠卵巢（Chinese hamster ovary, CHO）细胞中实现了无缬氨酸条件下的近野生型生长，并实现了无异亮氨酸生长；在 Jurkat 细胞中实现了无缬氨酸生长。功能性通路偏好线粒体定位，并且需要整合数十千碱基（tens of kilobases）的合成 DNA，这超出了传统筛选的规模。</p>
+<p>这些数据还支撑了机器学习引导的复杂生物合成性状解码与工程改造。</p>
+<h3>方法亮点</h3>
+<p>SGE 的方法巧思在于将“一个大构建体”问题转化为“许多小构建体”问题。小构建体合成和递送更高效，且每个都带条形码，使每个细胞内的组合可以通过测序回溯。</p>
+<p>细胞作为独立实验单元，天然并行地探索基因内容、表达比例和细胞器定位；筛选后仅需对存活/目标表型细胞的条形码进行测序，无需预先知道哪些组合有效。这种超高通量筛选（ultra-high-throughput screening）策略显著降低了组合筛选的构建瓶颈。</p>
+<p>后续机器学习分析从获得的数据中解码复杂性状，说明 SGE 不仅是一个筛选工具，也能为预测性工程提供训练数据。</p>
+<h3>为什么值得读</h3>
+<p>对合成生物学和代谢工程研究者来说，SGE 提供了一个可扩展的哺乳动物细胞组合筛选框架，直接绕过了大 DNA 合成与递送瓶颈。它把每个细胞变成一个微型反应器/实验，使得基因内容、剂量和定位的组合探索不再受限于文库构建规模。</p>
+<p>尤其值得注意的是，功能性通路偏好线粒体定位这一发现提示，细胞器微环境可能是必需氨基酸合成通路成功的关键因素；这种系统性发现如果只靠理性设计或小规模文库很难获得。</p>
+<p>此外，SGE 产生的“表型-条形码”数据集适合机器学习解码，为从海量组合中提取设计规则、指导后续工程提供了新路径。</p>
+<h3>局限与疑问</h3>
+<p>本文解读仅基于论文摘要，未获取开放获取全文；具体实验流程、文库构建细节、筛选条件、验证数据等需查阅全文核实。摘要未提供组合文库的精确规模、递送方式（如病毒载体、转座子或电转）、整合位点分布及拷贝数控制等关键信息。</p>
+<p>SGE 的筛选目前依赖可选择的表型（如氨基酸营养缺陷下的生长），对不易转化为生长或荧光选择的性状可能不直接适用。小构建体的随机整合与表达噪声可能引入假阳性或混淆基因剂量与组合效应。</p>
+<p>此外，摘要提到需要整合数十千碱基的合成 DNA，但未说明这些 DNA 如何由多个小构建体在细胞中组装或共整合，其稳定性和遗传性仍需全文数据支持。</p>
+<hr/><p>解读依据：PubMed 摘要 · 由 AI 生成，关键结论请以原文为准<br/>原文：<a href="https://doi.org/10.1038/s41587-026-03318-7">https://doi.org/10.1038/s41587-026-03318-7</a> · PMID 42839049</p>
+<p><a href="../index.html">← 全部解读</a></p>
+</main></body></html>
